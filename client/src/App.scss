@@ -1,0 +1,363 @@
+/*----------------------------- VARIABLES -----------------------------*/
+$primary-color:rgb(198,203,239);
+$header-color: #757575;
+$shadow-color:rgba(198, 203, 239, 0.2);
+$secondary-color: #c6efea;
+$tertiary-color:#efd9c6;
+$fourth-color: #393e46;
+$card-height: 80vh;
+$card-width: 280px;
+
+/*----------------------------- KEYFRAMES -----------------------------*/
+@keyframes hover-shadow{
+    from {box-shadow: 0px;}
+    to {box-shadow: 3px 3px 3px $shadow-color}
+  }
+  
+  @keyframes animatetop {
+    from {top:-400px; opacity: 0}
+    to {top:100; opacity: 1}
+  }
+  
+  @keyframes infocus {
+    from {transform: scale(1.0)}
+    to {transform: scale(1.05)}
+  }
+  
+  @keyframes outoffocus {
+    from {transform: scale(1.05)}
+    to {transform: scale(1.0)}
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes counter-spin {
+    0% { transform: rotate(180deg); }
+    100% { transform: rotate(0deg); }
+  }
+  
+  @keyframes rotate-arrow-forwards {
+    0% { transform: rotate(-45deg); }
+    100% { transform: rotate(135deg); }
+  }
+  
+  @keyframes rotate-arrow-backwards {
+    0% { transform: rotate(135deg); }
+    100% { transform: rotate(315deg); }
+  }
+  
+  @keyframes menu-out {
+    0% {
+      max-height: 0;
+      overflow: hidden;
+    }
+  
+    100% {
+      max-height: 400px;
+      overflow: hidden;
+    }
+  }
+  
+  /*----------------------------- ELEMENTAL STYLING -----------------------------*/
+  $font-stack: 'IBM Plex Mono', 'monospace';
+  
+  body, html, textarea{
+      margin: 0;
+      padding: 0;
+      font-family: $font-stack
+    }
+    
+    ul {
+      padding: 0;
+    }
+    
+    li {
+      margin-right: 5vw;
+    }
+    
+    svg{
+      margin: 0 auto;
+    }
+    
+    h1{
+      font-size: calc(0.5vw + 18px);
+    }
+    
+    h2{
+      font-size: calc(0.5vw + 17px);
+    }
+    
+    h3{
+      font-size: calc(0.5vw + 16px);
+    }
+    
+    h4{
+      font-size: calc(0.5vw + 15px);
+    }
+    
+    h5{
+      font-size: calc(0.5vw + 14px);
+    }
+    
+    h6{
+      font-size: calc(0.5vw + 13px);
+    }
+    
+    p, a{
+      font-size: calc(0.5vw + 12px);
+    }
+    /*----------------------------- GENERAL STYLING -----------------------------*/
+  
+  .flex-col {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+  
+  .container-padding {
+    align-items: center;
+    padding-top: 40px;
+    margin: auto;
+  }
+  
+  .margin-top{
+  margin-top: 5vh;
+  }
+  
+  .no-padding-bottom {
+    padding: 0vh 3vw;
+  }
+  
+  .container-padding {
+    label, select {
+    margin: 0.5vh 1vw;
+    }
+  }
+  
+  .flex-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .flex-row-no-wrap{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  
+  .flex-row-center{
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+  }
+  
+  .align-center{
+    text-align: center;
+  }
+  
+  .space-between{
+    justify-content: space-between;
+  }
+  
+  .space-evenly{
+    justify-content: space-evenly;
+    margin: 1vw;
+  }
+  
+  .space-around{
+    justify-content: space-around;
+  }
+  
+  .center-vertically{
+    margin: auto;
+  }
+  
+  .align-baseline{
+    align-items: flex-end;
+  }
+  
+  .button-clear{
+    border: none;
+    background-color: inherit;
+    font-size: inherit;
+  }
+  
+  .display-none {
+    display: none;
+  }
+  
+  .no-margin-no-padding{
+    margin:auto;
+  }
+  
+    /*----------------------------- HEADER STYLING -----------------------------*/
+    .header-true{
+      display: inline-flex;
+      position: fixed;
+      top: 0;
+      font-weight: bold;
+      z-index: 9999;
+      height:60px;
+      width:100%;
+      background-color: white;
+  
+      .header-text{
+          margin: auto auto auto 20px;
+      }
+  
+      .menu-bar-true,
+      .menu-bar-false{
+          border: transparent;
+          margin: auto 10px;
+          background-color: transparent;
+      }
+  
+       .line1, 
+       .line2, 
+       .line3 {
+          width: 42px;
+          height: 4px;
+          background-color: black;
+          margin: 10px 0;
+          border-radius: 90px;
+          transition: 0.5s
+        }
+        
+      .menu-bar-true{ 
+          .line1 {
+              transform: rotate(-45deg) translate(-9px, 9px);
+          }
+          .line2 {
+            transition: 50ms;
+              transform: translate(3rem, 0);
+              opacity:0;
+          }
+          .line3 {
+            transform: rotate(45deg) translate(-11px, -11px);
+          }
+      }
+    }
+      .nav-links{
+          margin: auto 1vw;
+          text-decoration: none;
+      }
+      .nav-links:hover{
+          color: #ff9c91;
+      }
+  
+    .menu-dropdown-true{
+      position: fixed;
+      right:0;
+      background-color: #dadddf;
+      z-index: 100;
+      top: 60px;
+      margin: 0 auto;
+      padding: 26px;
+      display: block;
+      width:200px;
+      text-align: center;
+      
+      .nav-links{
+          display: block;
+          margin: 3.5vh auto;
+      }
+    }
+
+    .menu-bar-true:before {
+        content: "";
+        background-color: #dadddf;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        top: 50px;
+        right: 24px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+  
+    .menu-dropdown-false{
+      position: fixed;
+      display: hidden;
+      top:-25vh;
+
+      .nav-links{
+          display: inline-block;
+          margin: 3.5vh auto;
+      }
+    }
+    
+  
+  .nav-links{
+      color:#393e46;
+      font-size: calc(0.5vw + 17px);
+  }
+    
+  .nav-links:hover {
+      transition: 0.2s;
+      font-weight: 600;
+      color: #ff9c91;
+  }
+  
+  .admin {
+      margin: 70px auto;
+      width: 70vw;
+      background-color: #e5e5e5;
+      border-radius: 5px;
+      box-shadow: 2px 2px 2px 0px #3c4245;
+      padding: 1vw 3vw;
+      align-items: center;
+      justify-items: center;
+  }
+  
+  .btn-primary {
+      color: $fourth-color;
+      background-color: $secondary-color;
+      border-color: $fourth-color;
+      padding: 0.5vh auto;
+      margin: 0.2vh auto;
+      width: 100px;
+      border-radius: 5px;
+  }
+  
+  .btn-primary:hover {
+    transition: 300ms;
+    color:$secondary-color;
+    background-color: $fourth-color;
+    border-color: $secondary-color;
+  }
+  
+  .btn-submit {
+      display: block;
+      margin: 0.5vh auto;
+  }
+  
+  .display-block {
+      display: block;
+  }
+  
+  .admin-inputs {
+      width: 180px;
+      height: 30px;
+      border-radius: 3px;
+      border: none;
+      text-align: center;
+      margin: 1vh 1vw;
+  }
+  
+  select.admin-inputs {
+    height: 32px;
+    text-align-last:center;
+  }
+  
+  .properties-container{
+    margin: 80px auto;
+    padding: 0% 2.5vw;
+  }
+
+
+  
+  
