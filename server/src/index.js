@@ -1,8 +1,10 @@
-const {ApolloServer, gql} = require('apollo-server')
+const { ApolloServer, gql } = require('apollo-server')
+const typeDefs = require("./schema");
 
 let stories = 
-[
-    {
+[{
+    "userName": "Mike",
+    "stories": [{
         storyName: "Add stories",
         storyPriority: "High",
         storyEstimate: "1 Week",
@@ -34,26 +36,39 @@ let stories =
         storyAcceptanceCriteriaBegin: "delete stories via paper",
         storyAcceptanceCriteriaAction: "we removed ideas",
         storyAcceptanceCriteriaOutcome: "deleting them manually",
-    }, 
-]
+    }]
+}]
 
-const typeDefs = gql`
-type Story {
-    storyName: String!
-    storyPriority: String!
-    storyEstimate: Int!
-    storyUserDescription: String!
-    storyFunctionality: String!
-    storyBenefit: String!
-    storyAcceptanceCriteriaBegin: String!
-    storyAcceptanceCriteriaAction: String!
-    storyAcceptanceCriteriaOutcome: String!
-
-    type Query{
-        storyCount:Int!
-        allStories:[Story!]!
-        findStory(name: String!): Person
+const resolvers = {
+    Query: {
+        userCount: ()=> stories.length,
+        allStories: ()=> stories,
+        findUser: (root, args)=> stories.find(s=>s.userName===args.userName)
+    },
+    Story:{
+        storyID: (root)=>root.storyID,
+        storyName: (root)=> root.storyName, 
+        storyPriority: (root)=> root.storyPriority, 
+        storyEstimate: (root)=> root.storyEstimate, 
+        storyUserDescription: (root)=> root.storyUserDescription, 
+        storyFunctionality: (root)=> root.storyFunctionality, 
+        storyBenefit: (root)=> root.storyBenefit, 
+        storyAcceptanceCriteriaBegin: (root)=> root.storyAcceptanceCriteriaBegin, 
+        storyAcceptanceCriteriaAction: (root)=> root.storyAcceptanceCriteriaAction, 
+        storyAcceptanceCriteriaOutcome: (root)=> root.storyAcceptanceCriteriaOutcome, 
+    },
+    User:{
+        userID:(root)=> root.userID,
+        userName: (root)=> root.userName,
+        stories: (root)=> root.stories,
     }
-   
 }
-`
+
+const server = new ApolloServer({
+    typeDefs, 
+    resolvers
+})
+
+server.listen().then(({url})=>{
+    console.log(`Server ready at ${url}`)
+})
