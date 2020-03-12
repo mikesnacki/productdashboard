@@ -3,18 +3,13 @@ const { gql } = require('apollo-server')
 const typeDefs = gql`
 
     type User {
-        userID:ID!
+        userID: ID!
         userName: String!
-        projects: [Project]
-    }
-
-    type Project {
-        projectID: ID!
-        projectName: String!
-        stories: [Story]
+        userStories: [Story]
     }
 
     type Story {
+        user: User
         storyID:ID!
         storyName: String!
         storyPriority: String!
@@ -28,14 +23,7 @@ const typeDefs = gql`
     }
 
     type Query {
-        userCount: Int!
-        user: User
-        allUsers:[User!]!
-        allProjects:[Project!]!
-        allStories:[Story!]!
-        findUser(userName: String!): User
-        findProject(projectName: String!): Project
-        findStory(storyName: String!): Story
+        getUsers: [User]
     }
 `
 module.exports = typeDefs;
