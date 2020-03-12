@@ -10,7 +10,8 @@ const typeDefs = gql`
 
     type Story {
         user: User
-        storyID:ID!
+        projectName: String!
+        storyID: ID!
         storyName: String!
         storyPriority: String!
         storyEstimate: Int!

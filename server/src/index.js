@@ -9,6 +9,7 @@ let stories =
     "userID": "2b24e0b0-343c-11e9-8c2a-cb57c2bf804f",
     "userStories":
         [{
+            projectName: "Product Management Dashboard",
             storyName: "Add stories",
             storyPriority: "High",
             storyEstimate: "1 Week",
@@ -20,6 +21,7 @@ let stories =
             storyAcceptanceCriteriaOutcome: "tracking them manually",
         }, 
         {
+            projectName: "Product Management Dashboard",
             storyName: "Update stories",
             storyPriority: "High",
             storyEstimate: "1 Week",
@@ -31,6 +33,7 @@ let stories =
             storyAcceptanceCriteriaOutcome: "updating them manually",
         }, 
         {
+            projectName: "Product Management Dashboard",
             storyName: "Delete stories",
             storyPriority: "High",
             storyEstimate: "1 Week",
