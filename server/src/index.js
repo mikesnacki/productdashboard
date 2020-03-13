@@ -1,4 +1,4 @@
-const { ApolloServer, gql } = require('apollo-server')
+const { ApolloServer, UserInputError } = require('apollo-server')
 const {find, filter} = require('lodash')
 const typeDefs = require("./schema");
 
@@ -50,7 +50,22 @@ let stories =
 const resolvers = {
     Query: {
         getUsers:()=>stories,
+        findUser:(root, args)=> stories.find(s=>s.name===args.name)
     },
+    Mutation:{
+        addUser: (root, args) => {
+            if (!stories.find(s=>s.name===args.name)) {
+                const user = { ...args }
+                stories = stories.concat(user)
+                return user
+            } else {
+                console.log(s.name, args.name)
+                throw new UserInputError('Name must be unique', {
+                    invalidArgs: args.name,
+                  })
+            }
+          },
+    }
 }
 
 const server = new ApolloServer({
