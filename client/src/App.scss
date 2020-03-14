@@ -62,11 +62,10 @@ $card-width: 280px;
   }
   
   /*----------------------------- ELEMENTAL STYLING -----------------------------*/
-  $font-stack: 'Noto Sans JP', 'IBM Plex Mono', 'monospace';
+  $font-stack: 'Inter', 'IBM Plex Mono', 'monospace';
   
   body, html, textarea{
       margin: 0;
-      padding: 0;
       font-family: $font-stack
     }
     
