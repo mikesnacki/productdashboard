@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 let Story = new Schema({
     storyName: {
-        type:String,
+        type: String,
         required: false,
     },
     storyPriority: String,
@@ -15,7 +15,7 @@ let Story = new Schema({
     storyAcceptanceCriteriaAction: String,
     storyAcceptanceCriteriaOutcome: String,
     }
-)
+);
 
 let Project = new Schema({
     projectName: {
@@ -27,7 +27,7 @@ let Project = new Schema({
         default: false
     },
     projectStories:[Story]
-})
+});
 
 let User = new Schema({
     userName: {
@@ -41,6 +41,8 @@ let User = new Schema({
         default: false
     },
     userProjects:[Project]
-})
+});
 
-module.exports = mongoose.model("User", User)
+module.exports = mongoose.model("Story", Story);
+module.exports = mongoose.model("Project", Project);
+module.exports = mongoose.model("User", User);
