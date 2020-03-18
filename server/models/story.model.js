@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let Story = new Schema({
+let StorySchema = new Schema({
     storyName: {
         type: String,
         required: false,
@@ -17,4 +17,4 @@ let Story = new Schema({
     }
 );
 
-module.exports = mongoose.model("Story", Story);
+module.exports = mongoose.model("StorySchema", StorySchema);
