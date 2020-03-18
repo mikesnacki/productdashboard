@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.scss';
 
 import Header from './components/header'
-import Stories from './components/stories'
+import UserStories from './components/userStories'
 
 function App() {
   return (
     <div>
       <Router>
         <Header/>
-        <Stories/>
+        <UserStories/>
       </Router>
     </div>
   );

@@ -21,7 +21,6 @@ export default function Header(){
       <Link key={4} className="header-text nav-links" to="/login">Feature Graveyard</Link>,
     ]
 
-    console.log(direction)
     return(
         <div ref={headerRef}>
         <header className={`header-${direction} space-between`}>
