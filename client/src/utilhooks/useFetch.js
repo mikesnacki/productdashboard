@@ -9,7 +9,7 @@ export const useFetch =(url)=>{
         const fetchData = async ()=>{
             setIsLoading(true)
             try {
-                fetch(url)
+                await fetch(url)
                 .then(res=> res.json())
                 .then(data=>setResponse(data))
                 setIsLoading(false)
@@ -18,6 +18,6 @@ export const useFetch =(url)=>{
             }
         }
         fetchData()
-    },[url, loading, error]);
+    },[]);
     return { response, loading, error }
 }
