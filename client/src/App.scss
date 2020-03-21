@@ -1,11 +1,12 @@
 /*----------------------------- VARIABLES -----------------------------*/
 $primary-color:rgb(198,203,239);
 $shadow-color:rgba(198, 203, 239, 0.2);
-$secondary-color: #84a9ac;
-$tertiary-color:#204051;
+$secondary-color:#204051;
+$tertiary-color: #84a9ac;
 $fourth-color: #393e46;
 $card-height: 80vh;
 $card-width: 280px;
+$secondary-font-size: calc(0.5vw + 17px);
 
 /*----------------------------- KEYFRAMES -----------------------------*/
 @keyframes hover-shadow{
@@ -50,12 +51,12 @@ $card-width: 280px;
       margin: 0 auto;
     }
     
-    h1{
+    h1, .user-project-header{
       font-size: calc(0.5vw + 18px);
     }
     
     h2, .story-name , .nav-links{
-      font-size: calc(0.5vw + 17px);
+      font-size: $secondary-font-size;
     }
     
     h3{
@@ -80,6 +81,7 @@ $card-width: 280px;
 
     button:hover {
       background-color:$tertiary-color;
+      transition: 300ms;
     }
     /*----------------------------- GENERAL STYLING -----------------------------*/
   
@@ -206,7 +208,8 @@ $card-width: 280px;
     }
 
     .menu-button:hover {
-      background-color:#204051;
+      transition: 300ms;
+      background-color:$tertiary-color;
     }
 
     .menu-button-close {
@@ -227,7 +230,8 @@ $card-width: 280px;
           text-decoration: none;
       }
       .nav-links:hover{
-          color: #ff9c91;
+        transition: 300ms;
+        color: #ff9c91;
       }
   
     .menu-dropdown-true{
@@ -284,7 +288,7 @@ $card-width: 280px;
   }
   
   .btn-primary:hover {
-    transition: 300ms;
+    
     color:$secondary-color;
     background-color: $fourth-color;
     border-color: $secondary-color;
@@ -312,13 +316,21 @@ $card-width: 280px;
 
   /*----------------------------- PROJECT STYLING -----------------------------*/
   
+  .user-project-header {
+    width: 100%;
+    margin: 0;
+    background-color: $secondary-color;
+    color: white;
+    padding: 2vh 0;
+    border: transparent;
+  }
+
   .user-project-container {
     text-align: center;
     border: 2px solid black;
     background-color:rgba(222,227,226, 0.2);
     border-radius: 5px;
     margin: 1vh auto;
-    padding: 2vh 2vw;
   }
   
   .user-inputs, .user-buttons {
@@ -343,18 +355,38 @@ $card-width: 280px;
   }
 
     /*----------------------------- USER STYLING -----------------------------*/
-  .user-story{
+    .user-story-header {
+      width: 99.5%;
+      margin: auto;
+      background-color: $tertiary-color;
+      color: white;
+      border-radius: 3px 3px 0 0;
+      input{
+        background-color: transparent;
+        border: transparent;
+        padding: 1vh;
+        color: white;
+        border-radius: 5px;
+      }
+      .user-story-button{
+        border: transparent;
+        color: white;
+        background-color: transparent;
+      }
+      .user-story-button:hover{
+        border: transparent;
+        background-color: $fourth-color;
+        transition: 200ms;
+      }
+    }
+  
+    .user-story{
     background-color: white;
     border: 2px solid black;  
     border-radius: 5px;
+    margin: 2vh 2vw;
   }
 
-  .story-name {
-    width: 60%;
-    border: transparent;
-    background-color: $tertiary-color;
-    color: $primary-color;
-  }
 
   
   

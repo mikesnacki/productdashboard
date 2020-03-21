@@ -1,27 +1,24 @@
 import React from 'react';
 import UserStory from './userStories'
 
-const UserProjects =({res, projectDeleted, projectID, projectName, projectStories})=>{
+const UserProjects =({ project })=>{
 
     return (
         <div className="user-project-container">
-            <h2>{projectName}</h2>
-            <p>{projectID}</p>
-            <p>{projectDeleted}</p>
-            {!res.error && !res.loading && res.response.length >0 && (projectStories).map((stor, key)=>
+            <input className="user-project-header align-center" defaultValue={project.projectName}></input>
+            <p>{project.projectID}</p>
+            <p>{project.projectDeleted}</p>
+            {project.projectStories.map((story, key)=>
                 <UserStory
                     key={key}
-                    storyName = {stor.storyName}
-                    storyPriority = {stor.storyPriority}
-                    storyEstimate = {stor.storyEstimate}
-                    storyUserDescription = {stor.storyUserDescription}
-                    storyFunctionality = {stor.storyFunctionality}
-                    storyBenefit = {stor.storyFunctionality}
-                    storyAcceptanceCriteriaBegin = {stor.storyAcceptanceCriteriaBegin}
-                    storyAcceptanceCriteriaAction = {stor.storyAcceptanceCriteriaAction}
-                    storyAcceptanceCriteriaOutcome = {stor.storyAcceptanceCriteriaAction}
+                    story={story}
                 />    
             )}
+            <div className="flex-row-no-wrap space-between">
+                <button className="user-buttons">Update Project</button>        
+                <button className="user-buttons">Delete Project</button>
+                <button className="user-buttons">Add A Story</button>
+            </div>
         </div>
     )
 }

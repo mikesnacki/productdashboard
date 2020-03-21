@@ -1,30 +1,23 @@
 import React from 'react';
 
-const UserStory =({
-                    storyName,storyPriority,storyEstimate,storyUserDescription,
-                    storyFunctionality,storyBenefit,storyAcceptanceCriteriaBegin,
-                    storyAcceptanceCriteriaAction,storyAcceptanceCriteriaOutcome })=>{
+const UserStory =({ story })=>{
     return (
         <div className="user-story">
-            <div className="flex-row-center">
-                <input className="align-center user-inputs story-name" placeholder="Name" defaultValue={storyName}></input>
+            <div className="user-story-header flex-row-no-wrap space-between">
+                <button className="user-story-button">Update</button>   
+                <input className="align-center" placeholder="Name" defaultValue={story.storyName}></input>
+                <button className="user-story-button">Delete</button>
             </div>
             <div className="flex-row-center">
-                <input className="align-center user-inputs" placeholder="Priority" defaultValue={storyPriority}></input>
-                <input className="align-center user-inputs" placeholder="Estimate" defaultValue={storyEstimate}></input>
-                <input className="align-center user-inputs" placeholder="User Description" defaultValue={storyUserDescription}></input>
-                <input className="align-center user-inputs" placeholder="Functionality" defaultValue={storyFunctionality}></input>
-                <input className="align-center user-inputs" placeholder="Benefit" defaultValue={storyBenefit}></input>
-                <input className="align-center user-inputs" placeholder="Acceptance Criteria" defaultValue={storyAcceptanceCriteriaBegin}></input>
-                <input className="align-center user-inputs" placeholder="Priority" defaultValue={storyPriority}></input>
-                <input className="align-center user-inputs" placeholder="Accpetance Criteria Action" defaultValue={storyAcceptanceCriteriaAction}></input>
-                <input className="align-center user-inputs" placeholder="Acceptance Criteria Outcome" defaultValue={storyAcceptanceCriteriaOutcome}></input>
-            </div>
-            <div className="flex-row-center">
-                <button className="user-buttons">Update Story</button>
-            </div>
-            <div className="flex-row-center">           
-                <button className="user-buttons">Delete Story</button>
+                <input className="align-center user-inputs" placeholder="Priority" defaultValue={story.storyPriority}></input>
+                <input className="align-center user-inputs" placeholder="Estimate" defaultValue={story.storyEstimate}></input>
+                <input className="align-center user-inputs" placeholder="User Description" defaultValue={story.storyUserDescription}></input>
+                <input className="align-center user-inputs" placeholder="Functionality" defaultValue={story.storyFunctionality}></input>
+                <input className="align-center user-inputs" placeholder="Benefit" defaultValue={story.storyBenefit}></input>
+                <input className="align-center user-inputs" placeholder="Acceptance Criteria" defaultValue={story.storyAcceptanceCriteriaBegin}></input>
+                <input className="align-center user-inputs" placeholder="Priority" defaultValue={story.storyPriority}></input>
+                <input className="align-center user-inputs" placeholder="Accpetance Criteria Action" defaultValue={story.storyAcceptanceCriteriaAction}></input>
+                <input className="align-center user-inputs" placeholder="Acceptance Criteria Outcome" defaultValue={story.storyAcceptanceCriteriaOutcome}></input>
             </div>
         </div>
     )

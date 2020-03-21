@@ -15,14 +15,10 @@ export default function StoriesPage(){
     return(
         <div className="stories-page">
             {!res.error && !res.loading && res.response.length >0 &&
-                userInfo.userProjects.map((proj, key)=>
+                userInfo.userProjects.map((project, key)=>
                     <UserProjects
                         key={key}
-                        projectID={proj._id}
-                        projectName={proj.projectName}
-                        projectDeleted={proj.projectDeleted}
-                        projectStories={proj.projectStories}
-                        res={res}
+                        project={project}
                     />
                 )
             }
