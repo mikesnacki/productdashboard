@@ -1,9 +1,8 @@
 /*----------------------------- VARIABLES -----------------------------*/
 $primary-color:rgb(198,203,239);
-$header-color: #757575;
 $shadow-color:rgba(198, 203, 239, 0.2);
-$secondary-color: #c6efea;
-$tertiary-color:#efd9c6;
+$secondary-color: #84a9ac;
+$tertiary-color:#204051;
 $fourth-color: #393e46;
 $card-height: 80vh;
 $card-width: 280px;
@@ -15,38 +14,8 @@ $card-width: 280px;
   }
   
   @keyframes animatetop {
-    from {top:-400px; opacity: 0}
-    to {top:100; opacity: 1}
-  }
-  
-  @keyframes infocus {
-    from {transform: scale(1.0)}
-    to {transform: scale(1.05)}
-  }
-  
-  @keyframes outoffocus {
-    from {transform: scale(1.05)}
-    to {transform: scale(1.0)}
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  @keyframes counter-spin {
-    0% { transform: rotate(180deg); }
-    100% { transform: rotate(0deg); }
-  }
-  
-  @keyframes rotate-arrow-forwards {
-    0% { transform: rotate(-45deg); }
-    100% { transform: rotate(135deg); }
-  }
-  
-  @keyframes rotate-arrow-backwards {
-    0% { transform: rotate(135deg); }
-    100% { transform: rotate(315deg); }
+    from {top:-100vh; opacity: 0}
+    to {top:0; opacity: 1}
   }
   
   @keyframes menu-out {
@@ -85,7 +54,7 @@ $card-width: 280px;
       font-size: calc(0.5vw + 18px);
     }
     
-    h2{
+    h2, .story-name , .nav-links{
       font-size: calc(0.5vw + 17px);
     }
     
@@ -107,6 +76,10 @@ $card-width: 280px;
     
     p, a{
       font-size: calc(0.5vw + 12px);
+    }
+
+    button:hover {
+      background-color:$tertiary-color;
     }
     /*----------------------------- GENERAL STYLING -----------------------------*/
   
@@ -193,55 +166,64 @@ $card-width: 280px;
     margin:auto;
   }
   
-    /*----------------------------- HEADER STYLING -----------------------------*/
+/*----------------------------- HEADER STYLING -----------------------------*/
     .header-true{
+      position: absolute;
       display: inline-flex;
-      position: fixed;
-      top: 0;
       font-weight: bold;
-      z-index: 9999;
-      height:60px;
+      z-index: 0;
+      min-height: 60px;
+      top:0;
       width:100%;
       background-color: white;
   
       .header-text{
-          margin: auto auto auto 20px;
+          margin: auto auto auto 4vw;
       }
   
+      button {
+        font-size: calc(0.5vw + 13px);
+      }
       .menu-bar-true,
       .menu-bar-false{
-          border: transparent;
-          margin: auto 10px;
-          background-color: transparent;
+          margin: 1vh 4vw;
+          border: 1px solid black;
+          border-radius:3px;
+          background-color: $secondary-color;
+          color:white;
       }
-  
+
        .line1, 
        .line2, 
        .line3 {
           width: 42px;
           height: 4px;
-          background-color: black;
-          margin: 10px 0;
+          background-color: white;
+          margin: 6px 2vw;
           border-radius: 90px;
           transition: 0.5s
-        }
-        
-      .menu-bar-true{ 
-          .line1 {
-              transform: rotate(-45deg) translate(-9px, 9px);
-          }
-          .line2 {
-            transition: 50ms;
-              transform: translate(3rem, 0);
-              opacity:0;
-          }
-          .line3 {
-            transform: rotate(45deg) translate(-11px, -11px);
-          }
-      }
+        }    
+    }
+
+    .menu-button:hover {
+      background-color:#204051;
+    }
+
+    .menu-button-close {
+      margin-left: 80%;
+      font-size: 60px;
+      color: black;
+      background-color: transparent;
+      border: transparent;
+    }
+
+    .menu-button-close:hover {
+      background-color: transparent;
+      border: transparent;
+      color: $tertiary-color;
     }
       .nav-links{
-          margin: auto 1vw;
+          margin: auto 3vw;
           text-decoration: none;
       }
       .nav-links:hover{
@@ -250,49 +232,28 @@ $card-width: 280px;
   
     .menu-dropdown-true{
       position: fixed;
-      right:0;
+      height:100%;
+      width: 100%;
       background-color: #dadddf;
-      z-index: 100;
-      top: 60px;
-      margin: 0 auto;
-      padding: 26px;
-      display: block;
-      width:200px;
       text-align: center;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      margin: 0;
+      overflow: auto;
+      animation-name: animatetop;
+      animation-duration: 300ms;
       
       .nav-links{
           display: block;
-          margin: 3.5vh auto;
+          margin: 10.5vh auto;
+          
       }
-    }
-
-    .menu-bar-true:before {
-        content: "";
-        background-color: #dadddf;
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        top: 50px;
-        right: 24px;
-        -webkit-transform: rotate(45deg);
-        transform: rotate(45deg);
     }
   
-    .menu-dropdown-false{
-      position: fixed;
-      display: hidden;
-      top:-25vh;
-
-      .nav-links{
-          display: inline-block;
-          margin: 3.5vh auto;
-      }
-    }
     
-  
   .nav-links{
       color:#393e46;
-      font-size: calc(0.5vw + 17px);
   }
     
   .nav-links:hover {
@@ -338,25 +299,62 @@ $card-width: 280px;
       display: block;
   }
   
-  .admin-inputs {
-      width: 180px;
-      height: 30px;
-      border-radius: 3px;
-      border: none;
-      text-align: center;
-      margin: 1vh 1vw;
-  }
-  
   select.admin-inputs {
     height: 32px;
     text-align-last:center;
   }
+
+  /*----------------------------- STORIES PAGE STYLING -----------------------------*/
   
-  .properties-container{
-    margin: 80px auto;
-    padding: 0% 2.5vw;
+  .stories-page {
+    margin: 80px 4vw;
   }
 
+  /*----------------------------- PROJECT STYLING -----------------------------*/
+  
+  .user-project-container {
+    text-align: center;
+    border: 2px solid black;
+    background-color:rgba(222,227,226, 0.2);
+    border-radius: 5px;
+    margin: 1vh auto;
+    padding: 2vh 2vw;
+  }
+  
+  .user-inputs, .user-buttons {
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    border: 2px solid black;
+    margin: 0.75vh 1vw;
+    padding: 0.5vh 1vw;
+  }
+
+  .user-inputs{
+    width: 180px;
+    height: 30px;
+  }
+
+  .user-buttons {
+    padding: 1.25vh 2vw;
+    width: 200px; 
+    background-color: $secondary-color;
+    color: white;
+  }
+
+    /*----------------------------- USER STYLING -----------------------------*/
+  .user-story{
+    background-color: white;
+    border: 2px solid black;  
+    border-radius: 5px;
+  }
+
+  .story-name {
+    width: 60%;
+    border: transparent;
+    background-color: $tertiary-color;
+    color: $primary-color;
+  }
 
   
   

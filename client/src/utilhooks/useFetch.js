@@ -18,6 +18,6 @@ export const useFetch =(url)=>{
             }
         }
         fetchData()
-    },[]);
+    },[url]);
     return { response, loading, error }
 }
