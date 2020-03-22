@@ -14,10 +14,10 @@ const UserProjects =({ project })=>{
                     story={story}
                 />    
             )}
-            <div className="flex-row-no-wrap space-between">
-                <button className="user-buttons">Update Project</button>        
-                <button className="user-buttons">Delete Project</button>
-                <button className="user-buttons">Add A Story</button>
+            <div className="flex-row-no-wrap space-around">
+                <button className="user-project-button button-left">Add A Story</button>
+                <button className="user-project-button">Update Project</button>        
+                <button className="user-project-button button-right">Delete Project</button>
             </div>
         </div>
     )
