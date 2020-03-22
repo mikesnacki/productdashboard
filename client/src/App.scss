@@ -189,7 +189,7 @@ $secondary-font-size: calc(0.5vw + 17px);
       .menu-bar-true,
       .menu-bar-false{
           margin: 1vh 4vw;
-          border: 1px solid black;
+          border: transparent;
           border-radius:3px;
           background-color: $secondary-color;
           color:white;
@@ -281,7 +281,6 @@ $secondary-font-size: calc(0.5vw + 17px);
   .btn-primary {
       color: $fourth-color;
       background-color: $secondary-color;
-      border-color: $fourth-color;
       padding: 0.5vh auto;
       margin: 0.2vh auto;
       width: 100px;
@@ -292,7 +291,6 @@ $secondary-font-size: calc(0.5vw + 17px);
     
     color:$secondary-color;
     background-color: $fourth-color;
-    border-color: $secondary-color;
   }
   
   .btn-submit {
