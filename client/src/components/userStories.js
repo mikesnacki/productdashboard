@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const UserStory =({ story })=>{
+const UserStory =({ userID, projectID, story })=>{
+
+    console.log(userID, projectID)
 
     const storyDataInputs = {
         storyName: story.storyName,
@@ -13,6 +15,7 @@ const UserStory =({ story })=>{
         storyAcceptanceCriteriaBegin: story.storyAcceptanceCriteriaBegin,
         storyAcceptanceCriteriaAction: story.storyAcceptanceCriteriaAction,
         storyAcceptanceCriteriaOutcome: story.storyAcceptanceCriteriaOutcome,
+        storyStatus: story.storyStatus,
     }
 
     const [storyData, setStoryData] = useState(storyDataInputs)
@@ -30,6 +33,9 @@ const UserStory =({ story })=>{
     const updateStory = async (id) => {
         console.log(id)
         console.log(storyData)
+
+        const editedStoryData = {...storyData}
+        await axios.post(`http://localhost:4000/api/users/projects/stories/edit/${id}`, editedStoryData)
     }
 
 
@@ -51,6 +57,7 @@ const UserStory =({ story })=>{
                     placeholder="Priority" 
                     onChange={handleChange}
                     defaultValue={story.storyPriority}>
+                    <option value="" disabled>Priority</option>
                     <option value="Low">Low Priority</option>
                     <option value="Medium">Medium Priority</option>
                     <option value="High">High Priority</option>
@@ -61,6 +68,7 @@ const UserStory =({ story })=>{
                     placeholder="Estimate" 
                     onChange={handleChange}
                     defaultValue={story.storyEstimate}>
+                    <option value="" disabled>Time Estimate</option>
                     <option value="1">1 Week</option>
                     <option value="2">2 Weeks</option>
                     <option value="3">3 Weeks</option>
@@ -112,6 +120,17 @@ const UserStory =({ story })=>{
                     onChange={handleChange}
                     defaultValue={story.storyAcceptanceCriteriaOutcome}>
                 </input>
+                <select 
+                    name="storyStatus"
+                    className="align-center user-inputs" 
+                    placeholder="Statuse" 
+                    onChange={handleChange}
+                    defaultValue={story.storyStatus}>
+                    <option value="" disabled>Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Dead">Dead</option>
+                    <option value="Completed">Completed</option>
+                </select>
             </div>
             <div className="flex-row-no-wrap space-around">
                 <button 

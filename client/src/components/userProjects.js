@@ -1,17 +1,17 @@
 import React from 'react';
 import UserStory from './userStories'
 
-const UserProjects =({ project })=>{
+const UserProjects =({ userID, project })=>{
 
     return (
         <div className="user-project-container">
             <input className="user-project-header align-center" defaultValue={project.projectName}></input>
-            <p>{project.projectID}</p>
-            <p>{project.projectDeleted}</p>
             {project.projectStories.map((story, key)=>
                 <UserStory
                     key={key}
                     story={story}
+                    projectID={project._id}
+                    userID={userID}
                 />    
             )}
             <div className="flex-row-no-wrap space-around">

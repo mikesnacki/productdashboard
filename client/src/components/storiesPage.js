@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React  from 'react';
 import { useFetch } from "../utilhooks/useFetch"
 import UserProjects from "./userProjects"
 
@@ -10,6 +10,7 @@ export default function StoriesPage(){
 
     if (!res.error && !res.loading) {
         userInfo = res.response[0];
+        
     } 
 
     return(
@@ -19,6 +20,7 @@ export default function StoriesPage(){
                     <UserProjects
                         key={key}
                         project={project}
+                        userID = {userInfo._id}
                     />
                 )
             }

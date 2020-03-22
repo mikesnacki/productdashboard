@@ -31,9 +31,7 @@ router.route("/api/users/add").post((req, res)=>{
     });
 });
 
-router.route("/api/users/:userName/projects/add").post((req, res)=>{
-
-    let userID = req.body.userID;
+router.route("/api/users/projects/add/:id").post((req, res)=>{
     let project = 
                 new Proj ({
                     projectName: req.body.projectName,
@@ -41,7 +39,7 @@ router.route("/api/users/:userName/projects/add").post((req, res)=>{
                     projectStories:[]
                 });
 
-    User.findById(userID, (err, user)=>{
+    User.findById(req.params.id, (err, user)=>{
         if (!user){
             res.status(404).send(`${user} is not found, error ${err}`);
         } else {
@@ -53,8 +51,26 @@ router.route("/api/users/:userName/projects/add").post((req, res)=>{
     });
 });
 
-router.route("/api/users/:userName/projects/:projectName/stories/add").get((req, res)=>{
+router.route("/api/users/:uid/projects/:pid/edit").post((req, res)=>{
+    User.findOneAndUpdate({"_id": req.params.uid, "userProjects._id":req.params.pid}, (err, project)=>{
+        if (!project){
+            res.status(404).send(`${project} not found, error ${error}`)
+        } else {
 
+            
+            project.save()
+            .then(project=>{
+                res.json(`Property ${project} updated`)
+            })
+            .catch(err=>{
+                console.log(err)
+                res.status(400).send(`Error ${err}`)
+            })
+        }
+    })
+});
+
+router.route("/api/users/:userName/projects/:projectName/stories/add").get((req, res)=>{
     let userID = req.body.userID;
     let story = 
                 new Stor ({
@@ -77,6 +93,30 @@ router.route("/api/users/:userName/projects/:projectName/stories/add").get((req,
             return;
             }
     });
+
+});
+
+router.route("/api/users/projects/stories/edit/:id").post((req, res)=>{
+    // User.findById(req.params.id, (err, user)=>{
+    //     if (!user){
+    //         res.status(404).send(`${user} is not found, error ${err}`);
+    //     } else {
+    //         story.storyPriority = req.body.storyPriority,
+    //         story.storyEstimate =  req.body.storyPriority,
+    //         story.storyUserDescription = req.body.storyPriority,
+    //         story.storyFunctionality =  req.body.storyPriority,
+    //         story.storyBenefit = req.body.storyBenefit,
+    //         story.storyAcceptanceCriteriaBegin = req.body.storyAcceptanceCriteriaBegin,
+    //         story.storyAcceptanceCriteriaAction = req.body.storyAcceptanceCriteriaAction,
+    //         story.storyAcceptanceCriteriaOutcome = req.body.storyAcceptanceCriteriaOutcome,
+    //         story.storyStatus = req.body.storyStatus
+    //     }
+    // });
+
+    User.findOneAndUpdate({
+
+    })
+
 
 });
 
