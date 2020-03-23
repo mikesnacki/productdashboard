@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let StorySchema = new Schema({
+let Story = new Schema({
     storyName: {
         type: String,
         required: false,
@@ -14,8 +14,9 @@ let StorySchema = new Schema({
     storyAcceptanceCriteriaBegin: String,
     storyAcceptanceCriteriaAction: String,
     storyAcceptanceCriteriaOutcome: String,
-    storyStatus: String,
+    storyStatus: String
     }
 );
 
-module.exports = mongoose.model("StorySchema", StorySchema);
+
+module.exports = mongoose.model("Story", Story);

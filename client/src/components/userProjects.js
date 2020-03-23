@@ -10,7 +10,6 @@ const UserProjects =({ userID, project })=>{
                 <UserStory
                     key={key}
                     story={story}
-                    projectID={project._id}
                     userID={userID}
                 />    
             )}

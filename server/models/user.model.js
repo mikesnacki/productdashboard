@@ -14,13 +14,23 @@ let Story = new Schema({
     storyAcceptanceCriteriaBegin: String,
     storyAcceptanceCriteriaAction: String,
     storyAcceptanceCriteriaOutcome: String,
+    storyStatus: String
     }
 );
 
 let Project = new Schema({
+    userName: {
+        type:String,
+        required: true,
+    },
+    userDeleted:{
+        type:Boolean,
+        required: true,
+        default: false
+    },
     projectName: {
         type:String,
-        required: false
+        required: true
     },
     projectDeleted:{
         type:Boolean,
@@ -29,20 +39,5 @@ let Project = new Schema({
     projectStories:[Story]
 });
 
-let User = new Schema({
-    userName: {
-        type:String,
-        required: true,
-    },
-    userEmail: String,
-    userDeleted:{
-        type:Boolean,
-        required: true,
-        default: false
-    },
-    userProjects:[Project]
-});
 
-module.exports = mongoose.model("Story", Story);
 module.exports = mongoose.model("Project", Project);
-module.exports = mongoose.model("User", User);
