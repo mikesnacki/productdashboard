@@ -19,13 +19,13 @@ export default function Header(){
 
     return(
         <div>
-        <header className={`header-${direction} space-between`}>
+        {direction && <header className="header space-between">
           <h1 className="header-text">Product Management</h1>
-          {width >= collapseWidth && direction
+          {width >= collapseWidth
             ? <ul className="nav-links">{links}</ul >
             :
             <button
-              className={`menu-bar-${navDisplay} menu-button`}
+              className={`menu-bar menu-button`}
               onClick={() => activateNavDisplay(!navDisplay)}
             >
               <div className='flex-row'>
@@ -41,12 +41,12 @@ export default function Header(){
 
             </button>
           }
-        </header>
+        </header>}
         <ul
           onMouseLeave={() => activateNavDisplay(!navDisplay)}
           onClick={() => activateNavDisplay(!navDisplay)}
           className={`menu-dropdown-${navDisplay}`}>
-          {navDisplay === true && width < collapseWidth && 
+          {navDisplay  && width < collapseWidth && direction &&
           <div>
             <button 
                   onClick={() => activateNavDisplay(!navDisplay)}

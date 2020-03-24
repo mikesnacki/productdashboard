@@ -1,7 +1,7 @@
 import React from 'react';
 import UserStory from './userStories'
 
-const UserProjects =({ userID, project })=>{
+const UserProjects =({ project })=>{
 
     return (
         <div className="user-project-container">
@@ -10,7 +10,7 @@ const UserProjects =({ userID, project })=>{
                 <UserStory
                     key={key}
                     story={story}
-                    userID={userID}
+                    projectId={project._id}
                 />    
             )}
             <div className="flex-row-no-wrap space-around">

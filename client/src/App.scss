@@ -178,8 +178,8 @@ $gray: #9b9b9b;
   }
   
 /*----------------------------- HEADER STYLING -----------------------------*/
-    .header-true{
-      position: absolute;
+    .header{
+      position: fixed;
       display: inline-flex;
       font-weight: bold;
       z-index: 0;
@@ -195,8 +195,7 @@ $gray: #9b9b9b;
       button {
         font-size: calc(0.5vw + 13px);
       }
-      .menu-bar-true,
-      .menu-bar-false{
+      .menu-bar{
           margin: 1vh 4vw;
           border: transparent;
           border-radius:3px;

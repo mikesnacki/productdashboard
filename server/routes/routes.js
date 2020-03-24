@@ -19,7 +19,6 @@ router.route("/api/users").get((req, res)=>{
 });
 
 router.route("/api/users/projects/addproject").post((req, res)=>{
-    console.log(req.body)
     let project = new Project ({
                     userName: req.body.userName,
                     projectName: req.body.projectName
@@ -34,8 +33,47 @@ router.route("/api/users/projects/addproject").post((req, res)=>{
     })
 });
 
+router.route("/api/users/projects/:pid/editproject").post((req, res)=>{
+    Project.findById(req.params.pid, (err, project)=>{
+        if (!err) {
+            project.userName = req.body.userName;
+            project.userDeleted = req.body.userDeleted;
+            project.projectName = req.body.projectName;
+            project.projectDeleted = req.body.projectDeleted;
+            project.save()
+            .then(project=>{
+                res.status(200).json({"project": `${project} edited successfully`})
+            })
+            .catch(err=>{
+                res.status(400).send(`Error editing project, error ${err}`)
+            })
+        } else {
+            res.status(404).send(`Error editing project, error ${err}`)
+        }
+    });
+})
+
+router.route("/api/users/projects/:pid/deleteproject").post((req, res)=>{
+    Project.findById(req.params.pid, (err, project)=>{
+        if (!err) {
+            project.userName = req.body.userName;
+            project.userDeleted = req.body.userDeleted;
+            project.projectName = req.body.projectName;
+            project.projectDeleted = true;
+            project.save()
+            .then(project=>{
+                res.status(200).json({"project": `${project} edited successfully`})
+            })
+            .catch(err=>{
+                res.status(400).send(`Error editing project, error ${err}`)
+            })
+        } else {
+            res.status(404).send(`Error editing project, error ${err}`)
+        }
+    });
+})
+
 router.route("/api/users/projects/:pid/addstory").post((req, res)=>{
-    console.log(req.body)
     let story = new Story ({
                     storyName: req.body.storyName,
                     storyPriority: req.body.storyPriority,
@@ -58,46 +96,35 @@ router.route("/api/users/projects/:pid/addstory").post((req, res)=>{
             res.status(200).send(`project ${project} sent successfully`)
         }
     })
-
-    // project.save()
-    // .then(project=>{
-    //     res.status(200).json({"project": `${project} added successfully`})
-    // })
-    // .catch(err=>{
-    //     res.status(400).send(`Error adding project, error ${err}`)
-    // })
 });
 
-// router.route("/api/users/projects/edit/:pid").post((req, res)=>{
-//     const proj = User.findOne({"userProjects._id":req.params.pid})
-//     console.log(proj)
+router.route("/api/users/projects/:pid/editstory/:sid").post((req, res)=>{
+    Project.findById(req.params.pid, (err, project)=>{
+        if (!project) {
+            res.status(404).send(`Project is not found! error: ${err}`)
+        } else {
+        story = project.projectStories.id(req.params.sid)
+        story.storyName = req.body.storyName
+        story.storyPriority = req.body.storyPriority
+        story.storyEstimate = req.body.storyEstimate
+        story.storyUserDescription = req.body.storyUserDescription
+        story.storyFunctionality = req.body.storyFunctionality
+        story.storyBenefit = req.body.storyBenefit
+        story.storyAcceptanceCriteriaBegin = req.body.storyAcceptanceCriteriaBegin
+        story.storyAcceptanceCriteriaAction = req.body.storyAcceptanceCriteriaAction
+        story.storyAcceptanceCriteriaOutcome = req.body.storyAcceptanceCriteriaOutcome
+        story.storyStatus = req.body.storyStatus
+        project.save()
+        .then(project=>{
+            res.json(`Property ${project} updated`)
+        })
+        .catch(err=>{
+            console.log(err)
+            res.status(400).send(`Error ${err}`)
+        })
+        }
+    })
 
-// });
-
-// router.route("/api/users/:userName/projects/:projectName/stories/add").get((req, res)=>{
-//     let userID = req.body.userID;
-//     let story = 
-//                 new Stor ({
-//                     storyName: req.body.storyName,
-//                     storyPriority: req.body.storyPriority,
-//                     storyEstimate: req.body.storyEstimate,
-//                     storyUserDescription: req.body.storyUserDescription,
-//                     storyFunctionality: req.body.storyFunctionality,
-//                     storyBenefit: req.body.storyBenefit,
-//                     storyAcceptanceCriteriaBegin: req.body.storyAcceptanceCriteriaBegin,
-//                     storyAcceptanceCriteriaAction: req.body.storyAcceptanceCriteriaAction,
-//                     storyAcceptanceCriteriaOutcome: req.body.storyAcceptanceCriteriaOutcome,
-//                 });
-
-//     User.findById(userID, (err, user)=>{
-//         if (!user){
-//             res.status(404).send(`${user} is not found, error ${err}`);
-//         } else {
-//             console.log(user.userProjects.findOne({projectName:req.params.projectName}));
-//             return;
-//             }
-//     });
-
-// });
+});
 
 module.exports = router;

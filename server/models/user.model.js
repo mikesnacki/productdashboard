@@ -25,8 +25,8 @@ let Project = new Schema({
     },
     userDeleted:{
         type:Boolean,
-        required: true,
-        default: false
+        required: false,
+        default: true
     },
     projectName: {
         type:String,

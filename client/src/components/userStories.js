@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const UserStory =({ userID, projectID, story })=>{
-
-    console.log(userID, projectID)
-
+const UserStory =({ projectId, story })=>{
     const storyDataInputs = {
         storyName: story.storyName,
         storyPriority: story.storyPriority,
@@ -31,11 +28,8 @@ const UserStory =({ userID, projectID, story })=>{
     }
 
     const updateStory = async (id) => {
-        console.log(id)
-        console.log(storyData)
-
         const editedStoryData = {...storyData}
-        await axios.post(`http://localhost:4000/api/users/projects/stories/edit/${id}`, editedStoryData)
+        await axios.post(`http://localhost:4000/api/users/projects/${projectId}/editstory/${id}`, {...storyData})
     }
 
 
