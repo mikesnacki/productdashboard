@@ -6,7 +6,7 @@ export default function StoriesPage(){
 
     let userInfo = []
 
-    let res = useFetch(`http://localhost:4000/api/users/`)
+    let res = useFetch(`http://localhost:4000/api/projects/`)
 
     if (!res.error && !res.loading) {
         userInfo = res.response;

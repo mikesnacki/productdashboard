@@ -14,7 +14,8 @@ let Story = new Schema({
     storyAcceptanceCriteriaBegin: String,
     storyAcceptanceCriteriaAction: String,
     storyAcceptanceCriteriaOutcome: String,
-    storyStatus: String
+    storyStatus: String,
+    storyDeleted: Boolean
     }
 );
 
