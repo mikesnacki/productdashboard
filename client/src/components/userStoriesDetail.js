@@ -1,54 +1,25 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Modal from '../components/modal'
+import React from 'react';
 
-const UserStory =({ projectId, story })=>{
-    const storyDataInputs = {
-        storyName: story.storyName,
-        storyPriority: story.storyPriority,
-        storyEstimate: story.storyEstimate,
-        storyUserDescription: story.storyUserDescription,
-        storyFunctionality: story.storyFunctionality,
-        storyBenefit: story.storyBenefit,
-        storyAcceptanceCriteriaBegin: story.storyAcceptanceCriteriaBegin,
-        storyAcceptanceCriteriaAction: story.storyAcceptanceCriteriaAction,
-        storyAcceptanceCriteriaOutcome: story.storyAcceptanceCriteriaOutcome,
-        storyStatus: story.storyStatus,
-    }
 
-    const [storyData, setStoryData] = useState(storyDataInputs)
-
-    const handleChange=(e)=> {
-        const name = e.target.name;
-        const defaultValue = e.target.value;
-        setStoryData(prevState=>({
-            ...prevState,
-            [name]:defaultValue,
-            })
-        )
-    }
-
-    const updateStory = async (id) => {
-        await axios.post(`http://localhost:4000/api/projects/${projectId}/editstory/${id}`, {...storyData})
-    }
-
-    const deleteStory = async (id) => {
-        console.log("hi")
-        await axios.post(`http://localhost:4000/api/projects/${projectId}/deletestory/${id}`, {...storyData})
-    }
-
+const UserStory =({ handleChange, updateStory, deleteStory, setDetailsDisplayed, story })=>{
 
     return (
-        <div className="user-story">
-            <form>
-                <div className="user-story-header flex-row">
+        <div className="user-story modal">
+            <form className="user-story-details">
+                <div className="user-story-header-preview flex-row space-between">
                     <input 
                         name="storyName"
-                        className="align-center user-story-header" 
+                        className="" 
                         placeholder="Name" 
                         onChange={handleChange}
                         defaultValue={story.storyName}>
                     </input>
+                    <button 
+                        type="submit"
+                        onClick={()=>setDetailsDisplayed(null)}
+                        className="user-story-button-preview user-story-button-preview-close">
+                        &times;
+                    </button>
                 </div>
                 <div className="flex-row-center">
                     <select
@@ -134,13 +105,13 @@ const UserStory =({ projectId, story })=>{
                 </div>
                 <div className="flex-row-no-wrap space-around">
                     <button 
-                        type="submit"
+                        type="button"
                         onClick={()=>updateStory(story._id)}
                         className="user-story-button button-left">
                         Update Story
                     </button>        
                     <button 
-                        type="submit"
+                        type="button"
                         onClick={()=>deleteStory(story._id)}
                         className="user-story-button button-right">
                         Delete Story

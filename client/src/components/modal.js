@@ -1,6 +1,6 @@
 import React, {useRef} from 'react'
 
-export default function Modal({action}) {
+export default function Modal({show, action}) {
 
     const modalRef = useRef();
     const displayed = show === true ? "modal display-block" : "modal display-none"
@@ -16,6 +16,9 @@ export default function Modal({action}) {
         case "story-deleted":
             status = <p>Story Deleted</p>
             break
+        default:
+            status = <p>Error</p>
+            break
     }
 
     return(
@@ -26,7 +29,7 @@ export default function Modal({action}) {
             <section className="modal-update align-center">
             <button
                     className="modal-button align-right-button"
-                    onClick={closeUpdateModal}>
+                    onClick={console.log("hi")}>
                         &times;
             </button>
                 <h3>{status}</h3>

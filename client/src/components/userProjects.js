@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios'
-import UserStory from './userStories'
+import UserStoryPreview from './userStoriesPreview'
 
 const UserProjects =({ project })=>{
     
@@ -30,35 +30,35 @@ const UserProjects =({ project })=>{
 
     return (
         <div className="user-project-container">
-            <form>
-                <input 
-                    onChange={handleChange}
-                    name="projectName"
-                    className="user-project-header align-center" defaultValue={project.projectName}>
-                </input>
-                {project.projectStories.map((story, key)=>
-                    <UserStory
-                        key={key}
-                        story={story}
-                        projectId={project._id}
-                    />    
-                )}
-                <div className="flex-row-no-wrap space-around">
-                    <button className="user-project-button button-left">Add A Story</button>
-                    <button 
-                        type="submit"
-                        onClick={()=>updateProject(project._id)}
-                        className="user-project-button">
-                        Update Project
-                    </button>        
-                    <button 
-                        type="submit"
-                        onClick={()=>setIsProjectDeleted(true)}
-                        className="user-project-button button-right">
-                        Delete Project
-                    </button>
-                </div>
-            </form>
+            <input 
+                onChange={handleChange}
+                name="projectName"
+                className="user-project-header align-center" defaultValue={project.projectName}>
+            </input>
+            <div className="flex-row space-around">
+            {project.projectStories.map((story, key)=>
+                <UserStoryPreview
+                    key={key}
+                    story={story}
+                    projectId={project._id}
+                />    
+            )}
+            </div>
+            <div className="flex-row-no-wrap space-around">
+                <button className="user-project-button button-left">Add A Story</button>
+                <button 
+                    type="submit"
+                    onClick={()=>updateProject(project._id)}
+                    className="user-project-button">
+                    Update Project
+                </button>        
+                <button 
+                    type="submit"
+                    onClick={()=>setIsProjectDeleted(true)}
+                    className="user-project-button button-right">
+                    Delete Project
+                </button>
+            </div>
         </div>
     )
 }
