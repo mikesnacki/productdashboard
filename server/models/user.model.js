@@ -33,6 +33,7 @@ let Project = new Schema({
         type:String,
         required: true
     },
+    projectDescription: String,
     projectDeleted:{
         type:Boolean,
         default: false

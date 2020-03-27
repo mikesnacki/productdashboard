@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-const UserStory =({ handleChange, updateStory, deleteStory, setDetailsDisplayed, story })=>{
+const UserStory =({ handleChange, updateStory, deleteStory, addStory, setDetailsDisplayed, story, mode })=>{
 
     return (
         <div className="user-story modal">
@@ -10,7 +9,7 @@ const UserStory =({ handleChange, updateStory, deleteStory, setDetailsDisplayed,
                     <input 
                         name="storyName"
                         className="" 
-                        placeholder="Name" 
+                        placeholder="Story Name" 
                         onChange={handleChange}
                         defaultValue={story.storyName}>
                     </input>
@@ -104,6 +103,8 @@ const UserStory =({ handleChange, updateStory, deleteStory, setDetailsDisplayed,
                     </select>
                 </div>
                 <div className="flex-row-no-wrap space-around">
+                    {mode === "edit" ? 
+                    <>
                     <button 
                         type="button"
                         onClick={()=>updateStory(story._id)}
@@ -116,6 +117,15 @@ const UserStory =({ handleChange, updateStory, deleteStory, setDetailsDisplayed,
                         className="user-story-button button-right">
                         Delete Story
                     </button>
+                    </>
+                    :                  
+                    <button 
+                        type="button"
+                        onClick={()=>addStory()}
+                        className="user-story-button">
+                        Add Story
+                    </button>
+                    }
                 </div>
             </form>
         </div>

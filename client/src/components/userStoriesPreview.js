@@ -34,13 +34,16 @@ const UserStoryPreview =({ projectId, story })=>{
     }
 
     const updateStory = async (id) => {
-        await axios.post(`http://localhost:4000/api/projects/${projectId}/editstory/${id}`, {...storyData})
-        setDetailsDisplayed(null)
+        id !== undefined && await axios.post(`/api/projects/${projectId}/editstory/${id}`, {...storyData})
+                                        .then(setDetailsDisplayed(null))
+                                        .catch(err=>console.log(err))
+        
     }
 
     const deleteStory = async (id) => {
-        await axios.post(`http://localhost:4000/api/projects/${projectId}/deletestory/${id}`, {...storyData})
-        setDetailsDisplayed(null)
+        await axios.post(`/api/projects/${projectId}/deletestory/${id}`, {...storyData})
+                    .then(setDetailsDisplayed(null))
+                    .catch(err=>console.log(err))
     }
 
     const priorityIcons = {
@@ -48,7 +51,6 @@ const UserStoryPreview =({ projectId, story })=>{
         "Medium":<FaArrowsAltH/>,
         "Low": <FaArrowDown/>
     }
-
 
     return (
         <div>
@@ -84,8 +86,8 @@ const UserStoryPreview =({ projectId, story })=>{
                     handleChange={handleChange}
                     updateStory={updateStory}
                     deleteStory={deleteStory}
-                    storyDataInputs={storyDataInputs}
                     setDetailsDisplayed={setDetailsDisplayed}
+                    mode="edit"
                 />
             }
         </div>

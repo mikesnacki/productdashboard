@@ -39,6 +39,7 @@ router.route("/api/projects/:pid/editproject").post((req, res)=>{
             project.userName = req.body.userName;
             project.userDeleted = req.body.userDeleted;
             project.projectName = req.body.projectName;
+            project.projectDescription = req.body.projectDescription;
             project.projectDeleted = req.body.projectDeleted;
             project.save()
             .then(project=>{
