@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import useWindowDim from '../utilhooks/useWindowDim'
+import useWindowSize from '../utilhooks/useWindowDim'
 import useScrollDirection from '../utilhooks/useScrollDirection'
 import { Link } from 'react-router-dom'
 
 export default function Header(){
-    const size = useWindowDim()
+    const size = useWindowSize()
     const width = size.width
     const collapseWidth = 900
     const direction = useScrollDirection()

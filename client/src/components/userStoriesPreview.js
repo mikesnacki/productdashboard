@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { FaArrowUp, FaArrowsAltH, FaArrowDown, FaCalendar} from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp, faArrowsAltH, faArrowDown, faCalendar} from '@fortawesome/free-solid-svg-icons'
 import UserStoryDetail from "./userStoriesDetail"
+import { library } from '@fortawesome/fontawesome-svg-core';
 
+library.add(faArrowUp, faArrowsAltH, faArrowDown, faCalendar)
 
 const UserStoryPreview =({ projectId, story })=>{
 
@@ -47,9 +50,9 @@ const UserStoryPreview =({ projectId, story })=>{
     }
 
     const priorityIcons = {
-        "High": <FaArrowUp/>,
-        "Medium":<FaArrowsAltH/>,
-        "Low": <FaArrowDown/>
+        "High": <FontAwesomeIcon icon={"arrow-up"}/>,
+        "Medium":<FontAwesomeIcon icon={"arrows-alt-h"}/>,
+        "Low": <FontAwesomeIcon icon={"arrow-down"}/>
     }
 
     return (
@@ -64,9 +67,10 @@ const UserStoryPreview =({ projectId, story })=>{
                     <div>
                         {storyData.storyPriority} {priorityIcons[story.storyPriority]}
                     </div>
-                    <div>
-                        {storyData.storyEstimate} <FaCalendar/>
-                    </div>
+                    <span className="fa-icon">
+                    <FontAwesomeIcon size="2x" icon={"calendar"}/>
+                        <span className="story-est-text" >{story.storyEstimate}</span>
+                    </span>
                     <div>
                         {storyData.storyStatus}
                     </div>
