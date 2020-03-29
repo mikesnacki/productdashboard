@@ -80,12 +80,14 @@ const UserProjects =({ project })=>{
                 placeholder="Project Name"
                 className="user-project-header align-center" defaultValue={project.projectName}>
             </input>
-            <textarea 
-                onChange={handleChange}
-                name="projectDescription"
-                placeholder="Project Description"
-                className="user-project-description align-center" defaultValue={project.projectDescription}>
-            </textarea>
+            <div className="flex-row space-around">
+                <textarea 
+                    onChange={handleChange}
+                    name="projectDescription"
+                    placeholder="Project Description"
+                    className="user-project-description" defaultValue={project.projectDescription}>
+                </textarea>
+            </div>
             <div className="flex-row space-around">
             {project.projectStories.filter(story=>story.storyDeleted!==true).map((story, key)=>
                 <UserStoryPreview

@@ -86,6 +86,8 @@ $gray: #9b9b9b;
     
     p, a{
       font-size: calc(0.5vw + 12px);
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     button:hover {
@@ -124,6 +126,7 @@ $gray: #9b9b9b;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: stretch;
   }
   
   .flex-row-no-wrap{
@@ -377,9 +380,9 @@ $gray: #9b9b9b;
   }
   
   .user-project-description{
-    width: 60%;
+    width: 100%;
     min-height: 50px;
-    margin: 1vh auto;
+    margin: 1vh 5vw;
     border: 0;
   }
 
@@ -445,10 +448,10 @@ $gray: #9b9b9b;
 
   .user-story-button{
     background-color: $tertiary-color;
-    width: 50%;
-    height: 28px;
+    height: 32px;
     border: transparent;
     color: hsla(0,0%, 100%, 0.86);
+    flex-grow: 1;
   }
 
   .user-story-button:hover{
@@ -487,4 +490,5 @@ $gray: #9b9b9b;
   margin: 0;
   padding: 0;
   background: rgba(0, 0, 0, 0.8);
+  z-index: 2;
 }
