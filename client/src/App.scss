@@ -317,7 +317,7 @@ $gray: #9b9b9b;
   /*----------------------------- STORIES PAGE STYLING -----------------------------*/
   
   .stories-page {
-    margin: 80px 4vw;
+    margin: auto 4vw;
   }
 
   /*----------------------------- PROJECT STYLING -----------------------------*/
@@ -334,6 +334,8 @@ $gray: #9b9b9b;
   }
 
   .user-project-container {
+    position: relative;
+    top: 60px;
     max-width: 1200px;
     text-align: center;
     background-color:rgba(222,227,226, 0.9);
@@ -367,8 +369,8 @@ $gray: #9b9b9b;
     margin: 0;
     background-color: $secondary-color;
     color: white;
-    width: 33.33%;
     border: transparent;
+    flex-grow: 1;
   }
 
   .button-right {

@@ -1,37 +1,16 @@
 import React, {useState} from 'react';
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import UserStoryPreview from './userStoriesPreview'
 import UserStoryDetail from "./userStoriesDetail"
+import storyDataInputs from "./storyDataInputs"
+import projectDataInputs from "./projectDataInputs"
 
-const UserProjects =({ project })=>{
+const UserProjects =({ userInfo, project })=>{
 
-    const pid = project._id
-
-    const [isProjectDeleted, setIsProjectDeleted] = useState(false)
     const [addStoryModal, setAddStoryModal] = useState(false)
-
-    const projectInputs = {
-        userName: project.userName,
-        projectName: project.projectName,
-        projectDescription: project.projectDescription,
-        projectDeleted: isProjectDeleted
-    }
-
-    const storyDataInputs = {
-        storyName: "",
-        storyPriority: "",
-        storyEstimate: "",
-        storyUserDescription: "",
-        storyFunctionality: "",
-        storyBenefit: "",
-        storyAcceptanceCriteriaBegin: "",
-        storyAcceptanceCriteriaAction: "",
-        storyAcceptanceCriteriaOutcome: "",
-        storyStatus: "",
-    }
-
-    const [storyData, setStoryData] = useState(storyDataInputs)
-    const [projectData, setProjectData] = useState(projectInputs)
+    const [storyData, setStoryData] = useState(storyDataInputs())
+    const [projectData, setProjectData] = useState(projectDataInputs(project))
 
     const handleChange=(e)=> {
         const name = e.target.name;
@@ -48,28 +27,41 @@ const UserProjects =({ project })=>{
             })
         )
     }
-
-    const updateProject = async () => {
-        console.log(projectData)
-        await axios.post(`/api/projects/${pid}/editproject`, {...projectData})
-    }
-
+    
     const addStory = async () => {
-        await axios.post(`/api/projects/${pid}/addstory`, {...storyData})
+        await axios.post(`/api/projects/${projectData.projectID}/addstory`, {...storyData})
         .then(res=> console.log(res.data))
         .then(project.projectStories.push(storyData))
         .catch(err=>console.log(err))
-        setAddStoryModal(false)
+    }
+
+    const addProject = async () => {
+        await axios.post(`/api/projects/addproject`, {...projectData})
+        .then(res=> console.log(res.data))
+        .catch(err=>console.log(err))
+        return <Redirect to="/"/>
+    }
+
+    const updateProject = async () => {
+        await axios.post(`/api/projects/${projectData.projectID}/editproject`, {...projectData})
+        .then(res=> console.log(res.data))
+        .catch(err=>console.log(err))
+    }
+
+    const deleteProject = async () => {
+        await axios.post(`/api/projects/${projectData.projectID}/deleteproject`, {...projectData})
+        .then(res=> console.log(res.data))
+        .catch(err=>console.log(err))
     }
 
     return (
+        <div className="stories-page">
         <div className="user-project-container">
             {
             addStoryModal && 
                 <UserStoryDetail
-                    story={storyDataInputs}
+                    storyData={storyData}
                     handleChange={handleChange}
-                    setProjectData={setProjectData}
                     addStory={addStory}
                     mode="add"
                 />
@@ -78,26 +70,29 @@ const UserProjects =({ project })=>{
                 onChange={handleChange}
                 name="projectName"
                 placeholder="Project Name"
-                className="user-project-header align-center" defaultValue={project.projectName}>
+                className="user-project-header align-center" defaultValue={projectData.projectName}>
             </input>
             <div className="flex-row space-around">
                 <textarea 
                     onChange={handleChange}
                     name="projectDescription"
                     placeholder="Project Description"
-                    className="user-project-description" defaultValue={project.projectDescription}>
+                    className="user-project-description" defaultValue={projectData.projectDescription}>
                 </textarea>
             </div>
             <div className="flex-row space-around">
-            {project.projectStories.filter(story=>story.storyDeleted!==true).map((story, key)=>
+            {projectData.projectStories.filter(story=>story.storyDeleted!==true).map((story, key)=>
                 <UserStoryPreview
                     key={key}
                     story={story}
-                    projectId={project._id}
+                    projectID={projectData.projectID}
                 />    
             )}
             </div>
+            
             <div className="flex-row-no-wrap space-around">
+                {project ?
+                <>
                 <button 
                     onClick={()=>setAddStoryModal(true)}
                     className="user-project-button button-left">
@@ -105,17 +100,27 @@ const UserProjects =({ project })=>{
                 </button>
                 <button 
                     type="submit"
-                    onClick={()=>updateProject(project._id)}
+                    onClick={()=>updateProject(projectData.projectID)}
                     className="user-project-button">
                     Update Project
                 </button>        
                 <button 
                     type="submit"
-                    onClick={()=>setIsProjectDeleted(true)}
+                    onClick={()=>deleteProject(projectData.projectID)}
                     className="user-project-button button-right">
                     Delete Project
                 </button>
+                </>
+                :
+                <button 
+                    type="submit"
+                    onClick={()=>addProject()}
+                    className="user-project-button">
+                    Add Project
+                </button>
+                }
             </div>
+        </div>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserStory =({ handleChange, updateStory, deleteStory, addStory, setDetailsDisplayed, story, mode })=>{
+const UserStory =({ handleChange, updateStory, deleteStory, addStory, setDetailsDisplayed, storyData, mode })=>{
 
     return (
         <div className="user-story modal">
@@ -11,7 +11,7 @@ const UserStory =({ handleChange, updateStory, deleteStory, addStory, setDetails
                         className="" 
                         placeholder="Story Name" 
                         onChange={handleChange}
-                        defaultValue={story.storyName}>
+                        defaultValue={storyData.storyName}>
                     </input>
                     <button 
                         type="submit"
@@ -26,7 +26,7 @@ const UserStory =({ handleChange, updateStory, deleteStory, addStory, setDetails
                         className="align-center user-inputs" 
                         placeholder="Priority" 
                         onChange={handleChange}
-                        defaultValue={story.storyPriority}>
+                        defaultValue={storyData.storyPriority}>
                         <option value="" disabled>Priority</option>
                         <option value="Low">Low Priority</option>
                         <option value="Medium">Medium Priority</option>
@@ -37,7 +37,7 @@ const UserStory =({ handleChange, updateStory, deleteStory, addStory, setDetails
                         className="align-center user-inputs" 
                         placeholder="Estimate" 
                         onChange={handleChange}
-                        defaultValue={story.storyEstimate}>
+                        defaultValue={storyData.storyEstimate}>
                         <option value="" disabled>Time Estimate</option>
                         <option value="1">1 Week</option>
                         <option value="2">2 Weeks</option>
@@ -53,49 +53,49 @@ const UserStory =({ handleChange, updateStory, deleteStory, addStory, setDetails
                         className="align-center user-inputs" 
                         placeholder="User Description"
                         onChange={handleChange} 
-                        defaultValue={story.storyUserDescription}>
+                        defaultValue={storyData.storyUserDescription}>
                     </input>
                     <input 
                         name="storyFunctionality"
                         className="align-center user-inputs" 
                         placeholder="Functionality" 
                         onChange={handleChange}
-                        defaultValue={story.storyFunctionality}>
+                        defaultValue={storyData.storyFunctionality}>
                     </input>
                     <input 
                         name="storyBenefit"
                         className="align-center user-inputs" 
                         placeholder="Benefit" 
                         onChange={handleChange}
-                        defaultValue={story.storyBenefit}>
+                        defaultValue={storyData.storyBenefit}>
                     </input>
                     <input 
                         name="storyAcceptanceCriteriaBegin"
                         className="align-center user-inputs" 
                         placeholder="Acceptance Criteria" 
                         onChange={handleChange}
-                        defaultValue={story.storyAcceptanceCriteriaBegin}>
+                        defaultValue={storyData.storyAcceptanceCriteriaBegin}>
                     </input>
                     <input 
                         name="storyAcceptanceCriteriaAction"
                         className="align-center user-inputs" 
                         placeholder="Accpetance Criteria Action"
                         onChange={handleChange} 
-                        defaultValue={story.storyAcceptanceCriteriaAction}>
+                        defaultValue={storyData.storyAcceptanceCriteriaAction}>
                     </input>
                     <input 
                         name="storyAcceptanceCriteriaOutcome"
                         className="align-center user-inputs" 
                         placeholder="Acceptance Criteria Outcome" 
                         onChange={handleChange}
-                        defaultValue={story.storyAcceptanceCriteriaOutcome}>
+                        defaultValue={storyData.storyAcceptanceCriteriaOutcome}>
                     </input>
                     <select 
                         name="storyStatus"
                         className="align-center user-inputs" 
                         placeholder="Statuse" 
                         onChange={handleChange}
-                        defaultValue={story.storyStatus}>
+                        defaultValue={storyData.storyStatus}>
                         <option value="" disabled>Status</option>
                         <option value="Active">Active</option>
                         <option value="Dead">Dead</option>
@@ -107,13 +107,13 @@ const UserStory =({ handleChange, updateStory, deleteStory, addStory, setDetails
                     <>
                     <button 
                         type="button"
-                        onClick={()=>updateStory(story._id)}
+                        onClick={()=>updateStory(storyData.storyID)}
                         className="user-story-button button-left">
                         Update Story
                     </button>        
                     <button 
                         type="button"
-                        onClick={()=>deleteStory(story._id)}
+                        onClick={()=>deleteStory(storyData.storyID)}
                         className="user-story-button button-right">
                         Delete Story
                     </button>

@@ -13,9 +13,9 @@ export default function StoriesPage(){
     } 
 
     return(
-        <div className="stories-page">
+        <div>
             {!res.error && !res.loading && res.response.length >0 &&
-                userInfo.map((project, key)=>
+                userInfo.filter(project=>project.projectDeleted===false).map((project, key)=>
                     <UserProjects
                         key={key}
                         project={project}

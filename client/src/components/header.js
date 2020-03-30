@@ -12,8 +12,8 @@ export default function Header(){
       
     const links = [
       <Link key={1} className="header-text nav-links" to="/">Projects</Link>,
-      <Link key={2} className="header-text nav-links" to="/properties">Add a Project</Link>,
-      <Link key={3} className="header-text nav-links" to="/login">Login</Link>,
+      <Link key={2} className="header-text nav-links" to="/addproject">Add a Project</Link>,
+      // <Link key={3} className="header-text nav-links" to="/login">Login</Link>,
     ]
 
     return(
@@ -45,7 +45,7 @@ export default function Header(){
           onMouseLeave={() => activateNavDisplay(!navDisplay)}
           onClick={() => activateNavDisplay(!navDisplay)}
           className={`menu-dropdown-${navDisplay}`}>
-          {navDisplay  && width < collapseWidth && direction &&
+          {navDisplay && width < collapseWidth && direction &&
           <div>
             <button 
                   onClick={() => activateNavDisplay(!navDisplay)}

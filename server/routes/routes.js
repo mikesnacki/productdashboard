@@ -8,6 +8,32 @@ app.use(bodyParser.urlencoded({extended:false}));
 let Project = require("../models/user.model");
 let Story = require("../models/story.model");
 
+const passport = require("passport")
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:4000/api/auth/google/callback"
+  },
+  function(accessToken, profile, done) {
+    var userData = {
+        email: profile.emails[0].value,
+        name: profile.displayName,
+        token: accessToken
+       };
+       done(null, userData);
+    }
+));
+
+router.route("/api/auth/google/callback").get(
+    passport.authenticate("google", { failureRedirect: "/", session: false, scope: 'https://www.googleapis.com/auth/plus.login' }),
+    (req, res)=> {
+        var token = req.user.token;
+        res.redirect("http://localhost:3000?token=" + token);
+    }
+);
+
 router.route("/api").get((req, res)=>{
     res.send("<h1>Route root</h1>");
 });
@@ -20,8 +46,10 @@ router.route("/api/projects").get((req, res)=>{
 
 router.route("/api/projects/addproject").post((req, res)=>{
     let project = new Project ({
-                    userName: req.body.userName,
-                    projectName: req.body.projectName
+                    userName: "mikesnacki@gmail.com",
+                    userDeleted: false,
+                    projectName: req.body.projectName,
+                    projectDescription: req.body.projectDescription
                 });
 
     project.save()

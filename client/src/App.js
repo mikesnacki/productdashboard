@@ -5,6 +5,7 @@ import './App.scss';
 import Header from './components/header'
 import StoriesPage from './components/storiesPage'
 import Login from "./components/login"
+import UserProjects from "./components/userProjects"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Router>
         <Header/>
         <Route path ="/" exact component={StoriesPage}/>
+        <Route path ="/addproject" exact component={UserProjects}/>
         <Route path ="/login" exact component={Login}/>
       </Router>
     </div>
