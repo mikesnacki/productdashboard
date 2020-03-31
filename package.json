@@ -1,0 +1,80 @@
+{
+  "name": "client_s",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-regular-svg-icons": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/react": "^10.0.1",
+    "@testing-library/user-event": "^10.0.0",
+    "axios": "^0.19.2",
+    "http-proxy-middleware": "^1.0.3",
+    "node-sass": "^4.13.1",
+    "noto-sans-jp": "^24.0.0",
+    "query-string": "^6.11.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-icons": "^3.9.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "typeface": "0.0.0",
+    "typeface-ibm-plex-mono": "0.0.61",
+    "typeface-inter": "^3.12.0",
+    "typeface-noto-sans": "0.0.72",
+    "typeface-roboto": "0.0.75",
+    "@sendgrid/mail": "^6.4.0",
+    "@types/node": "^12.11.2",
+    "@types/react-router-dom": "^5.1.0",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.0",
+    "config": "^3.2.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "lodash-es": "^4.17.15",
+    "mongoose": "^5.7.7",
+    "nodemailer": "^6.3.1",
+    "normalize.css": "^8.0.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-google-oauth2": "^0.2.0",
+    "passport-local": "^1.0.0",
+    "react-spring": "^8.0.27",
+    "react-use-gesture": "^6.0.14",
+    "sass": "^1.23.1",
+    "smtp": "^0.1.4",
+    "typescript": "^3.6.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "server": "cd ../server && nodemon server.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"npm run server\" \" npm run start\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:4000",
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  }
+}
