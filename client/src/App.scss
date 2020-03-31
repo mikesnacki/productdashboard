@@ -94,6 +94,10 @@ $gray: #9b9b9b;
       background-color:$tertiary-color;
       transition: 300ms;
     }
+
+    textarea{
+      overflow: hidden;
+    }
     /*----------------------------- GENERAL STYLING -----------------------------*/
   
   .flex-col {

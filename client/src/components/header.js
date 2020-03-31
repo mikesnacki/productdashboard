@@ -19,7 +19,7 @@ export default function Header(){
     return(
         <div>
         {direction && <header className="header space-between">
-          <h1 className="header-text">Product Management</h1>
+          <h1 className="header-text">User Story Dashboard</h1>
           {width >= collapseWidth
             ? <ul className="nav-links">{links}</ul >
             :

@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
-import { Redirect } from 'react-router-dom'
+import React, { useState, useRef } from 'react';
 import axios from 'axios'
 import UserStoryPreview from './userStoriesPreview'
 import UserStoryDetail from "./userStoriesDetail"
 import storyDataInputs from "./storyDataInputs"
 import projectDataInputs from "./projectDataInputs"
 
-const UserProjects =({ userInfo, project })=>{
+const UserProjects =({ project })=>{
 
     const [addStoryModal, setAddStoryModal] = useState(false)
     const [storyData, setStoryData] = useState(storyDataInputs())
     const [projectData, setProjectData] = useState(projectDataInputs(project))
+    const textRef = useRef();
 
     const handleChange=(e)=> {
         const name = e.target.name;
@@ -27,6 +27,12 @@ const UserProjects =({ userInfo, project })=>{
             })
         )
     }
+
+    const onChangeHandler = function(e) {
+        const target = e.target;
+        textRef.current.style.height = "30px";
+        textRef.current.style.height = `${target.scrollHeight}px`;
+       };
     
     const addStory = async () => {
         await axios.post(`/api/projects/${projectData.projectID}/addstory`, {...storyData})
@@ -35,11 +41,15 @@ const UserProjects =({ userInfo, project })=>{
         .catch(err=>console.log(err))
     }
 
+    const sizeAndChange = (e)=>{
+        onChangeHandler(e)
+        handleChange(e)
+    }
+
     const addProject = async () => {
         await axios.post(`/api/projects/addproject`, {...projectData})
         .then(res=> console.log(res.data))
         .catch(err=>console.log(err))
-        return <Redirect to="/"/>
     }
 
     const updateProject = async () => {
@@ -74,7 +84,8 @@ const UserProjects =({ userInfo, project })=>{
             </input>
             <div className="flex-row space-around">
                 <textarea 
-                    onChange={handleChange}
+                    ref={textRef}
+                    onChange={sizeAndChange}
                     name="projectDescription"
                     placeholder="Project Description"
                     className="user-project-description" defaultValue={projectData.projectDescription}>
