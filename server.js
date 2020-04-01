@@ -10,7 +10,8 @@ const app = express();
 const routes = require("./server/routes/routes.js");
 
 mongoose.connect(db,{
-            useNewUrlParser: true
+            useNewUrlParser: true,
+            useUnifiedTopology: true
         }).then(()=>console.log("Mongo connected"))
         .catch(err=>console.log(err));
 

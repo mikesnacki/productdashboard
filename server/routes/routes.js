@@ -8,23 +8,48 @@ app.use(bodyParser.urlencoded({extended:false}));
 let Project = require("../models/user.model");
 let Story = require("../models/story.model");
 
-const passport = require("passport")
-const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy
+// const passport = require("passport")
+// const GoogleStrategy = require('passport-google-oauth2').OAuth2Strategy;
 
 // passport.use(new GoogleStrategy({
 //     clientID: process.env.GOOGLE_CLIENT_ID,
 //     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//     callbackURL: "http://localhost:4000/api/auth/google/callback"
+//     callbackURL: "/api/auth/google/callback",
+//     passReqToCallback: true
 //   },
-//   function(accessToken, profile, done) {
+//   function(request, accessToken, profile, done) {
 //     var userData = {
 //         email: profile.emails[0].value,
 //         name: profile.displayName,
 //         token: accessToken
 //        };
 //        done(null, userData);
+//     console.log(request, accessToken, profile, done)
 //     }
 // ));
+// ;
+
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:4000/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+       User.findOrCreate({ googleId: profile.id }, function (err, user) {
+         return done(err, user);
+       });
+  }
+));
+
+router.route('api/auth/google/callback').get((req, res)=>
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+    console.log("hi")
+  });
 
 // router.route("/api/auth/google/callback").get(
 //     passport.authenticate("google", { failureRedirect: "/", session: false, scope: 'https://www.googleapis.com/auth/plus.login' }),
@@ -37,6 +62,16 @@ const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy
 router.route("/api").get((req, res)=>{
     res.send("<h1>Route root</h1>");
 });
+
+router.route("/api/auth").get((req, res)=>{
+  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] })
+});
+
+router.route('api/auth/google/callback').get((req, res)=>
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
 router.route("/api/projects").get((req, res)=>{
     Project.find((err, users)=>{

@@ -7,7 +7,7 @@ const Login =()=>{
     const login = e =>{
         e.preventDefault()
 
-        axios.get(`/api/auth/google/callback`)
+        axios.get(`http://localhost:4000/api/auth`)
         .then(resp=>{
             console.log(resp)
         })

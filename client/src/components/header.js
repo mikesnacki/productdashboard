@@ -13,12 +13,12 @@ export default function Header(){
     const links = [
       <Link key={1} className="header-text nav-links" to="/">Projects</Link>,
       <Link key={2} className="header-text nav-links" to="/addproject">Add a Project</Link>,
-      // <Link key={3} className="header-text nav-links" to="/login">Login</Link>,
+      <Link key={3} className="header-text nav-links" to="/login">Login</Link>,
     ]
 
-    return(
+    return(    
         <div>
-        {direction && <header className="header space-between">
+        {direction && !navDisplay && <header className="header space-between">
           <h1 className="header-text">User Story Dashboard</h1>
           {width >= collapseWidth
             ? <ul className="nav-links">{links}</ul >
@@ -28,9 +28,6 @@ export default function Header(){
               onClick={() => activateNavDisplay(!navDisplay)}
             >
               <div className='flex-row'>
-                <div className="flex-col center-vertically">
-                  Menu
-                </div>
                 <div className="flex-col">
                   <div className="line1"></div>
                   <div className="line2"></div>
@@ -45,7 +42,7 @@ export default function Header(){
           onMouseLeave={() => activateNavDisplay(!navDisplay)}
           onClick={() => activateNavDisplay(!navDisplay)}
           className={`menu-dropdown-${navDisplay}`}>
-          {navDisplay && width < collapseWidth && direction &&
+          {navDisplay && width < collapseWidth &&
           <div>
             <button 
                   onClick={() => activateNavDisplay(!navDisplay)}
@@ -58,6 +55,7 @@ export default function Header(){
           </div>
           }
         </ul>
-      </div >
+      </div>
+      
     )
 }

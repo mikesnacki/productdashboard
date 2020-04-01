@@ -1,4 +1,6 @@
  
 {
-    "mongoURI": "mongodb+srv://mikesnacki:In600pURF1m60w5e@cluster0-lnjwh.mongodb.net/userStories"
+    "mongoURI": "mongodb+srv://mikesnacki:In600pURF1m60w5e@cluster0-lnjwh.mongodb.net/userStories",
+    "GOOGLE_CLIENT_ID":"361576496242-vevvsvn9hv9j6vivkv0iiqomo1f48656.apps.googleusercontent.com",
+    "GOOGLE_CLIENT_SECRET": "ZHkynavJxXAgUXEnfyhsIgk4"
 }
