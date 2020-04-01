@@ -29,27 +29,27 @@ let Story = require("../models/story.model");
 // ));
 // ;
 
-var passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+// var passport = require('passport');
+// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
-passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:4000/auth/google/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-       User.findOrCreate({ googleId: profile.id }, function (err, user) {
-         return done(err, user);
-       });
-  }
-));
+// passport.use(new GoogleStrategy({
+//     clientID: process.env.GOOGLE_CLIENT_ID,
+//     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//     callbackURL: "http://localhost:4000/auth/google/callback"
+//   },
+//   function(accessToken, refreshToken, profile, done) {
+//        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+//          return done(err, user);
+//        });
+//   }
+// ));
 
-router.route('api/auth/google/callback').get((req, res)=>
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-    console.log("hi")
-  });
+// router.route('api/auth/google/callback').get((req, res)=>
+//   passport.authenticate('google', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     res.redirect('/');
+//     console.log("hi")
+//   });
 
 // router.route("/api/auth/google/callback").get(
 //     passport.authenticate("google", { failureRedirect: "/", session: false, scope: 'https://www.googleapis.com/auth/plus.login' }),
@@ -59,19 +59,19 @@ router.route('api/auth/google/callback').get((req, res)=>
 //     }
 // );
 
-router.route("/api").get((req, res)=>{
-    res.send("<h1>Route root</h1>");
-});
+// router.route("/api").get((req, res)=>{
+//     res.send("<h1>Route root</h1>");
+// });
 
-router.route("/api/auth").get((req, res)=>{
-  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] })
-});
+// router.route("/api/auth").get((req, res)=>{
+//   passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] })
+// });
 
-router.route('api/auth/google/callback').get((req, res)=>
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  });
+// router.route('api/auth/google/callback').get((req, res)=>
+//   passport.authenticate('google', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     res.redirect('/');
+//   });
 
 router.route("/api/projects").get((req, res)=>{
     Project.find((err, users)=>{
