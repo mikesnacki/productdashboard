@@ -61,7 +61,7 @@ $gray: #9b9b9b;
     }
     
     h1, .user-project-header{
-      font-size: calc(0.75vw + 18px);
+      font-size: calc(26px - 0.3vw);
     }
     
     h2, .story-name , .nav-links{
@@ -69,23 +69,23 @@ $gray: #9b9b9b;
     }
     
     h3{
-      font-size: calc(0.75vw + 16px);
+      font-size: calc(25px - 0.3vw);
     }
     
     h4, textarea{
-      font-size: calc(0.75vw + 15px);
+      font-size: calc(24px - 0.3vw);
     }
     
     h5{
-      font-size: calc(0.75vw + 14px);
+      font-size: calc(23px - 0.3vw);
     }
     
-    h6, button{
-      font-size: calc(0.75vw + 13px);
+    h6{
+      font-size: calc(22px - 0.3vw);
     }
     
     p, a{
-      font-size: calc(0.75vw + 12px);
+      font-size: calc(21px - 0.3vw);
       text-decoration: none;
       -webkit-tap-highlight-color: transparent;
     }
@@ -399,6 +399,7 @@ $gray: #9b9b9b;
 
 .fa-icon {
   position: relative;
+  color: $secondary-color;
 }
 
 .story-est-text{
@@ -414,8 +415,8 @@ $gray: #9b9b9b;
   background-color: white;
   border-radius: 5px;
   margin: 2vh 2vw;
-  width: 300px;
-  line-height: 2.4;
+  width: 280px;
+  line-height: 1.4;
 
   .user-story-header {
     font-weight: 600;

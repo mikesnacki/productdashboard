@@ -46,21 +46,19 @@ const UserStoryPreview =({ projectID, story })=>{
         <div>
             <div className="user-story">
                 <div className="user-story-header-preview flex-row space-around">
-                    <div>
-                        {storyData.storyName}
-                    </div>
+                    {storyData.storyName}
                 </div>
                 <div className="flex-row-center">
-                    <div>
+                    <p>
                         {storyData.storyPriority} {priorityIcons[storyData.storyPriority]}
-                    </div>
+                    </p>
                     <span className="fa-icon">
-                    <FontAwesomeIcon size="2x" icon={"calendar"}/>
+                    <FontAwesomeIcon size="3x" icon={"calendar"}/>
                         <span className="story-est-text" >{storyData.storyEstimate}</span>
                     </span>
-                    <div>
+                    <p>
                         {storyData.storyStatus}
-                    </div>
+                    </p>
                 </div>
                 <div className="flex-row-no-wrap">
                     <button 
