@@ -3,25 +3,25 @@ import {useState, useEffect, useRef} from 'react'
 export default function useScrollDirection(){
 
     const prevScrollY = useRef(0);
-
-    const [goingDown, setGoingDown] = useState(true);
+    const [direction, setDirection] = useState(true);
+    const [distance, setDistance] = useState(0);
   
     useEffect(() => {
         const handleScroll = () => {
-          const currentScrollY = window.scrollY;
-          if (prevScrollY.current < currentScrollY && goingDown) {
-            setGoingDown(false);
+          if (prevScrollY.current < window.scrollY && direction) {
+            setDirection(false);
+            setDistance(window.scrollY)
           }
-          if (prevScrollY.current > currentScrollY && !goingDown) {
-            setGoingDown(true);
+          if (prevScrollY.current > window.scrollY && !direction) {
+            setDirection(true);
+            setDistance(window.scrollY)
           }
-    
-          prevScrollY.current = currentScrollY;
+          prevScrollY.current = window.scrollY;
         };
     
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
-      }, [goingDown]);
+      }, [direction, distance]);
 
-      return goingDown
+      return { direction, distance }
 }

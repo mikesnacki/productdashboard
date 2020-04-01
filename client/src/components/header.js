@@ -7,7 +7,7 @@ export default function Header(){
     const size = useWindowSize()
     const width = size.width
     const collapseWidth = 900
-    const direction = useScrollDirection()
+    const scrollDirection = useScrollDirection()
     const [navDisplay, activateNavDisplay] = useState(false)
       
     const links = [
@@ -15,10 +15,11 @@ export default function Header(){
       <Link key={2} className="header-text nav-links" to="/addproject">Add a Project</Link>,
       <Link key={3} className="header-text nav-links" to="/login">Login</Link>,
     ]
+    console.log(scrollDirection)
 
     return(    
         <div>
-        {direction && !navDisplay && <header className="header space-between">
+        {scrollDirection.direction && scrollDirection.distance >= 0 &&!navDisplay && <header className="header space-between">
           <h1 className="header-text">User Story Dashboard</h1>
           {width >= collapseWidth
             ? <ul className="nav-links">{links}</ul >
