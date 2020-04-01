@@ -6,7 +6,7 @@ const db = process.env.MONGODB_URI;
 const cors = require("cors");
 const path = require("path");
 const app = express();
-const routes = require("./routes/routes.js");
+const routes = require("./server/routes/routes.js");
 
 mongoose.connect(db,{
             useNewUrlParser: true
