@@ -15,10 +15,10 @@ export default function Header(){
       <Link key={2} className="header-text nav-links" to="/addproject">Add a Project</Link>,
       <Link key={3} className="header-text nav-links" to="/login">Login</Link>,
     ]
-    
+
     return(    
         <div>
-        {scrollDirection.direction && scrollDirection.distance < 5 && !navDisplay && <header className="header space-between">
+        {(scrollDirection.direction || scrollDirection.distance < 2) && !navDisplay && <header className="header space-between">
           <h1 className="header-text">User Stories</h1>
           {width >= collapseWidth
             ? <ul className="nav-links">{links}</ul >
