@@ -14,7 +14,7 @@ export default function useScrollDirection(){
           }
           if (prevScrollY.current > window.scrollY && !direction) {
             setDirection(true);
-            setDistance(window.scrollY)
+            setDistance(0)
           }
           prevScrollY.current = window.scrollY;
         };
