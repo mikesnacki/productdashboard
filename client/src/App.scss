@@ -61,7 +61,7 @@ $gray: #9b9b9b;
     }
     
     h1, .user-project-header{
-      font-size: calc(0.5vw + 18px);
+      font-size: calc(0.75vw + 18px);
     }
     
     h2, .story-name , .nav-links{
@@ -69,25 +69,29 @@ $gray: #9b9b9b;
     }
     
     h3{
-      font-size: calc(0.5vw + 16px);
+      font-size: calc(0.75vw + 16px);
     }
     
     h4, textarea{
-      font-size: calc(0.5vw + 15px);
+      font-size: calc(0.75vw + 15px);
     }
     
     h5{
-      font-size: calc(0.5vw + 14px);
+      font-size: calc(0.75vw + 14px);
     }
     
-    h6{
-      font-size: calc(0.5vw + 13px);
+    h6, button{
+      font-size: calc(0.75vw + 13px);
     }
     
     p, a{
-      font-size: calc(0.5vw + 12px);
+      font-size: calc(0.75vw + 12px);
       text-decoration: none;
       -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      height: 50px;
     }
 
     button:hover {
@@ -131,6 +135,7 @@ $gray: #9b9b9b;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: stretch;
+    align-content: center;
   }
   
   .flex-row-no-wrap{
@@ -186,313 +191,309 @@ $gray: #9b9b9b;
   }
   
 /*----------------------------- HEADER STYLING -----------------------------*/
-    .header{
-      position: fixed;
-      display: inline-flex;
-      font-weight: bold;
-      z-index: 99;
-      min-height: 60px;
-      top:0;
-      width:100%;
-      background-color: white;
-  
-      .header-text{
-          margin: auto auto auto 4vw;
-      }
-  
-      button {
-        font-size: calc(0.5vw + 13px);
-      }
-      .menu-bar{
-        margin: 1vh 4vw;
-        padding: 0.2vh 0.2vw;
-        border: transparent;
-        border-radius:3px;
-        background-color: $secondary-color;
-        color:white;
-        box-shadow: 0 2px 8px 1px hsla(0, 0%,0%, 0.4);
-      }
+.header{
+  position: fixed;
+  display: inline-flex;
+  font-weight: bold;
+  z-index: 99;
+  min-height: 60px;
+  top:0;
+  width:100%;
+  background-color: white;
 
-       .line1, 
-       .line2, 
-       .line3 {
-          width: 42px;
-          height: 4px;
-          background-color: white;
-          margin: 6px 2vw;
-          border-radius: 90px;
-          transition: 0.5s
-        }    
-    }
-
-    .menu-button:hover {
-      transition: 300ms;
-      background-color:$tertiary-color;
-    }
-
-    .menu-button-close {
-      margin-left: 70%;
-      margin-top: 10%;
-      font-size: 60px;
-      color: black;
-      background-color: transparent;
-      border: transparent;
-    }
-
-    .menu-button-close:hover {
-      background-color: transparent;
-      border: transparent;
-      color: $tertiary-color;
-    }
-      .nav-links{
-          margin: auto 3vw;
-          text-decoration: none;
-      }
-      .nav-links:hover{
-        transition: 300ms;
-        color: #ff9c91;
-      }
-  
-    .menu-dropdown-true{
-      position: fixed;
-      height:100%;
-      width: 100%;
-      background-color: #dadddf;
-      text-align: center;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      margin: 0;
-      overflow: auto;
-      animation-name: animatetop;
-      animation-duration: 300ms;
-      
-      .nav-links{
-          display: block;
-          margin: 10.5vh auto;
-      }
-    }
-  
-    
-  .nav-links{
-      color:#393e46;
-  }
-    
-  .nav-links:hover {
-      transition: 0.2s;
-      font-weight: 600;
-      color: #ff9c91;
-  }
-  
-  .admin {
-      margin: 70px auto;
-      width: 70vw;
-      background-color: #e5e5e5;
-      border-radius: 5px;
-      box-shadow: 2px 2px 2px 0px #3c4245;
-      padding: 1vw 3vw;
-      align-items: center;
-      justify-items: center;
-  }
-  
-  .btn-primary {
-      color: $fourth-color;
-      background-color: $secondary-color;
-      padding: 0.5vh auto;
-      margin: 0.2vh auto;
-      width: 100px;
-      border-radius: 5px;
-  }
-  
-  .btn-primary:hover {
-    
-    color:$secondary-color;
-    background-color: $fourth-color;
-  }
-  
-  .btn-submit {
-      display: block;
-      margin: 0.5vh auto;
-  }
-  
-  .display-block {
-      display: block;
-  }
-  
-
-  /*----------------------------- STORIES PAGE STYLING -----------------------------*/
-  
-  .stories-page {
-    margin: auto 4vw;
+  .header-text{
+    margin: auto auto auto 4vw;
   }
 
-  /*----------------------------- PROJECT STYLING -----------------------------*/
-  
-  .user-project-header {
-    width: 100%;
-    margin: 0;
-    background-color: $secondary-color;
-    color: hsla(0,0%, 100%, 0.86);
-    padding: 2vh 0;
+  .menu-bar{
+    margin: 1vh 4vw;
+    padding: 0.2vh 0.2vw;
     border: transparent;
-    border-radius: 5px 5px 0 0;
-    font-weight: 700;
-  }
-
-  .user-project-container {
-    position: relative;
-    top: 60px;
-    max-width: 1200px;
-    text-align: center;
-    background-color:rgba(222,227,226, 0.9);
-    border-radius: 5px;
-    margin: 2vh auto;
-    box-shadow: 0 4px 6px 1px hsla(0, 0%,0%, 0.16);
-  }
-  
-  .user-inputs, .user-buttons {
-    border: none;
-    text-align: center;
-  }
-
-  .user-inputs{
-    width: 190px;
-    height: 30px;
-    margin: 0.75vh 1vw;
-    padding: 0.5vh 1vw;
-    border-bottom: 1.75px solid $gray;
-    box-shadow: 0 1.8px hsla(0, 0%,0%, 0.08);
-    
-  }
-
-  .user-inputs:hover{
-    transition: 300ms;
-    border-bottom: 1.75px solid $primary-color;
-  }
-
-  .user-project-button {
-    padding: 1.25vh 2vw;
-    margin: 0;
+    border-radius:3px;
     background-color: $secondary-color;
-    color: white;
-    border: transparent;
-    flex-grow: 1;
+    color:white;
+    box-shadow: 0 2px 8px 1px hsla(0, 0%,0%, 0.4);
   }
 
-  .button-right {
-    border-radius: 0 0 5px 0;
-  }
-
-  .button-left {
-    border-radius: 0 0 0 5px;
-  }
-  
-  .user-project-description{
-    width: 100%;
-    min-height: 50px;
-    margin: 1vh 5vw;
-    border: 0;
-  }
-
-  .fa-icon {
-    position: relative;
+  .line1, 
+  .line2, 
+  .line3 {
+    width: 42px;
+    height: 4px;
+    background-color: white;
+    margin: 6px 2vw;
+    border-radius: 90px;
+    transition: 0.5s
+  }    
 }
 
-  .story-est-text{
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.menu-button:hover {
+  transition: 300ms;
+  background-color:$tertiary-color;
+}
+
+.menu-button-close {
+  margin-left: 70%;
+  margin-top: 10%;
+  font-size: 60px;
+  color: black;
+  background-color: transparent;
+  border: transparent;
+}
+
+.menu-button-close:hover {
+  background-color: transparent;
+  border: transparent;
+  color: $tertiary-color;
+}
+  .nav-links{
+      margin: auto 3vw;
+      text-decoration: none;
   }
-    /*----------------------------- USER STYLING -----------------------------*/
-
-    .user-story{
-    background-color: white;
-    border-radius: 5px;
-    margin: 2vh 2vw;
-    width: 300px;
-    line-height: 2.4;
-
-    .user-story-header {
-      font-weight: 600;
-      width: 100%;
-      margin: auto;
-      background-color: $tertiary-color;
-      color: hsla(0,0%, 100%, 0.86);
-      border-radius: 3px 3px 0 0;
-      input{
-        background-color: transparent;
-        border: transparent;
-        padding: 1vh;
-        color: hsla(0,0%, 100%, 0.86);
-        border-radius: 5px;
-        line-height: 2.0;
-      }
-    }
-
-    .user-story-header-preview {
-      font-weight: 600;
-      margin: auto;
-      background-color: $tertiary-color;
-      color: hsla(0,0%, 100%, 0.86);
-      border-radius: 3px 3px 0 0;
-      input{
-        background-color: transparent;
-        border: transparent;
-        padding: 1vh;
-        color: hsla(0,0%, 100%, 0.86);
-        border-radius: 5px;
-      }
-    }
+  .nav-links:hover{
+    transition: 300ms;
+    color: #ff9c91;
   }
 
-  .user-story-details {
-    width: 80%;
-    max-width: 800px;
-    margin: 20% auto;
-    background-color: white;
-    border-radius: 5px;
+.menu-dropdown-true{
+  position: fixed;
+  height:100%;
+  width: 100%;
+  background-color: #dadddf;
+  text-align: center;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  margin: 0;
+  overflow: auto;
+  animation-name: animatetop;
+  animation-duration: 300ms;
+  
+  .nav-links{
+      display: block;
+      margin: 10.5vh auto;
   }
-
-  .user-story-button{
-    background-color: $tertiary-color;
-    height: 34px;
-    border: transparent;
-    color: hsla(0,0%, 100%, 0.86);
-    flex-grow: 1;
-  }
-
-  .user-story-button:hover{
-    border: transparent;
-    background-color: $fourth-color;
-    transition: 200ms;
-  }
-
-  .user-story-button-preview{
-    background-color: $tertiary-color;
-    border: transparent;
-    color: hsla(0,0%, 100%, 0.86);
-    border-radius: 0 0 5px 5px;
-    margin-right: 0;  
-    height: 30px;
-    flex-grow: 1;
-  }
+}
 
   
-  .user-story-button-preview-close{
+.nav-links{
+    color:#393e46;
+}
+  
+.nav-links:hover {
+    transition: 0.2s;
+    font-weight: 600;
+    color: #ff9c91;
+}
+
+.admin {
+    margin: 70px auto;
+    width: 70vw;
+    background-color: #e5e5e5;
     border-radius: 5px;
-    width: 10%;
-    font-weight: 900;
+    box-shadow: 2px 2px 2px 0px #3c4245;
+    padding: 1vw 3vw;
+    align-items: center;
+    justify-items: center;
+}
+
+.btn-primary {
+    color: $fourth-color;
+    background-color: $secondary-color;
+    padding: 0.5vh auto;
+    margin: 0.2vh auto;
+    width: 100px;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+  
+  color:$secondary-color;
+  background-color: $fourth-color;
+}
+
+.btn-submit {
+    display: block;
+    margin: 0.5vh auto;
+}
+
+.display-block {
+    display: block;
+}
+  
+
+/*----------------------------- STORIES PAGE STYLING -----------------------------*/
+
+.stories-page {
+  margin: auto 4vw;
+}
+
+/*----------------------------- PROJECT STYLING -----------------------------*/
+
+.user-project-header {
+  width: 100%;
+  margin: 0;
+  background-color: $secondary-color;
+  color: hsla(0,0%, 100%, 0.86);
+  padding: 2vh 0;
+  border: transparent;
+  border-radius: 5px 5px 0 0;
+  font-weight: 700;
+}
+
+.user-project-container {
+  position: relative;
+  top: 60px;
+  max-width: 1200px;
+  text-align: center;
+  background-color:rgba(222,227,226, 0.9);
+  border-radius: 5px;
+  margin: 2vh auto;
+  box-shadow: 0 4px 6px 1px hsla(0, 0%,0%, 0.16);
+}
+  
+.user-inputs, .user-buttons {
+  border: none;
+  text-align: center;
+  height: 50px;
+}
+
+.user-inputs{
+  width: 190px;
+  height: 30px;
+  margin: 0.75vh 1vw;
+  padding: 0.5vh 1vw;
+  border-bottom: 1.75px solid $gray;
+  box-shadow: 0 1.8px hsla(0, 0%,0%, 0.08);
+  
+}
+
+.user-inputs:hover{
+  transition: 300ms;
+  border-bottom: 1.75px solid $primary-color;
+}
+
+.user-project-button {
+  padding: 1.25vh 2vw;
+  margin: 0;
+  background-color: $secondary-color;
+  color: white;
+  border: transparent;
+  flex-grow: 1;
+}
+
+.button-right {
+  border-radius: 0 0 5px 0;
+}
+
+.button-left {
+  border-radius: 0 0 0 5px;
+}
+
+.user-project-description{
+  width: 100%;
+  min-height: 50px;
+  margin: 1vh 5vw;
+  border: 0;
+}
+
+.fa-icon {
+  position: relative;
+}
+
+.story-est-text{
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+  /*----------------------------- USER STYLING -----------------------------*/
+
+  .user-story{
+  background-color: white;
+  border-radius: 5px;
+  margin: 2vh 2vw;
+  width: 300px;
+  line-height: 2.4;
+
+  .user-story-header {
+    font-weight: 600;
+    width: 100%;
+    background-color: $tertiary-color;
+    color: hsla(0,0%, 100%, 0.86);
+    border-radius: 3px 3px 0 0;
+    input{
+      background-color: transparent;
+      border: transparent;
+      padding: 1vh;
+      color: hsla(0,0%, 100%, 0.86);
+      border-radius: 5px;
+      line-height: 2.0;
+    }
   }
 
-  .user-story-button-preview:hover{
-    border: transparent;
-    background-color: $fourth-color;
-    transition: 200ms;
+  .user-story-header-preview {
+    
+    font-weight: 600;
+    background-color: $tertiary-color;
+    color: hsla(0,0%, 100%, 0.86);
+    border-radius: 3px 3px 0 0;
+    height:50px;
+    input{
+      background-color: transparent;
+      border: transparent;
+      padding: 1vh;
+      color: hsla(0,0%, 100%, 0.86);
+      border-radius: 5px;
+    }
   }
-  
-  /*----------------------------- MODAL STYLING -----------------------------*/
+}
+
+.user-story-details {
+  width: 80%;
+  max-width: 800px;
+  margin: 20% auto;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.user-story-button{
+  background-color: $tertiary-color;
+  border: transparent;
+  color: hsla(0,0%, 100%, 0.86);
+  flex-grow: 1;
+}
+
+.user-story-button:hover{
+  border: transparent;
+  background-color: $fourth-color;
+  transition: 200ms;
+}
+
+.user-story-button-preview{
+  background-color: $tertiary-color;
+  border: transparent;
+  color: hsla(0,0%, 100%, 0.86);
+  border-radius: 0 0 5px 5px;
+  margin: 0;  
+  flex-grow: 1;
+}
+
+
+.user-story-button-preview-close{
+  border-radius: 5px;
+  width: 10%;
+  font-weight: 900;
+}
+
+.user-story-button-preview:hover{
+  border: transparent;
+  background-color: $fourth-color;
+  transition: 200ms;
+}
+
+/*----------------------------- MODAL STYLING -----------------------------*/
 .modal {
   position: fixed;
   top: 0;
