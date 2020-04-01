@@ -30,9 +30,8 @@ const UserProjects =({ project })=>{
 
     const onChangeHandler = function(e) {
         const target = e.target;
-        textRef.current.style.height = "30px";
         textRef.current.style.height = `${target.scrollHeight}px`;
-       };
+    };
     
     const addStory = async () => {
         await axios.post(`/api/projects/${projectData.projectID}/addstory`, {...storyData})

@@ -204,12 +204,13 @@ $gray: #9b9b9b;
         font-size: calc(0.5vw + 13px);
       }
       .menu-bar{
-          margin: 1vh 4vw;
-          border: transparent;
-          border-radius:3px;
-          background-color: $secondary-color;
-          color:white;
-          box-shadow: 0 2px 8px 1px hsla(0, 0%,0%, 0.4);
+        margin: 1vh 4vw;
+        padding: 0.2vh 0.2vw;
+        border: transparent;
+        border-radius:3px;
+        background-color: $secondary-color;
+        color:white;
+        box-shadow: 0 2px 8px 1px hsla(0, 0%,0%, 0.4);
       }
 
        .line1, 
@@ -230,7 +231,8 @@ $gray: #9b9b9b;
     }
 
     .menu-button-close {
-      margin-left: 80%;
+      margin-left: 70%;
+      margin-top: 10%;
       font-size: 60px;
       color: black;
       background-color: transparent;
@@ -409,7 +411,8 @@ $gray: #9b9b9b;
     background-color: white;
     border-radius: 5px;
     margin: 2vh 2vw;
-    line-height: 2.0;
+    width: 300px;
+    line-height: 2.4;
 
     .user-story-header {
       font-weight: 600;
@@ -454,7 +457,7 @@ $gray: #9b9b9b;
 
   .user-story-button{
     background-color: $tertiary-color;
-    height: 32px;
+    height: 34px;
     border: transparent;
     color: hsla(0,0%, 100%, 0.86);
     flex-grow: 1;
@@ -472,12 +475,15 @@ $gray: #9b9b9b;
     color: hsla(0,0%, 100%, 0.86);
     border-radius: 0 0 5px 5px;
     margin-right: 0;  
+    height: 30px;
+    flex-grow: 1;
   }
 
   
   .user-story-button-preview-close{
-    width: 25%;
     border-radius: 5px;
+    width: 10%;
+    font-weight: 900;
   }
 
   .user-story-button-preview:hover{

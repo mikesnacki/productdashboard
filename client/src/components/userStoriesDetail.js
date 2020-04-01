@@ -16,7 +16,7 @@ const UserStory =({ handleChange, updateStory, deleteStory, addStory, setDetails
                     <button 
                         type="submit"
                         onClick={()=>setDetailsDisplayed(null)}
-                        className="user-story-button-preview user-story-button-preview-close">
+                        className="user-story-button-preview-close button-clear">
                         &times;
                     </button>
                 </div>
