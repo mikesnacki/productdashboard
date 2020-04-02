@@ -11,9 +11,11 @@ export default function Header(){
     const [navDisplay, activateNavDisplay] = useState(false)
       
     const links = [
-      <Link key={1} className="header-text nav-links" to="/">Projects</Link>,
-      <Link key={2} className="header-text nav-links" to="/addproject">Add a Project</Link>,
-      <Link key={3} className="header-text nav-links" to="/login">Login</Link>,
+      <Link key={1} className="header-text nav-links" to="/">Home</Link>,
+      <Link key={2} className="header-text nav-links" to="/projects">Projects</Link>,
+      <Link key={3} className="header-text nav-links" to="/addproject">Add a Project</Link>,
+      <Link key={4} className="header-text nav-links" to="/login">Login</Link>,
+      <Link key={5} className="header-text nav-links" to="/profile">Profile</Link>,
     ]
 
     return(    

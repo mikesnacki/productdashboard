@@ -1,6 +1,8 @@
 import React  from 'react';
 import { useFetch } from "../utilhooks/useFetch"
 import UserProjects from "./userProjects"
+import { useAuth0  } from "../utilhooks/useAuth"
+import Login from "./login"
 
 export default function StoriesPage(){
     let userInfo = []
@@ -8,7 +10,19 @@ export default function StoriesPage(){
 
     if (!res.error && !res.loading) {
         userInfo = res.response;
-    }   
+    }
+    
+    const { loading, user } = useAuth0();
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+
+    if (!user) {
+        return <Login/>;
+      }
+  
+      
     
     return(
         <div>

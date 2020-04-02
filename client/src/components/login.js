@@ -1,27 +1,25 @@
-import React from 'react'
-import googlebutton from "../../src/googlebutton.png"
-import axios from 'axios'
+import React from "react";
+import { useAuth0 } from "../utilhooks/useAuth";
 
-const Login =()=>{
+const Login = () => {
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
-    const login = e =>{
-        e.preventDefault()
-
-        axios.get(`http://localhost:4000/api/auth`)
-        .then(resp=>{
-            console.log(resp)
-        })
-    }
-
-
-    return(
+  console.log(user)
+  return (
+    <div>
+        <div className="login-page">
+      {!isAuthenticated && (
         <button 
-            type="button"
-            onClick={login}
-            className="button-clear">
-            <img src={googlebutton} alt="Login with google"></img>
+            className="button-clear login-button"
+            onClick={() => loginWithRedirect({})}>
+        Log in
         </button>
-    )
-}
+      )}
 
-export default Login
+      {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
+      </div>
+    </div>
+  );
+};
+
+export default Login;

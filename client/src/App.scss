@@ -506,3 +506,15 @@ $gray: #9b9b9b;
   background: rgba(0, 0, 0, 0.8);
   z-index: 2;
 }
+
+/*----------------------------- LOGIN STYLING -----------------------------*/
+
+.login-page{
+  margin: auto;
+}
+
+.login-button{
+  margin: 30%;
+  background-color: $secondary-color;
+  color: white;
+}
