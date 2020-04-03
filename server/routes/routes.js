@@ -8,15 +8,15 @@ app.use(bodyParser.urlencoded({extended:false}));
 let Project = require("../models/user.model");
 let Story = require("../models/story.model");
 
-router.route("/api/projects").get((req, res)=>{
-    Project.find((err, users)=>{
+router.route("/api/projects/:uid").get((req, res)=>{
+    Project.find({userName: req.params.uid},(err, users)=>{
         return err ? console.log(err) : res.json(users);
     });
 });
 
 router.route("/api/projects/addproject").post((req, res)=>{
     let project = new Project ({
-                    userName: "mikesnacki@gmail.com",
+                    userName: req.body.userName,
                     userDeleted: false,
                     projectName: req.body.projectName,
                     projectDescription: req.body.projectDescription

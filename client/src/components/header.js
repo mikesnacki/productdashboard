@@ -10,15 +10,15 @@ export default function Header(){
     const collapseWidth = 900
     const scrollDirection = useScrollDirection()
     const [navDisplay, activateNavDisplay] = useState(false)
-    const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+    const { isAuthenticated, loginWithRedirect, logout} = useAuth0();
       
     const links = [
       <Link key={1} className="header-text nav-links" to="/">Home</Link>,
       isAuthenticated && <Link key={2} className="header-text nav-links" to="/projects">Projects</Link>,
       isAuthenticated && <Link key={3} className="header-text nav-links" to="/addproject">Add a Project</Link>,
       isAuthenticated && <Link key={4} className="header-text nav-links" to="/profile">Profile</Link>,
-      !isAuthenticated && <Link key={5} className="header-text nav-links" onClick={() => loginWithRedirect({})}>Login</Link>,
-      isAuthenticated && <Link key={6} className="header-text nav-links" onClick={() => logout()}>Logout</Link>,
+      !isAuthenticated && <a key={5} className="header-text nav-links" onClick={() => loginWithRedirect({})}>Login</a>,
+      isAuthenticated && <a key={6} className="header-text nav-links" onClick={() => logout()}>Logout</a>,
     ]
 
     return(    

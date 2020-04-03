@@ -325,7 +325,7 @@ $gray: #9b9b9b;
 /*----------------------------- STORIES PAGE STYLING -----------------------------*/
 
 .stories-page {
-  margin: auto 4vw;
+  margin: 80px 4vw;
 }
 
 /*----------------------------- PROJECT STYLING -----------------------------*/
@@ -342,8 +342,6 @@ $gray: #9b9b9b;
 }
 
 .user-project-container {
-  position: relative;
-  top: 60px;
   max-width: 1200px;
   text-align: center;
   background-color:rgba(222,227,226, 0.9);
@@ -517,4 +515,19 @@ $gray: #9b9b9b;
   margin: 30%;
   background-color: $secondary-color;
   color: white;
+}
+
+/*----------------------------- LOADING STYLING -----------------------------*/
+.loading-container{
+  margin: 20vh auto;
+}
+
+.loader {
+  margin: 20vh auto;
+  border: 16px solid $shadow-color; 
+  border-top: 16px solid $secondary-color;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
 }
