@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.scss';
+import PrivateRoute from "./components/PrivateRoute"
 
-import Header from "./components/header"
-import Home from "./components/home"
-import StoriesPage from "./components/storiesPage"
-import Login from "./components/login"
-import UserProjects from "./components/userProjects"
-import Profile from "./components/profile"
+import Header from "./components/Header"
+import Home from "./components/Home"
+import StoriesPage from "./components/StoriesPage"
+import Login from "./components/Login"
+import UserProjects from "./components/UserProjects"
+import Profile from "./components/Profile"
 
 import history from "./utilhooks/history"
 import { useAuth0  } from "./utilhooks/useAuth"
@@ -27,10 +28,10 @@ function App() {
         <Header/>
         <Switch>
           <Route path ="/" exact component={Home}/>
-          <Route path ="/projects" user={user} exact component={StoriesPage}/>
-          <Route path ="/addproject" exact component={UserProjects}/>
+          <PrivateRoute path ="/projects" user={user} component={StoriesPage}/>
+          <PrivateRoute path ="/addproject" component={UserProjects}/>
           <Route path ="/login" exact component={Login}/>
-          <Route path ="/profile" exact component={Profile}/>
+          <PrivateRoute path ="/profile" component={Profile}/>
         </Switch>
       </Router>
     </div>

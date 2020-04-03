@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios'
-import UserStoryPreview from './userStoriesPreview'
-import UserStoryDetail from "./userStoriesDetail"
+import UserStoryPreview from './UserStoriesPreview'
+import UserStoryDetail from "./UserStoriesDetail"
 import storyDataInputs from "./storyDataInputs"
 import projectDataInputs from "./projectDataInputs"
 

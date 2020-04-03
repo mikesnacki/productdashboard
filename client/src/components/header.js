@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import useWindowSize from '../utilhooks/useWindowDim'
 import useScrollDirection from '../utilhooks/useScrollDirection'
 import { Link } from 'react-router-dom'
+import { useAuth0 } from "../utilhooks/useAuth"
 
 export default function Header(){
     const size = useWindowSize()
@@ -9,13 +10,15 @@ export default function Header(){
     const collapseWidth = 900
     const scrollDirection = useScrollDirection()
     const [navDisplay, activateNavDisplay] = useState(false)
+    const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
       
     const links = [
       <Link key={1} className="header-text nav-links" to="/">Home</Link>,
-      <Link key={2} className="header-text nav-links" to="/projects">Projects</Link>,
-      <Link key={3} className="header-text nav-links" to="/addproject">Add a Project</Link>,
-      <Link key={4} className="header-text nav-links" to="/login">Login</Link>,
-      <Link key={5} className="header-text nav-links" to="/profile">Profile</Link>,
+      isAuthenticated && <Link key={2} className="header-text nav-links" to="/projects">Projects</Link>,
+      isAuthenticated && <Link key={3} className="header-text nav-links" to="/addproject">Add a Project</Link>,
+      isAuthenticated && <Link key={4} className="header-text nav-links" to="/profile">Profile</Link>,
+      !isAuthenticated && <Link key={5} className="header-text nav-links" onClick={() => loginWithRedirect({})}>Login</Link>,
+      isAuthenticated && <Link key={6} className="header-text nav-links" onClick={() => logout()}>Logout</Link>,
     ]
 
     return(    

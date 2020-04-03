@@ -1,8 +1,8 @@
 import React  from 'react';
 import { useFetch } from "../utilhooks/useFetch"
-import UserProjects from "./userProjects"
+import UserProjects from "./UserProjects"
 import { useAuth0  } from "../utilhooks/useAuth"
-import Login from "./login"
+import Login from "./Login"
 
 export default function StoriesPage(){
     let userInfo = []
