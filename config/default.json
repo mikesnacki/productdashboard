@@ -1,6 +1,6 @@
  
 {
     "mongoURI": "mongodb+srv://mikesnacki:In600pURF1m60w5e@cluster0-lnjwh.mongodb.net/userStories",
-    "domain": "mickkinase.auth0.com",
-    "clientId": "jbb35C1Js1GRrEuGiU5MGQiT3sovpOBK"
+    "domain": "shiny-wildflower-4842.auth0.com",
+    "clientId": "wv6bEHHjRoQ4K9aqPxrLjrAU397SYMTB"
 }
