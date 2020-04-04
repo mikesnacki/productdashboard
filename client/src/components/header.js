@@ -17,8 +17,8 @@ export default function Header(){
       isAuthenticated && <Link key={2} className="header-text nav-links" to="/projects">Projects</Link>,
       isAuthenticated && <Link key={3} className="header-text nav-links" to="/addproject">Add a Project</Link>,
       isAuthenticated && <Link key={4} className="header-text nav-links" to="/profile">Profile</Link>,
-      !isAuthenticated && <a key={5} className="header-text nav-links" onClick={() => loginWithRedirect({})}>Login</a>,
-      isAuthenticated && <a key={6} className="header-text nav-links" onClick={() => logout()}>Logout</a>,
+      !isAuthenticated && <span key={5} className="header-text nav-links" onClick={() => loginWithRedirect({})}>Login</span>,
+      isAuthenticated && <span key={6} className="header-text nav-links" onClick={() => logout()}>Logout</span>,
     ]
 
     return(    
