@@ -24,7 +24,7 @@ function App() {
   return (
     <div>
       <Router history={history}>
-        <Header/>
+        {/* <Header/> */}
         <Switch>
           <Route path ="/" exact component={Home}/>
           <PrivateRoute path ="/projects" component={StoriesPage}/>
