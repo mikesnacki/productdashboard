@@ -3,7 +3,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import './App.scss';
 import PrivateRoute from "./components/PrivateRoute"
 
-// import Header from "./components/Header"
+import Header from "./components/Header"
 import Home from "./components/Home"
 import StoriesPage from "./components/StoriesPage"
 import UserProjects from "./components/UserProjects"
@@ -11,7 +11,7 @@ import Profile from "./components/Profile"
 import Loading from "./components/Loading"
 
 import history from "./utilhooks/history"
-import { useAuth0  } from "./utilhooks/useAuth"
+import { useAuth0 } from "./utilhooks/useAuth"
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
   return (
     <div>
       <Router history={history}>
-        {/* <Header/> */}
+        <Header/>
         <Switch>
           <Route path ="/" exact component={Home}/>
           <PrivateRoute path ="/projects" component={StoriesPage}/>
