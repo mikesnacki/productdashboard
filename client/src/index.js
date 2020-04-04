@@ -15,7 +15,7 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import App from "./App"
 import * as serviceWorker from "./serviceWorker";
 import { Auth0Provider } from "./utilhooks/useAuth";
 import config from "./auth_config.json";
