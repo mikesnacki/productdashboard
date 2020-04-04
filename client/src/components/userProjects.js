@@ -65,7 +65,7 @@ const UserProjects =({ project })=>{
 
     return (
         <div className="stories-page">
-            {project === undefined && <h2 className="flex-row align-center">Let's create a project, which will hold our user stories. fill out the name and description below</h2>}
+            {project === undefined && <h2 className="align-center">Let's create a project, which will hold our user stories. fill out the name and description below</h2>}
         <div className="user-project-container">
             {
             addStoryModal && 
