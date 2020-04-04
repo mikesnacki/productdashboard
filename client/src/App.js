@@ -3,7 +3,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import './App.scss';
 import PrivateRoute from "./components/PrivateRoute"
 
-import Header from "./components/Header"
+// import Header from "./components/Header"
 import Home from "./components/Home"
 import StoriesPage from "./components/StoriesPage"
 import UserProjects from "./components/UserProjects"
