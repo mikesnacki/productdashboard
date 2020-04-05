@@ -1,14 +1,15 @@
 import React from 'react';
 import { Router, Route, Switch } from "react-router-dom";
 import './App.scss';
-import PrivateRoute from "./components/privateRoute"
+
 
 import Header from "./components/header"
 import Home from "./components/home"
-import StoriesPage from "./components/StoriesPage"
+import StoriesPage from "./components/storiesPage"
 import UserProjects from "./components/userProjects"
 import Profile from "./components/profile"
 import Loading from "./components/loading"
+import PrivateRoute from "./components/privateRoute"
 
 import history from "./utilhooks/history"
 import { useAuth0 } from "./utilhooks/useAuth"
