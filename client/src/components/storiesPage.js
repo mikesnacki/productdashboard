@@ -1,8 +1,8 @@
 import React  from 'react';
 import { useFetch } from "../utilhooks/useFetch"
-import UserProjects from "./userProjects"
+import UserProjects from "./UserProjects"
 import { useAuth0  } from "../utilhooks/useAuth"
-import Loading from "./loading"
+import Loading from "./Loading"
 
 export default function StoriesPage(){
     const { loading, user } = useAuth0();
