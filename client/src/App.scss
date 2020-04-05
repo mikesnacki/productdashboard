@@ -31,6 +31,12 @@ $gray: #9b9b9b;
       overflow: hidden;
     }
   }
+
+  
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
   
   /*----------------------------- ELEMENTAL STYLING -----------------------------*/
   $font-stack: 'Inter', 'IBM Plex Mono', 'monospace';
@@ -61,7 +67,7 @@ $gray: #9b9b9b;
     }
     
     h1, .user-project-header{
-      font-size: calc(26px - 0.3vw);
+      font-size: calc(30px - 0.3vw);
     }
     
     h2, .story-name , .nav-links{
@@ -69,23 +75,23 @@ $gray: #9b9b9b;
     }
     
     h3{
-      font-size: calc(25px - 0.3vw);
+      font-size: calc(29px - 0.3vw);
     }
     
     h4, textarea{
-      font-size: calc(24px - 0.3vw);
+      font-size: calc(28px - 0.3vw);
     }
     
     h5{
-      font-size: calc(23px - 0.3vw);
+      font-size: calc(27px - 0.3vw);
     }
     
     h6{
-      font-size: calc(22px - 0.3vw);
+      font-size: calc(26px - 0.3vw);
     }
     
     p, a{
-      font-size: calc(21px - 0.3vw);
+      font-size: calc(25px - 0.3vw);
       text-decoration: none;
       -webkit-tap-highlight-color: transparent;
     }
@@ -99,9 +105,6 @@ $gray: #9b9b9b;
       transition: 300ms;
     }
 
-    textarea{
-      overflow: hidden;
-    }
     /*----------------------------- GENERAL STYLING -----------------------------*/
   
   .flex-col {
@@ -210,9 +213,8 @@ $gray: #9b9b9b;
     padding: 0.2vh 0.2vw;
     border: transparent;
     border-radius:3px;
-    background-color: $secondary-color;
+    background-color: transparent;
     color:white;
-    box-shadow: 0 2px 8px 1px hsla(0, 0%,0%, 0.4);
   }
 
   .line1, 
@@ -220,7 +222,7 @@ $gray: #9b9b9b;
   .line3 {
     width: 42px;
     height: 4px;
-    background-color: white;
+    background-color: $secondary-color;
     margin: 6px 2vw;
     border-radius: 90px;
     transition: 0.5s
@@ -228,8 +230,14 @@ $gray: #9b9b9b;
 }
 
 .menu-button:hover {
-  transition: 300ms;
-  background-color:$tertiary-color;
+  transition: 200ms;
+  background-color:$secondary-color;
+  color: white;
+  .line1, 
+  .line2, 
+  .line3 {
+    background-color: white;
+  }    
 }
 
 .menu-button-close {
@@ -354,6 +362,7 @@ $gray: #9b9b9b;
   border: none;
   text-align: center;
   height: 50px;
+  background-color: transparent;
 }
 
 .user-inputs{
@@ -530,4 +539,11 @@ $gray: #9b9b9b;
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
+}
+
+.profile-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }

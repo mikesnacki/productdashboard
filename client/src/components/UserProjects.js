@@ -1,16 +1,16 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios'
 import UserStoryPreview from './UserStoriesPreview'
 import UserStoryDetail from "./UserStoriesDetail"
 import storyDataInputs from "./storyDataInputs"
 import projectDataInputs from "./projectDataInputs"
+import { css } from 'emotion'
 
 const UserProjects =({ project })=>{
 
     const [addStoryModal, setAddStoryModal] = useState(false)
     const [storyData, setStoryData] = useState(storyDataInputs())
     const [projectData, setProjectData] = useState(projectDataInputs(project))
-    const textRef = useRef();
 
     const handleChange=(e)=> {
         const name = e.target.name;
@@ -28,21 +28,11 @@ const UserProjects =({ project })=>{
         )
     }
 
-    const onChangeHandler = function(e) {
-        const target = e.target;
-        textRef.current.style.height = `${target.scrollHeight}px`;
-    };
-    
     const addStory = async () => {
         await axios.post(`/api/projects/${projectData.projectID}/addstory`, {...storyData})
         .then(res=> console.log(res.data))
         .then(project.projectStories.push(storyData))
         .catch(err=>console.log(err))
-    }
-
-    const sizeAndChange = (e)=>{
-        onChangeHandler(e)
-        handleChange(e)
     }
 
     const addProject = async () => {
@@ -84,11 +74,16 @@ const UserProjects =({ project })=>{
             </input>
             <div className="flex-row space-around">
                 <textarea 
-                    ref={textRef}
-                    onChange={sizeAndChange}
+                    onChange={handleChange}
                     name="projectDescription"
                     placeholder="Project Description"
-                    className="user-project-description" defaultValue={projectData.projectDescription}>
+                    className={css`
+                        width: 100%;
+                        height: ${Math.max(projectData.projectDescription.length, 40)}px;
+                        margin: 1vh 5vw;
+                        border: 0;
+                    `}
+                    defaultValue={projectData.projectDescription}>
                 </textarea>
             </div>
             <div className="flex-row space-around">

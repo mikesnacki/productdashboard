@@ -1,6 +1,4 @@
-// src/components/Profile.js
-
-import React, { Fragment } from "react";
+import React from "react";
 import { useAuth0 } from "../utilhooks/useAuth";
 import Loading from "./Loading"
 
@@ -12,12 +10,11 @@ const Profile = () => {
   }
 
   return (
-    <Fragment>
-      <img src={user.picture} alt="Profile" />
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
-      <code>{JSON.stringify(user, null, 2)}</code>
-    </Fragment>
+    <div className="stories-page">
+      <img className ="align-center profile-image" src={user.picture} alt="Profile" />
+      <h2 className="align-center">{user.name}</h2>
+      <p className="align-center">{user.email}</p>
+    </div>
   );
 };
 
