@@ -14,11 +14,11 @@ export default function Header(){
       
     const links = [
       <Link key={1} className="header-text nav-links" to="/">Home</Link>,
-      isAuthenticated && <Link key={2} className="header-text nav-links" to="/projects">Projects</Link>,
-      isAuthenticated && <Link key={3} className="header-text nav-links" to="/addproject">Add a Project</Link>,
-      isAuthenticated && <Link key={4} className="header-text nav-links" to="/profile">Profile</Link>,
-      !isAuthenticated && <span key={5} className="header-text nav-links" onClick={() => loginWithRedirect({})}>Login</span>,
-      isAuthenticated && <span key={6} className="header-text nav-links" onClick={() => logout()}>Logout</span>,
+      isAuthenticated && <Link key={2} className="header-text nav-links flex-row-no-wrap" to="/projects">Projects</Link>,
+      isAuthenticated && <Link key={3} className="header-text nav-links flex-row-no-wrap" to="/addproject">Add a Project</Link>,
+      isAuthenticated && <Link key={4} className="header-text nav-links flex-row-no-wrap" to="/profile">Profile</Link>,
+      !isAuthenticated && <span key={5} className="header-text nav-links flex-row-no-wrap" onClick={() => loginWithRedirect({})}>Login</span>,
+      isAuthenticated && <span key={6} className="header-text nav-links flex-row-no-wrap" onClick={() => logout()}>Logout</span>,
     ]
 
     return(    
@@ -39,7 +39,6 @@ export default function Header(){
                   <div className="line3"></div>
                 </div>
              </div> 
-
             </button>
           }
         </header>}
@@ -47,18 +46,16 @@ export default function Header(){
           onMouseLeave={() => activateNavDisplay(!navDisplay)}
           onClick={() => activateNavDisplay(!navDisplay)}
           className={`menu-dropdown-${navDisplay}`}>
-          {navDisplay && width < collapseWidth &&
-          <div>
-            <button 
-                  onClick={() => activateNavDisplay(!navDisplay)}
-                  className="menu-button-close">
-                    &times;
-            </button> 
-            <div>
-              {links}
-            </div>      
-          </div>
-          }
+            { navDisplay && width < collapseWidth && 
+              <>
+              <button 
+                onClick={() => activateNavDisplay(!navDisplay)}
+                className="flex-row menu-button-close">
+                &times;
+              </button> 
+                {links}  
+              </>
+            } 
         </ul>
       </div>
     )

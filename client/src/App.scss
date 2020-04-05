@@ -241,9 +241,9 @@ $gray: #9b9b9b;
 }
 
 .menu-button-close {
-  margin-left: 70%;
-  margin-top: 10%;
-  font-size: 60px;
+  margin-left: 80%;
+  margin-top: 5%;
+  font-size: 70px;
   color: black;
   background-color: transparent;
   border: transparent;
@@ -257,16 +257,21 @@ $gray: #9b9b9b;
   .nav-links{
       margin: auto 3vw;
       text-decoration: none;
+      background-color: transparent;
   }
   .nav-links:hover{
     transition: 300ms;
     color: #ff9c91;
   }
 
+  .links-container{
+    height: 100%;
+  }
+
 .menu-dropdown-true{
   position: fixed;
-  height:100%;
-  width: 100%;
+  height:100vh;
+  width: 100vw;
   background-color: #dadddf;
   text-align: center;
   z-index: 1;
@@ -279,7 +284,7 @@ $gray: #9b9b9b;
   
   .nav-links{
       display: block;
-      margin: 10.5vh auto;
+      margin: 8vh auto;
   }
 }
 
@@ -292,6 +297,11 @@ $gray: #9b9b9b;
     transition: 0.2s;
     font-weight: 600;
     color: #ff9c91;
+}
+
+.inner-links{
+  margin-top: 50%;
+  margin-bottom: 50%;
 }
 
 .admin {

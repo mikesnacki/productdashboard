@@ -26,7 +26,8 @@ const Home =()=>{
                     src={width < collapseWidth ? 
                     "https://res.cloudinary.com/mikesnacki/image/upload/v1586090554/preview-project_shz6gb.png" 
                     : 
-                    "https://res.cloudinary.com/mikesnacki/image/upload/v1586090546/preview-project-wide_rshps2.png"}>
+                    "https://res.cloudinary.com/mikesnacki/image/upload/v1586090546/preview-project-wide_rshps2.png"}
+                    alt="preview for sites">
                 </img>
                 <p>If you're interested in what technology this is built on, its a MERN stack app, using Auth0 for authentitication, deployed on Heroku.</p>
                 <p>Any questions or comments, feel free to email me at mikesnacki@gmail.com</p>
