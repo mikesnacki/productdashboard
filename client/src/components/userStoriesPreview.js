@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faArrowsAltH, faArrowDown, faCalendar} from '@fortawesome/free-solid-svg-icons'
-import UserStoryDetail from "./UserStoriesDetail"
+import UserStoryDetail from "./userStoriesDetail"
 import { library } from '@fortawesome/fontawesome-svg-core';
 import storyDataInputs from "./storyDataInputs"
 

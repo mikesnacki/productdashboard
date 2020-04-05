@@ -2,7 +2,7 @@
 
 import React, { Fragment } from "react";
 import { useAuth0 } from "../utilhooks/useAuth";
-import Loading from "./Loading"
+import Loading from "./loading"
 
 const Profile = () => {
   const { loading, user } = useAuth0();
