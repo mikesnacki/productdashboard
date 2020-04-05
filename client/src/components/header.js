@@ -7,7 +7,7 @@ import { useAuth0 } from "../utilhooks/useAuth"
 export default function Header(){
     const size = useWindowSize()
     const width = size.width
-    const collapseWidth = 900
+    const collapseWidth = 960
     const scrollDirection = useScrollDirection()
     const [navDisplay, activateNavDisplay] = useState(false)
     const { isAuthenticated, loginWithRedirect, logout} = useAuth0();
