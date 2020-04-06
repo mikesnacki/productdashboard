@@ -199,13 +199,12 @@ $gray: #9b9b9b;
   display: inline-flex;
   font-weight: bold;
   z-index: 99;
-  min-height: 60px;
   top:0;
   width:100%;
   background-color: white;
 
   .header-text{
-    margin: auto auto auto 4vw;
+    margin-left:4vw;
   }
 
   .menu-bar{
@@ -223,10 +222,14 @@ $gray: #9b9b9b;
     width: 42px;
     height: 4px;
     background-color: $secondary-color;
-    margin: 6px 2vw;
+    margin: 10px 2vw;
     border-radius: 90px;
     transition: 0.5s
   }    
+}
+
+.menu-button:hover {
+  height: 100%;
 }
 
 .menu-button:hover {

@@ -280,14 +280,13 @@ button:hover {
   display: inline-flex;
   font-weight: bold;
   z-index: 99;
-  min-height: 60px;
   top: 0;
   width: 100%;
   background-color: white;
 }
 
 .header .header-text {
-  margin: auto auto auto 4vw;
+  margin-left: 4vw;
 }
 
 .header .menu-bar {
@@ -305,10 +304,14 @@ button:hover {
   width: 42px;
   height: 4px;
   background-color: #204051;
-  margin: 6px 2vw;
+  margin: 10px 2vw;
   border-radius: 90px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+}
+
+.menu-button:hover {
+  height: 100%;
 }
 
 .menu-button:hover {
