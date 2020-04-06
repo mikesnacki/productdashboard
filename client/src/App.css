@@ -1,0 +1,659 @@
+/*----------------------------- VARIABLES -----------------------------*/
+/*----------------------------- KEYFRAMES -----------------------------*/
+@-webkit-keyframes hover-shadow {
+  from {
+    -webkit-box-shadow: 0px;
+            box-shadow: 0px;
+  }
+  to {
+    -webkit-box-shadow: 3px 3px 3px rgba(198, 203, 239, 0.2);
+            box-shadow: 3px 3px 3px rgba(198, 203, 239, 0.2);
+  }
+}
+@keyframes hover-shadow {
+  from {
+    -webkit-box-shadow: 0px;
+            box-shadow: 0px;
+  }
+  to {
+    -webkit-box-shadow: 3px 3px 3px rgba(198, 203, 239, 0.2);
+            box-shadow: 3px 3px 3px rgba(198, 203, 239, 0.2);
+  }
+}
+
+@-webkit-keyframes animatetop {
+  from {
+    top: -100vh;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -100vh;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes menu-out {
+  0% {
+    max-height: 0;
+    overflow: hidden;
+  }
+  100% {
+    max-height: 400px;
+    overflow: hidden;
+  }
+}
+
+@keyframes menu-out {
+  0% {
+    max-height: 0;
+    overflow: hidden;
+  }
+  100% {
+    max-height: 400px;
+    overflow: hidden;
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+/*----------------------------- ELEMENTAL STYLING -----------------------------*/
+input, select, option {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+  text-align-last: center;
+}
+
+body, html, textarea {
+  margin: 0;
+  font-family: "Inter", "IBM Plex Mono", "monospace";
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  margin-right: 5vw;
+}
+
+svg {
+  margin: 0 auto;
+}
+
+h1, .user-project-header {
+  font-size: calc(30px - 0.3vw);
+}
+
+h2, .story-name, .nav-links {
+  font-size: calc(0.5vw + 17px);
+}
+
+h3 {
+  font-size: calc(29px - 0.3vw);
+}
+
+h4, textarea {
+  font-size: calc(28px - 0.3vw);
+}
+
+h5 {
+  font-size: calc(27px - 0.3vw);
+}
+
+h6 {
+  font-size: calc(26px - 0.3vw);
+}
+
+p, a {
+  font-size: calc(25px - 0.3vw);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  height: 50px;
+}
+
+button:hover {
+  background-color: #84a9ac;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+/*----------------------------- GENERAL STYLING -----------------------------*/
+.flex-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container-padding {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 40px;
+  margin: auto;
+}
+
+.margin-top {
+  margin-top: 5vh;
+}
+
+.no-padding-bottom {
+  padding: 0vh 3vw;
+}
+
+.container-padding label, .container-padding select {
+  margin: 0.5vh 1vw;
+}
+
+.flex-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.flex-row-no-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.flex-row-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.space-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.space-evenly {
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 1vw;
+}
+
+.space-around {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.center-vertically {
+  margin: auto;
+}
+
+.align-baseline {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.button-clear {
+  border: none;
+  background-color: inherit;
+  font-size: inherit;
+}
+
+.display-none {
+  display: none;
+}
+
+.no-margin-no-padding {
+  margin: auto;
+}
+
+/*----------------------------- HEADER STYLING -----------------------------*/
+.header {
+  position: fixed;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: bold;
+  z-index: 99;
+  min-height: 60px;
+  top: 0;
+  width: 100%;
+  background-color: white;
+}
+
+.header .header-text {
+  margin: auto auto auto 4vw;
+}
+
+.header .menu-bar {
+  margin: 1vh 4vw;
+  padding: 0.2vh 0.2vw;
+  border: transparent;
+  border-radius: 3px;
+  background-color: transparent;
+  color: white;
+}
+
+.header .line1,
+.header .line2,
+.header .line3 {
+  width: 42px;
+  height: 4px;
+  background-color: #204051;
+  margin: 6px 2vw;
+  border-radius: 90px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.menu-button:hover {
+  -webkit-transition: 200ms;
+  transition: 200ms;
+  background-color: #204051;
+  color: white;
+}
+
+.menu-button:hover .line1,
+.menu-button:hover .line2,
+.menu-button:hover .line3 {
+  background-color: white;
+}
+
+.menu-button-close {
+  margin-left: 80%;
+  margin-top: 5%;
+  font-size: 70px;
+  color: black;
+  background-color: transparent;
+  border: transparent;
+}
+
+.menu-button-close:hover {
+  background-color: transparent;
+  border: transparent;
+  color: #84a9ac;
+}
+
+.nav-links {
+  margin: auto 3vw;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.nav-links:hover {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  color: #ff9c91;
+}
+
+.links-container {
+  height: 100%;
+}
+
+.menu-dropdown-true {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: #dadddf;
+  text-align: center;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  margin: 0;
+  overflow: auto;
+  -webkit-animation-name: animatetop;
+          animation-name: animatetop;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+}
+
+.menu-dropdown-true .nav-links {
+  display: block;
+  margin: 8vh auto;
+}
+
+.nav-links {
+  color: #393e46;
+}
+
+.nav-links:hover {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  font-weight: 600;
+  color: #ff9c91;
+}
+
+.inner-links {
+  margin-top: 50%;
+  margin-bottom: 50%;
+}
+
+.admin {
+  margin: 70px auto;
+  width: 70vw;
+  background-color: #e5e5e5;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 2px 0px #3c4245;
+          box-shadow: 2px 2px 2px 0px #3c4245;
+  padding: 1vw 3vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+}
+
+.btn-primary {
+  color: #393e46;
+  background-color: #204051;
+  padding: 0.5vh auto;
+  margin: 0.2vh auto;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.btn-primary:hover {
+  color: #204051;
+  background-color: #393e46;
+}
+
+.btn-submit {
+  display: block;
+  margin: 0.5vh auto;
+}
+
+.display-block {
+  display: block;
+}
+
+/*----------------------------- STORIES PAGE STYLING -----------------------------*/
+.stories-page {
+  margin: 80px 4vw;
+}
+
+/*----------------------------- PROJECT STYLING -----------------------------*/
+.user-project-header {
+  width: 100%;
+  margin: 0;
+  background-color: #204051;
+  color: rgba(255, 255, 255, 0.96);
+  padding: 2vh 0;
+  border: transparent;
+  border-radius: 5px 5px 0 0;
+  font-weight: 700;
+}
+
+.user-project-container {
+  max-width: 1200px;
+  text-align: center;
+  background-color: rgba(222, 227, 226, 0.9);
+  border-radius: 5px;
+  margin: 2vh auto;
+  -webkit-box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.16);
+}
+
+.user-inputs, .user-buttons {
+  border: none;
+  text-align: center;
+  height: 50px;
+  background-color: transparent;
+}
+
+.user-inputs {
+  width: 190px;
+  height: 30px;
+  margin: 0.75vh 1vw;
+  padding: 0.5vh 1vw;
+  border-bottom: 1.75px solid #9b9b9b;
+  -webkit-box-shadow: 0 1.8px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 1.8px rgba(0, 0, 0, 0.08);
+}
+
+.user-inputs:hover {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  border-bottom: 1.75px solid #c6cbef;
+}
+
+.user-project-button {
+  padding: 1.25vh 2vw;
+  margin: 0;
+  background-color: #204051;
+  color: white;
+  border: transparent;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.button-right {
+  border-radius: 0 0 5px 0;
+}
+
+.button-left {
+  border-radius: 0 0 0 5px;
+}
+
+.user-project-description {
+  width: 100%;
+  min-height: 50px;
+  margin: 1vh 5vw;
+  border: 0;
+}
+
+.fa-icon {
+  position: relative;
+  color: #204051;
+}
+
+.story-est-text {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+/*----------------------------- USER STYLING -----------------------------*/
+.user-story {
+  background-color: white;
+  border-radius: 5px;
+  margin: 2vh 2vw;
+  width: 280px;
+  line-height: 1.4;
+}
+
+.user-story .user-story-header {
+  font-weight: 600;
+  width: 100%;
+  background-color: #84a9ac;
+  color: rgba(255, 255, 255, 0.86);
+  border-radius: 3px 3px 0 0;
+}
+
+.user-story .user-story-header input {
+  background-color: transparent;
+  border: transparent;
+  padding: 1vh;
+  color: rgba(255, 255, 255, 0.86);
+  border-radius: 5px;
+  line-height: 2.0;
+}
+
+.user-story .user-story-header-preview {
+  font-weight: 600;
+  background-color: #84a9ac;
+  color: rgba(255, 255, 255, 0.86);
+  border-radius: 3px 3px 0 0;
+  height: 50px;
+}
+
+.user-story .user-story-header-preview input {
+  background-color: transparent;
+  border: transparent;
+  padding: 1vh;
+  color: rgba(255, 255, 255, 0.86);
+  border-radius: 5px;
+}
+
+.user-story-details {
+  width: 80%;
+  max-width: 800px;
+  margin: 20% auto;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.user-story-button {
+  background-color: #84a9ac;
+  border: transparent;
+  color: rgba(255, 255, 255, 0.86);
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.user-story-button:hover {
+  border: transparent;
+  background-color: #393e46;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+.user-story-button-preview {
+  background-color: #84a9ac;
+  border: transparent;
+  color: rgba(255, 255, 255, 0.86);
+  border-radius: 0 0 5px 5px;
+  margin: 0;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.user-story-button-preview-close {
+  border-radius: 5px;
+  width: 10%;
+  font-weight: 900;
+}
+
+.user-story-button-preview:hover {
+  border: transparent;
+  background-color: #393e46;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+/*----------------------------- MODAL STYLING -----------------------------*/
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+/*----------------------------- LOGIN STYLING -----------------------------*/
+.login-page {
+  margin: auto;
+}
+
+.login-button {
+  margin: 30%;
+  background-color: #204051;
+  color: white;
+}
+
+/*----------------------------- LOADING STYLING -----------------------------*/
+.loading-container {
+  margin: 20vh auto;
+}
+
+.loader {
+  margin: 20vh auto;
+  border: 16px solid rgba(198, 203, 239, 0.2);
+  border-top: 16px solid #204051;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+}
+
+.profile-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+/*# sourceMappingURL=App.css.map */

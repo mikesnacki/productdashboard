@@ -14,12 +14,12 @@ export default function Header(){
     const { isAuthenticated, loginWithRedirect, logout} = useAuth0();
       
     const links = [
-      <Link key={1} className="s" to="/">Home</Link>,
-      isAuthenticated && <Link key={2} className="s" to="/projects">Projects</Link>,
-      isAuthenticated && <Link key={3} className="s" to="/addproject">Add a Project</Link>,
-      isAuthenticated && <Link key={4} className="s" to="/profile">Profile</Link>,
-      !isAuthenticated && <span key={5} className="s" onClick={() => loginWithRedirect({})}>Login</span>,
-      isAuthenticated && <span key={6} className="s" onClick={() => logout()}>Logout</span>,
+      <Link key={1} className="nav-links" to="/">Home</Link>,
+      isAuthenticated && <Link key={2} className="nav-links" to="/projects">Projects</Link>,
+      isAuthenticated && <Link key={3} className="nav-links" to="/addproject">Add a Project</Link>,
+      isAuthenticated && <Link key={4} className="nav-links" to="/profile">Profile</Link>,
+      !isAuthenticated && <span key={5} className="nav-links" onClick={() => loginWithRedirect({})}>Login</span>,
+      isAuthenticated && <span key={6} className="nav-links" onClick={() => logout()}>Logout</span>,
     ]
 
     return(    
