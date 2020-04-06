@@ -3,6 +3,7 @@ import useWindowSize from '../utilhooks/useWindowDim'
 import useScrollDirection from '../utilhooks/useScrollDirection'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from "../utilhooks/useAuth"
+import DropdownMenu from "./DropdownMenu"
 
 export default function Header(){
     const size = useWindowSize()
@@ -23,40 +24,35 @@ export default function Header(){
 
     return(    
         <div>
-        {(scrollDirection.direction || scrollDirection.distance <= 1) && !navDisplay && <header className="header space-between">
-          <h1 className="header-text">User Stories</h1>
-          {width >= collapseWidth
-            ? <ul className="nav-links">{links}</ul >
-            :
-            <button
-              className={`menu-bar menu-button`}
-              onClick={() => activateNavDisplay(!navDisplay)}
-            >
-              <div className='flex-row'>
-                <div className="flex-col">
-                  <div className="line1"></div>
-                  <div className="line2"></div>
-                  <div className="line3"></div>
-                </div>
-             </div> 
-            </button>
-          }
-        </header>}
-        <ul
-          onMouseLeave={() => activateNavDisplay(!navDisplay)}
-          onClick={() => activateNavDisplay(!navDisplay)}
-          className={`menu-dropdown-${navDisplay}`}>
-            { navDisplay && width < collapseWidth && 
-              <>
-              <button 
+        {
+        (scrollDirection.direction || scrollDirection.distance <= 1) && 
+          <header className="header space-between">
+            <h1 className="header-text">User Stories</h1>
+            {
+              width >= collapseWidth ? 
+              <ul className="nav-links">{links}</ul>
+              :
+              <button
+                className={`menu-bar menu-button`}
                 onClick={() => activateNavDisplay(!navDisplay)}
-                className="flex-row menu-button-close">
-                &times;
-              </button> 
-                {links}  
-              </>
-            } 
-        </ul>
+              >
+                <div className='flex-row'>
+                  <div className="flex-col">
+                    <div className="line1"></div>
+                    <div className="line2"></div>
+                    <div className="line3"></div>
+                  </div>
+                </div> 
+              <DropdownMenu
+                links={links}
+                navDisplay={navDisplay}
+                activateNavDisplay={activateNavDisplay}
+              />  
+              </button>
+              
+            }
+          </header>
+        }
       </div>
     )
 }
