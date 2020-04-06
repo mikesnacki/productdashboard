@@ -40,7 +40,7 @@ export const Auth0Provider = ({
       setLoading(false);
     };
     initAuth0();
-  }, [initOptions,onRedirectCallback]);
+  }, []);
 
   const loginWithPopup = async (params = {}) => {
     setPopupOpen(true);
