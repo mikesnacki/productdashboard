@@ -8,7 +8,7 @@ import DropdownMenu from "./DropdownMenu"
 export default function Header(){
     const size = useWindowSize()
     const width = size.width
-    const collapseWidth = 900
+    const collapseWidth = 1000
     const scrollDirection = useScrollDirection()
     const [navDisplay, activateNavDisplay] = useState(false)
     const { isAuthenticated, loginWithRedirect, logout} = useAuth0();
@@ -26,7 +26,7 @@ export default function Header(){
         <div>
         {
         (scrollDirection.direction || scrollDirection.distance <= 1) && 
-          <header className="header space-between">
+          <header className="header space-between flex-row-no-wrap">
             <h1 className="header-text">User Stories</h1>
             {
               width >= collapseWidth ? 

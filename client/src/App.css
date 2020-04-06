@@ -113,7 +113,7 @@ svg {
 }
 
 h1, .user-project-header {
-  font-size: calc(30px - 0.3vw);
+  font-size: calc(32px - 0.3vw);
 }
 
 h2, .story-name, .nav-links {
