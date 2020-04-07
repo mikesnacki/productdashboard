@@ -8,6 +8,7 @@ let Story = new Schema({
         required: false,
     },
     storyPriority: String,
+    storyPriorityNumeric: Number,
     storyEstimate: Number,
     storyUserDescription: String,
     storyFunctionality: String,

@@ -87,7 +87,10 @@ const UserProjects =({ project })=>{
                 </textarea>
             </div>
             <div className="flex-row space-around">
-            {projectData.projectStories.filter(story=>story.storyDeleted!==true).map((story, key)=>
+            {projectData.projectStories
+                        .filter(story => story.storyDeleted !== true)
+                        .sort((a, b)=> a.storyPriorityNumeric > b.storyPriorityNumeric ? -1 : a.storyPriorityNumeric < b.storyPriorityNumeric ? 1 : 0)
+                        .map((story, key)=>
                 <UserStoryPreview
                     key={key}
                     story={story}

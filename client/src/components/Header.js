@@ -8,14 +8,14 @@ import DropdownMenu from "./DropdownMenu"
 export default function Header(){
     const size = useWindowSize()
     const width = size.width
-    const collapseWidth = 1000
+    const collapseWidth = 900
     const scrollDirection = useScrollDirection()
     const [navDisplay, activateNavDisplay] = useState(false)
     const { isAuthenticated, loginWithRedirect, logout} = useAuth0();
       
     const links = [
       <Link key={1} className="nav-links" to="/">Home</Link>,
-      isAuthenticated && <Link key={2} className="nav-links" to="/projects">Projects</Link>,
+      isAuthenticated && <Link key={2} className="nav-links " to="/projects">Projects</Link>,
       isAuthenticated && <Link key={3} className="nav-links" to="/addproject">Add a Project</Link>,
       isAuthenticated && <Link key={4} className="nav-links" to="/profile">Profile</Link>,
       !isAuthenticated && <span key={5} className="nav-links" onClick={() => loginWithRedirect({})}>Login</span>,
@@ -30,9 +30,9 @@ export default function Header(){
             <h1 className="header-text">User Stories</h1>
             {
               width >= collapseWidth ? 
-              <ul className="">{links}</ul>
+              <ul className="nav-links">{links}</ul>
               :
-              <button
+              <div
                 className={`menu-bar menu-button`}
                 onClick={() => activateNavDisplay(!navDisplay)}
               >
@@ -46,8 +46,7 @@ export default function Header(){
                 navDisplay={navDisplay}
                 activateNavDisplay={activateNavDisplay}
               />  
-              </button>
-              
+              </div>    
             }
           </header>
         }

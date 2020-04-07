@@ -8,6 +8,13 @@ app.use(bodyParser.urlencoded({extended:false}));
 let Project = require("../models/user.model");
 let Story = require("../models/story.model");
 
+let storyPriorities = {
+    "High": 3,
+    "Medium": 2,
+    "Low": 1
+}
+
+
 router.route("/api/projects/:uid").get((req, res)=>{
     Project.find({userName: req.params.uid},(err, users)=>{
         return err ? console.log(err) : res.json(users);
@@ -73,9 +80,11 @@ router.route("/api/projects/:pid/deleteproject").post((req, res)=>{
 })
 
 router.route("/api/projects/:pid/addstory").post((req, res)=>{
+
     let story = new Story ({
                     storyName: req.body.storyName,
                     storyPriority: req.body.storyPriority,
+                    storyPriorityNumeric: storyPriorities[req.body.storyPriority],
                     storyEstimate: req.body.storyEstimate,
                     storyUserDescription: req.body.storyUserDescription,
                     storyFunctionality: req.body.storyFunctionality,
@@ -105,6 +114,7 @@ router.route("/api/projects/:pid/editstory/:sid").post((req, res)=>{
         story = project.projectStories.id(req.params.sid)
         story.storyName = req.body.storyName
         story.storyPriority = req.body.storyPriority
+        story.storyPriorityNumeric =  storyPriorities[req.body.storyPriority]
         story.storyEstimate = req.body.storyEstimate
         story.storyUserDescription = req.body.storyUserDescription
         story.storyFunctionality = req.body.storyFunctionality
@@ -133,6 +143,7 @@ router.route("/api/projects/:pid/deletestory/:sid").post((req, res)=>{
         story = project.projectStories.id(req.params.sid)
         story.storyName = req.body.storyName
         story.storyPriority = req.body.storyPriority
+        story.storyPriorityNumeric =  storyPriorities[req.body.storyPriority]
         story.storyEstimate = req.body.storyEstimate
         story.storyUserDescription = req.body.storyUserDescription
         story.storyFunctionality = req.body.storyFunctionality

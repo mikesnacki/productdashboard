@@ -6,15 +6,15 @@ import Loading from "./Loading"
 
 export default function StoriesPage(){
     const { loading, user } = useAuth0();
-    let userInfo = []
-    let res = useFetch(`/api/projects/${user !== undefined && user.email}`)
+    let userInfo = [];
+    let res = useFetch(`/api/projects/${user !== undefined && user.email}`);
 
     if (!res.error && !res.loading) {
         userInfo = res.response;
     }
     
     if (loading) {
-      return <Loading/>
+      return <Loading/>;
     }
   
     return(
