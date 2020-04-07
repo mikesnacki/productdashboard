@@ -46,7 +46,7 @@ const UserStoryPreview =({ projectID, story })=>{
         <div>
             <div className="user-story">
                 <div className="user-story-header-preview flex-row space-around">
-                    {storyData.storyName}
+                    {storyData.storyName.toUpperCase()}
                 </div>
                 <div className="flex-row-center">
                     <p>

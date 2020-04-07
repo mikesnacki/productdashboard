@@ -7,12 +7,6 @@ const DropdownMenu =({links, navDisplay, activateNavDisplay})=>{
         <ul
           onClick={() => activateNavDisplay(!navDisplay)}
           className={`menu-dropdown-${navDisplay}`}>
-            <button 
-            onClick={() => activateNavDisplay(!navDisplay)}
-            className="flex-row menu-button-close"
-            >
-                &times;
-            </button> 
                 {links}  
         </ul> 
     )

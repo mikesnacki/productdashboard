@@ -16,7 +16,7 @@ $gray: #9b9b9b;
   }
   
   @keyframes animatetop {
-    from {top:-100vh; opacity: 0}
+    from {top:-100vh; opacity: 0; }
     to {top:0; opacity: 1}
   }
   
@@ -202,12 +202,15 @@ $gray: #9b9b9b;
   top:0;
   width:100%;
   background-color: white;
+  height: 80px;
 
   .header-text{
     margin-left:4vw;
   }
 
-  .menu-bar{
+  .menu-bar-false, .menu-bar-true{
+    position: relative;
+    z-index: 1000;
     margin: auto 4vw;
     padding: 0.2vh 0.2vw;
     border: transparent;
@@ -220,19 +223,29 @@ $gray: #9b9b9b;
   .line2, 
   .line3 {
     width: 42px;
-    height: 4px;
+    height: 4.4px;
     background-color: $secondary-color;
     margin: 10px 2vw;
     border-radius: 90px;
     transition: 0.5s
-  }    
+  }  
+     
+  .menu-bar-true{ 
+    .line1 {
+        transform: rotate(-45deg) translate(-9px, 9px);
+    }
+    .line2 {
+      transition: .05s;
+        transform: translate(3rem, 0);
+        opacity:0;
+    }
+    .line3 {
+      transform: rotate(45deg) translate(-11px, -11px);
+    }
+  }
 }
 
-.menu-button:hover {
-  height: 100%;
-}
-
-.menu-button:hover {
+.menu-bar-false:hover {
   transition: 200ms;
   background-color:$secondary-color;
   color: white;
@@ -258,40 +271,34 @@ $gray: #9b9b9b;
   color: $tertiary-color;
 }
   .nav-links{
-      margin: auto 3vw;
-      text-decoration: none;
-      background-color: transparent;
+    margin: auto 3vw;
+    text-decoration: none;
+    background-color: transparent;
   }
   .nav-links:hover{
     transition: 300ms;
     color: #ff9c91;
   }
 
-  .links-container{
-    height: 100%;
-  }
-
 .menu-dropdown-true{
   position: fixed;
-  height:100vh;
+  height: calc(100vh - 80px);
   width: 100vw;
   background-color: #dadddf;
   text-align: center;
   z-index: 1;
-  top: 0;
   left: 0;
+  top: 80px;
   margin: 0;
-  overflow: auto;
   animation-name: animatetop;
   animation-duration: 300ms;
   
   .nav-links{
-      display: block;
-      margin: 8vh auto;
+    display: block;
+    margin: 8vh auto;
   }
 }
 
-  
 .nav-links{
     color:#393e46;
 }
@@ -305,17 +312,6 @@ $gray: #9b9b9b;
 .inner-links{
   margin-top: 50%;
   margin-bottom: 50%;
-}
-
-.admin {
-    margin: 70px auto;
-    width: 70vw;
-    background-color: #e5e5e5;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px 0px #3c4245;
-    padding: 1vw 3vw;
-    align-items: center;
-    justify-items: center;
 }
 
 .btn-primary {
@@ -354,10 +350,10 @@ $gray: #9b9b9b;
 .user-project-header {
   width: 100%;
   margin: 0;
-  background-color: $secondary-color;
-  color: hsla(0,0%, 100%, 0.96);
+  color: $secondary-color;
   padding: 2vh 0;
   border: transparent;
+  border-bottom: 3px solid $secondary-color;
   border-radius: 5px 5px 0 0;
   font-weight: 700;
 }
@@ -365,10 +361,9 @@ $gray: #9b9b9b;
 .user-project-container {
   max-width: 1200px;
   text-align: center;
-  background-color:rgba(222,227,226, 0.9);
   border-radius: 5px;
   margin: 2vh auto;
-  box-shadow: 0 4px 6px 1px hsla(0, 0%,0%, 0.16);
+  box-shadow: 1px 4px 6px 2px hsla(0, 0%,0%, 0.2);
 }
   
 .user-inputs, .user-buttons {
@@ -415,6 +410,7 @@ $gray: #9b9b9b;
   min-height: 50px;
   margin: 1vh 5vw;
   border: 0;
+  box-shadow: 0 4px 6px 1px hsla(0, 0%,0%, 0.2);
 }
 
 .fa-icon {
@@ -437,12 +433,12 @@ $gray: #9b9b9b;
   margin: 2vh 2vw;
   width: 280px;
   line-height: 1.4;
+  box-shadow: 0 4px 6px 1px hsla(0, 0%,0%, 0.2);
 
   .user-story-header {
     font-weight: 600;
     width: 100%;
-    background-color: $tertiary-color;
-    color: hsla(0,0%, 100%, 0.86);
+    color: $tertiary-color;
     border-radius: 3px 3px 0 0;
     input{
       background-color: transparent;
@@ -558,5 +554,6 @@ $gray: #9b9b9b;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 30%;
+  max-width: 400px;
 }

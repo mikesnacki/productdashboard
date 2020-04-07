@@ -8,7 +8,7 @@ import DropdownMenu from "./DropdownMenu"
 export default function Header(){
     const size = useWindowSize()
     const width = size.width
-    const collapseWidth = 900
+    const collapseWidth = 1200
     const scrollDirection = useScrollDirection()
     const [navDisplay, activateNavDisplay] = useState(false)
     const { isAuthenticated, loginWithRedirect, logout} = useAuth0();
@@ -33,7 +33,7 @@ export default function Header(){
               <ul className="nav-links">{links}</ul>
               :
               <div
-                className={`menu-bar menu-button`}
+                className={`menu-bar-${navDisplay}`}
                 onClick={() => activateNavDisplay(!navDisplay)}
               >
                 <div>

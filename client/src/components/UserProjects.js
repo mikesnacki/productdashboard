@@ -78,6 +78,7 @@ const UserProjects =({ project })=>{
                     name="projectDescription"
                     placeholder="Project Description"
                     className={css`
+                        box-shadow: 0 4px 6px 1px hsla(0, 0%,0%, 0.2);
                         width: 100%;
                         height: ${Math.max(projectData.projectDescription.length, 40)}px;
                         margin: 1vh 5vw;
