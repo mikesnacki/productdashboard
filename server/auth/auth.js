@@ -1,20 +1,21 @@
-const passport = require("passport")
-const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy
+const config = require("config");
+const jwt = require("express-jwt");
+const jwks = require("jwks-rsa");
+const domain = config.get("domain")
+const audience = config.get("audience")
 
-passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "/api/auth/google/callback"
-  },
-  
-  function(accessToken, profile, done) {
-      console.log(clientID, clientSecret)
-    var userData = {
-        email: profile.emails[0].value,
-        name: profile.displayName,
-        token: accessToken
-       };
-       done(null, userData);
-    }
-));
+let jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: `https://${domain}.well-known/jwks.json`,
+}),
+  audience: `${audience}`,
+  issuer: `${domain}`,
+  algorithms: ['RS256']
+});
 
+module.exports = jwtCheck
+
+console.log(domain, audience)

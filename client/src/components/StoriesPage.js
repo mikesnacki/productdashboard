@@ -1,13 +1,14 @@
 import React  from 'react';
 import { useFetch } from "../utilhooks/useFetch"
+import { useSecureFetch } from "../utilhooks/useSecureFetch"
 import UserProjects from "./UserProjects"
-import { useAuth0  } from "../utilhooks/useAuth"
+import { useAuth0 } from "../utilhooks/useAuth"
 import Loading from "./Loading"
 
 export default function StoriesPage(){
     const { loading, user } = useAuth0();
     let userInfo = [];
-    let res = useFetch(`/api/projects/${user !== undefined && user.email}`);
+    let res = useSecureFetch(`/api/projects/${user !== undefined && user.email}`);
 
     if (!res.error && !res.loading) {
         userInfo = res.response;

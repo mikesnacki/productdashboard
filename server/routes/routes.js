@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const router = express.Router();
+const jwtCheck = require("../auth/auth.js");
 
 const app = express();
 app.use(bodyParser.json());
@@ -13,7 +14,6 @@ let storyPriorities = {
     "Medium": 2,
     "Low": 1
 }
-
 
 router.route("/api/projects/:uid").get((req, res)=>{
     Project.find({userName: req.params.uid},(err, users)=>{

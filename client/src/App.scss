@@ -17,7 +17,7 @@ $gray: #9b9b9b;
   
   @keyframes animatetop {
     from {top:-100vh; opacity: 0; }
-    to {top:0; opacity: 1}
+    to {top:80px; opacity: 1}
   }
   
   @keyframes menu-out {
@@ -32,7 +32,6 @@ $gray: #9b9b9b;
     }
   }
 
-  
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -206,15 +205,15 @@ $gray: #9b9b9b;
 
   .header-text{
     margin-left:4vw;
+    
   }
 
   .menu-bar-false, .menu-bar-true{
     position: relative;
     z-index: 1000;
     margin: auto 4vw;
-    padding: 0.2vh 0.2vw;
     border: transparent;
-    border-radius:3px;
+    border-radius: 5px;
     background-color: transparent;
     color:white;
   }
@@ -223,15 +222,16 @@ $gray: #9b9b9b;
   .line2, 
   .line3 {
     width: 42px;
-    height: 4.4px;
+    height: 4px;
     background-color: $secondary-color;
-    margin: 10px 2vw;
+    margin: 11px 2vw;
     border-radius: 90px;
     transition: 0.5s
   }  
      
   .menu-bar-true{ 
     .line1 {
+        
         transform: rotate(-45deg) translate(-9px, 9px);
     }
     .line2 {
@@ -284,7 +284,7 @@ $gray: #9b9b9b;
   position: fixed;
   height: calc(100vh - 80px);
   width: 100vw;
-  background-color: #dadddf;
+  background-color:white;
   text-align: center;
   z-index: 1;
   left: 0;
@@ -350,11 +350,11 @@ $gray: #9b9b9b;
 .user-project-header {
   width: 100%;
   margin: 0;
-  color: $secondary-color;
+  background-color: $secondary-color;
+  color: white;
   padding: 2vh 0;
   border: transparent;
-  border-bottom: 3px solid $secondary-color;
-  border-radius: 5px 5px 0 0;
+  border-radius: 2px 2px 0 0;
   font-weight: 700;
 }
 
@@ -363,6 +363,7 @@ $gray: #9b9b9b;
   text-align: center;
   border-radius: 5px;
   margin: 2vh auto;
+  border: 2px solid $secondary-color;
   box-shadow: 1px 4px 6px 2px hsla(0, 0%,0%, 0.2);
 }
   
@@ -391,18 +392,18 @@ $gray: #9b9b9b;
 .user-project-button {
   padding: 1.25vh 2vw;
   margin: 0;
-  background-color: $secondary-color;
-  color: white;
+  color: $secondary-color;
+  background-color: white;
   border: transparent;
   flex-grow: 1;
 }
 
 .button-right {
-  border-radius: 0 0 5px 0;
+  border-radius: 0 0 3px 0;
 }
 
 .button-left {
-  border-radius: 0 0 0 5px;
+  border-radius: 0 0 0 3px;
 }
 
 .user-project-description{
@@ -433,13 +434,15 @@ $gray: #9b9b9b;
   margin: 2vh 2vw;
   width: 280px;
   line-height: 1.4;
+  border: 2px solid $tertiary-color;
+  border-radius: 5px;
   box-shadow: 0 4px 6px 1px hsla(0, 0%,0%, 0.2);
 
   .user-story-header {
     font-weight: 600;
     width: 100%;
     color: $tertiary-color;
-    border-radius: 3px 3px 0 0;
+    border-radius: 5px 5px 0 0;
     input{
       background-color: transparent;
       border: transparent;
@@ -451,7 +454,6 @@ $gray: #9b9b9b;
   }
 
   .user-story-header-preview {
-    
     font-weight: 600;
     background-color: $tertiary-color;
     color: hsla(0,0%, 100%, 0.86);
@@ -489,9 +491,9 @@ $gray: #9b9b9b;
 }
 
 .user-story-button-preview{
-  background-color: $tertiary-color;
+  color: $tertiary-color;
+  background-color: white;
   border: transparent;
-  color: hsla(0,0%, 100%, 0.86);
   border-radius: 0 0 5px 5px;
   margin: 0;  
   flex-grow: 1;

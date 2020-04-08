@@ -1,5 +1,5 @@
- 
 {
-    "domain": "shiny-wildflower-4842.auth0.com",
-    "clientId": "wv6bEHHjRoQ4K9aqPxrLjrAU397SYMTB"
+    "domain": "mickkinase.auth0.com",
+    "clientId": "jbb35C1Js1GRrEuGiU5MGQiT3sovpOBK",
+    "audience": "https://storydashboard.herokuapp.com/"
 }

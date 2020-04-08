@@ -1,4 +1,6 @@
  
 {
-    "mongoURI": "mongodb+srv://mikesnacki:In600pURF1m60w5e@cluster0-lnjwh.mongodb.net/userStories"
+    "mongoURI": "mongodb+srv://mikesnacki:In600pURF1m60w5e@cluster0-lnjwh.mongodb.net/userStories",
+    "domain": "https://mickkinase.auth0.com/",
+    "audience": "https://storydashboard.herokuapp.com/"
 }
