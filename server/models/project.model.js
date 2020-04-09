@@ -1,25 +1,29 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+let Story = require("./story.model");
 
-let ProjectSchema = new Schema({
+let Project = new Schema({
     userName: {
-        type: String,
+        type:String,
         required: true,
     },
     userDeleted:{
         type:Boolean,
-        required: true,
-        default: false
+        required: false,
+        default: true
     },
     projectName: {
         type:String,
-        required: false
+        required: true
     },
+    projectDescription: String,
     projectDeleted:{
         type:Boolean,
         default: false
     },
-    projectStories: Array
+    projectCreated: { type : Date },
+    projectStories:[Story.schema]
 });
 
-module.exports = mongoose.model("ProjectSchema", ProjectSchema);
+
+module.exports = mongoose.model("Project", Project);

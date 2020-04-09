@@ -15,9 +15,11 @@ let Story = new Schema({
     storyAcceptanceCriteriaAction: String,
     storyAcceptanceCriteriaOutcome: String,
     storyStatus: String,
-    storyDeleted: Boolean
+    storyDeleted: Boolean,
+    storyCreated: { type : Date },
+    storyLastUpdated: { type : Date },
+    storyCompleted: { type : Date },
     }
 );
 
-
-module.exports = mongoose.model("Story", Story);
+module.exports = Story = mongoose.model("Story", Story);

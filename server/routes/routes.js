@@ -6,7 +6,7 @@ const jwtCheck = require("../auth/auth.js");
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
-let Project = require("../models/user.model");
+let Project = require("../models/project.model");
 let Story = require("../models/story.model");
 
 let storyPriorities = {
@@ -26,7 +26,8 @@ router.route("/api/projects/addproject").post((req, res)=>{
                     userName: req.body.userName,
                     userDeleted: false,
                     projectName: req.body.projectName,
-                    projectDescription: req.body.projectDescription
+                    projectDescription: req.body.projectDescription,
+                    projectCreated,
                 });
 
     project.save()
@@ -93,6 +94,7 @@ router.route("/api/projects/:pid/addstory").post((req, res)=>{
                     storyAcceptanceCriteriaAction: req.body.storyAcceptanceCriteriaAction,
                     storyAcceptanceCriteriaOutcome: req.body.storyAcceptanceCriteriaOutcome,
                     storyStatus: req.body.storyStatus,
+                    storyCreated: Date.now()
                 });
 
     Project.findById(req.params.pid, (err, project)=>{
@@ -123,6 +125,8 @@ router.route("/api/projects/:pid/editstory/:sid").post((req, res)=>{
         story.storyAcceptanceCriteriaAction = req.body.storyAcceptanceCriteriaAction
         story.storyAcceptanceCriteriaOutcome = req.body.storyAcceptanceCriteriaOutcome
         story.storyStatus = req.body.storyStatus
+        story.storyLastUpdated = Date.now()
+        if (story.storyStatus  !== "Completed" && req.body.storyStatus === "Completed") {story.storyCompleted = Date.now()}
         project.save()
         .then(project=>{
             res.json(`Property ${project} updated`)
@@ -153,6 +157,7 @@ router.route("/api/projects/:pid/deletestory/:sid").post((req, res)=>{
         story.storyAcceptanceCriteriaOutcome = req.body.storyAcceptanceCriteriaOutcome
         story.storyStatus = "Dead"
         story.storyDeleted = 1
+        storyLastUpdated
         project.save()
         .then(project=>{
             res.json(`Property ${project} updated`)
