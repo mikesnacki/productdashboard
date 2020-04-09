@@ -16,8 +16,8 @@ $gray: #9b9b9b;
   }
   
   @keyframes animatetop {
-    from {top:-100vh; opacity: 0; }
-    to {top:80px; opacity: 1}
+    from {right: -100vh; opacity: 0;}
+    to {opacity: 1} 
   }
   
   @keyframes modal-drop {
@@ -190,7 +190,7 @@ $gray: #9b9b9b;
   position: fixed;
   display: inline-flex;
   font-weight: bold;
-  z-index: 99;
+  z-index: 1000;
   top:0;
   width:100%;
   background-color: white;
@@ -198,16 +198,13 @@ $gray: #9b9b9b;
 
   .header-text{
     margin-left:4vw;
-    
   }
 
   .menu-bar-false, .menu-bar-true{
     position: relative;
-    z-index: 1000;
+    z-index: 98;
     margin: auto 4vw;
     border: transparent;
-    border-radius: 5px;
-    background-color: transparent;
     color:white;
   }
 
@@ -224,8 +221,7 @@ $gray: #9b9b9b;
      
   .menu-bar-true{ 
     .line1 {
-        
-        transform: rotate(-45deg) translate(-9px, 9px);
+        transform: rotate(-45deg) translate(-10px, 10px);
     }
     .line2 {
       transition: .05s;
@@ -275,16 +271,15 @@ $gray: #9b9b9b;
 
 .menu-dropdown-true{
   position: fixed;
-  height: calc(100vh - 80px);
+  height: 100vh;
   width: 100vw;
   background-color:white;
   text-align: center;
-  z-index: 1;
-  left: 0;
+  z-index: 3;
   top: 80px;
+  right: 0;
   margin: 0;
-  animation-name: animatetop;
-  animation-duration: 300ms;
+  animation: 200ms animatetop;
   
   .nav-links{
     display: block;
