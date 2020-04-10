@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, FC, ReactNode } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faArrowsAltH, faArrowDown, faCalendar} from '@fortawesome/free-solid-svg-icons'
 import UserStoryDetail from "./UserStoriesDetail"
 import { library } from '@fortawesome/fontawesome-svg-core';
-import storyDataInputs from "./storyDataInputs"
+import storyDataInputs from "../InputObjects/storyDataInputs"
 
 library.add(faArrowUp, faArrowsAltH, faArrowDown, faCalendar)
 
-const UserStoryPreview =({ projectID, story })=>{
+const UserStoryPreview =( {projectID, story} )=>{
 
     const [detailsDisplayed, setDetailsDisplayed] = useState(null)
     const [storyData, setStoryData] = useState(storyDataInputs(story))
@@ -16,7 +16,7 @@ const UserStoryPreview =({ projectID, story })=>{
     const handleChange=(e)=> {
         const name = e.target.name;
         const defaultValue = e.target.value;
-        setStoryData(prevState=>({
+        setStoryData((prevState)=>({
             ...prevState,
             [name]:defaultValue,
             })
@@ -25,15 +25,14 @@ const UserStoryPreview =({ projectID, story })=>{
 
     const updateStory = async (id) => {
         id !== undefined && await axios.post(`/api/projects/${projectID}/editstory/${id}`, {...storyData})
-                                        .then(setDetailsDisplayed(null))
-                                        .catch(err=>console.log(err))
-        
+        .catch(err=>console.log(err));  
+        (setDetailsDisplayed(null))        
     }
 
     const deleteStory = async (id) => {
         await axios.post(`/api/projects/${projectID}/deletestory/${id}`, {...storyData})
-                    .then(setDetailsDisplayed(null))
-                    .catch(err=>console.log(err))
+                    .catch(err=>console.log(err));
+        (setDetailsDisplayed(null))
     }
 
     const priorityIcons = {

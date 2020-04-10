@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, FC, ReactNode } from 'react';
 import axios from 'axios'
 import UserStoryPreview from './UserStoriesPreview'
 import UserStoryDetail from "./UserStoriesDetail"
-import storyDataInputs from "./storyDataInputs"
-import projectDataInputs from "./projectDataInputs"
+import storyDataInputs from "../InputObjects/storyDataInputs"
+import projectDataInputs from "../InputObjects/projectDataInputs"
 import { css } from 'emotion'
+import { IProject } from "../Interfaces/IProject"
 
-const UserProjects =({ project })=>{
+const UserProjects  =( {project })=>{
 
     const [addStoryModal, setAddStoryModal] = useState(false)
     const [storyData, setStoryData] = useState(storyDataInputs())

@@ -1,11 +1,12 @@
-import React  from 'react';
-import { useFetch } from "../utilhooks/useFetch"
+import React, {FC}  from 'react';
 import { useSecureFetch } from "../utilhooks/useSecureFetch"
 import UserProjects from "./UserProjects"
 import { useAuth0 } from "../utilhooks/useAuth"
 import Loading from "./Loading"
+import  { IProject } from "../Interfaces/IProject"
 
-export default function StoriesPage(){
+
+const StoriesPage =()=>{
     const { loading, user } = useAuth0();
     let userInfo = [];
     let res = useSecureFetch(`/api/projects/${user !== undefined && user.email}`);
@@ -34,3 +35,5 @@ export default function StoriesPage(){
         </div>
     )
 }
+
+export default StoriesPage

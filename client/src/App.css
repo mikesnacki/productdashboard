@@ -23,45 +23,41 @@
 
 @-webkit-keyframes animatetop {
   from {
-    top: -100vh;
+    right: -100vh;
     opacity: 0;
   }
   to {
-    top: 0;
     opacity: 1;
   }
 }
 
 @keyframes animatetop {
   from {
-    top: -100vh;
+    right: -100vh;
     opacity: 0;
   }
   to {
-    top: 0;
     opacity: 1;
   }
 }
 
-@-webkit-keyframes menu-out {
-  0% {
-    max-height: 0;
-    overflow: hidden;
+@-webkit-keyframes modal-drop {
+  from {
+    top: -100vh;
+    opacity: 0;
   }
-  100% {
-    max-height: 400px;
-    overflow: hidden;
+  to {
+    opacity: 1;
   }
 }
 
-@keyframes menu-out {
-  0% {
-    max-height: 0;
-    overflow: hidden;
+@keyframes modal-drop {
+  from {
+    top: -100vh;
+    opacity: 0;
   }
-  100% {
-    max-height: 400px;
-    overflow: hidden;
+  to {
+    opacity: 1;
   }
 }
 
@@ -279,23 +275,24 @@ button:hover {
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-weight: bold;
-  z-index: 99;
+  z-index: 1000;
   top: 0;
   width: 100%;
   background-color: white;
+  height: 80px;
 }
 
 .header .header-text {
   margin-left: 4vw;
 }
 
-.header .menu-bar {
-  margin: 1vh 4vw;
-  padding: 0.2vh 0.2vw;
+.header .menu-bar-false, .header .menu-bar-true {
+  position: relative;
+  z-index: 98;
+  margin: auto 4vw;
   border: transparent;
-  border-radius: 3px;
-  background-color: transparent;
   color: white;
+  border-radius: 5px;
 }
 
 .header .line1,
@@ -304,26 +301,40 @@ button:hover {
   width: 42px;
   height: 4px;
   background-color: #204051;
-  margin: 10px 2vw;
+  margin: 11px 2vw;
   border-radius: 90px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
-.menu-button:hover {
-  height: 100%;
+.header .menu-bar-true .line1 {
+  -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+          transform: rotate(-45deg) translate(-10px, 10px);
 }
 
-.menu-button:hover {
+.header .menu-bar-true .line2 {
+  -webkit-transition: .05s;
+  transition: .05s;
+  -webkit-transform: translate(3rem, 0);
+          transform: translate(3rem, 0);
+  opacity: 0;
+}
+
+.header .menu-bar-true .line3 {
+  -webkit-transform: rotate(45deg) translate(-11px, -11px);
+          transform: rotate(45deg) translate(-11px, -11px);
+}
+
+.menu-bar-false:hover {
   -webkit-transition: 200ms;
   transition: 200ms;
   background-color: #204051;
   color: white;
 }
 
-.menu-button:hover .line1,
-.menu-button:hover .line2,
-.menu-button:hover .line3 {
+.menu-bar-false:hover .line1,
+.menu-bar-false:hover .line2,
+.menu-bar-false:hover .line3 {
   background-color: white;
 }
 
@@ -354,25 +365,18 @@ button:hover {
   color: #ff9c91;
 }
 
-.links-container {
-  height: 100%;
-}
-
 .menu-dropdown-true {
   position: fixed;
   height: 100vh;
   width: 100vw;
-  background-color: #dadddf;
+  background-color: white;
   text-align: center;
-  z-index: 1;
-  top: 0;
-  left: 0;
+  z-index: 3;
+  top: 80px;
+  right: 0;
   margin: 0;
-  overflow: auto;
-  -webkit-animation-name: animatetop;
-          animation-name: animatetop;
-  -webkit-animation-duration: 300ms;
-          animation-duration: 300ms;
+  -webkit-animation: 200ms animatetop;
+          animation: 200ms animatetop;
 }
 
 .menu-dropdown-true .nav-links {
@@ -394,20 +398,6 @@ button:hover {
 .inner-links {
   margin-top: 50%;
   margin-bottom: 50%;
-}
-
-.admin {
-  margin: 70px auto;
-  width: 70vw;
-  background-color: #e5e5e5;
-  border-radius: 5px;
-  -webkit-box-shadow: 2px 2px 2px 0px #3c4245;
-          box-shadow: 2px 2px 2px 0px #3c4245;
-  padding: 1vw 3vw;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  justify-items: center;
 }
 
 .btn-primary {
@@ -443,21 +433,21 @@ button:hover {
   width: 100%;
   margin: 0;
   background-color: #204051;
-  color: rgba(255, 255, 255, 0.96);
+  color: white;
   padding: 2vh 0;
   border: transparent;
-  border-radius: 5px 5px 0 0;
+  border-radius: 2px 2px 0 0;
   font-weight: 700;
 }
 
 .user-project-container {
   max-width: 1200px;
   text-align: center;
-  background-color: rgba(222, 227, 226, 0.9);
   border-radius: 5px;
   margin: 2vh auto;
-  -webkit-box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.16);
-          box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.16);
+  border: 2px solid #204051;
+  -webkit-box-shadow: 1px 4px 6px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 4px 6px 2px rgba(0, 0, 0, 0.2);
 }
 
 .user-inputs, .user-buttons {
@@ -486,8 +476,8 @@ button:hover {
 .user-project-button {
   padding: 1.25vh 2vw;
   margin: 0;
-  background-color: #204051;
-  color: white;
+  color: #204051;
+  background-color: white;
   border: transparent;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -495,11 +485,11 @@ button:hover {
 }
 
 .button-right {
-  border-radius: 0 0 5px 0;
+  border-radius: 0 0 3px 0;
 }
 
 .button-left {
-  border-radius: 0 0 0 5px;
+  border-radius: 0 0 0 3px;
 }
 
 .user-project-description {
@@ -507,6 +497,8 @@ button:hover {
   min-height: 50px;
   margin: 1vh 5vw;
   border: 0;
+  -webkit-box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.2);
 }
 
 .fa-icon {
@@ -530,14 +522,17 @@ button:hover {
   margin: 2vh 2vw;
   width: 280px;
   line-height: 1.4;
+  border: 2px solid #84a9ac;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.2);
 }
 
 .user-story .user-story-header {
   font-weight: 600;
   width: 100%;
-  background-color: #84a9ac;
-  color: rgba(255, 255, 255, 0.86);
-  border-radius: 3px 3px 0 0;
+  color: #84a9ac;
+  border-radius: 5px 5px 0 0;
 }
 
 .user-story .user-story-header input {
@@ -590,10 +585,10 @@ button:hover {
 }
 
 .user-story-button-preview {
-  background-color: #84a9ac;
+  color: #84a9ac;
+  background-color: white;
   border: transparent;
-  color: rgba(255, 255, 255, 0.86);
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 3px 3px;
   margin: 0;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -623,7 +618,9 @@ button:hover {
   margin: 0;
   padding: 0;
   background: rgba(0, 0, 0, 0.8);
-  z-index: 2;
+  z-index: 100;
+  -webkit-animation: modal-drop 0.5s;
+          animation: modal-drop 0.5s;
 }
 
 /*----------------------------- LOGIN STYLING -----------------------------*/
@@ -657,6 +654,7 @@ button:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 30%;
+  max-width: 400px;
 }
 /*# sourceMappingURL=App.css.map */

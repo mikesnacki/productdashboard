@@ -4,10 +4,10 @@ import App from "./App"
 import * as serviceWorker from "./serviceWorker";
 import { Auth0Provider } from "./utilhooks/useAuth";
 import config from "./auth_config.json";
-import history from "./utilhooks/history.js";
+import history from "./utilhooks/history";
 import 'typeface-inter';
 
-const onRedirectCallback = appState => {
+const onRedirectCallback = (appState: any) => {
   history.push(
     appState && appState.targetUrl
       ? appState.targetUrl
@@ -21,7 +21,7 @@ ReactDOM.render(
     client_id={config.clientId}
     redirect_uri={window.location.origin}
     audience={config.audience} 
-    onRedirectCallback={onRedirectCallback}
+    onRedirectCallback={()=>onRedirectCallback}
   >
     <App />
   </Auth0Provider>,

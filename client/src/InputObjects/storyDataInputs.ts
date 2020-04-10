@@ -1,4 +1,6 @@
-const storyDataInputs =(story)=>{
+import { IStory } from "../Interfaces/IStory"
+
+const storyDataInputs =(story: IStory | undefined)=>{
 
      return {
         storyID : story === undefined ? "" : story._id,
@@ -12,6 +14,7 @@ const storyDataInputs =(story)=>{
         storyAcceptanceCriteriaAction: story === undefined ? "" : story.storyAcceptanceCriteriaAction,
         storyAcceptanceCriteriaOutcome:  story === undefined ? "" :story.storyAcceptanceCriteriaOutcome,
         storyStatus: story === undefined ? "" : story.storyStatus,
+        storyPriorityNumeric: story === undefined ? "" : story.storyPriorityNumeric,
     }
 }
 

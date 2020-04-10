@@ -6,7 +6,7 @@ const Home =()=>{
 
     const size = useWindowSize()
     const width = size.width
-    const collapseWidth = 900
+    const collapseWidth:number = 900
 
     return(
         <div>

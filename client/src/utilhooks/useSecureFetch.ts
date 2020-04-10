@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
-import { useAuth0 } from "../utilhooks/useAuth"
+import { useAuth0 } from "./useAuth"
 
-export const useSecureFetch =(url)=>{
+export const useSecureFetch =(url:string)=>{
     const [response, setResponse] = useState([])
     const [error, setError] = useState(false)
     const [loading, setIsLoading] = useState(false)

@@ -1,5 +1,6 @@
-const projectDataInputs =(project)=>{
+import { IProject } from "../Interfaces/IProject"
 
+const projectDataInputs =(project: IProject | undefined)=>{
      return {
         projectID : project === undefined ? "" : project._id,
         userName: project === undefined ? "" : project.userName,

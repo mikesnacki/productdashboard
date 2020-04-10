@@ -1,0 +1,18 @@
+export interface IStory {
+    _id: string,
+    storyName: string,
+    storyPriority: string,
+    storyEstimate: number,
+    storyUserDescription: string,
+    storyFunctionality: string,
+    storyBenefit: string,
+    storyAcceptanceCriteriaBegin: string,
+    storyAcceptanceCriteriaAction: string,
+    storyAcceptanceCriteriaOutcome: string,
+    storyStatus: string,
+    storyDeleted: boolean,
+    storyCreated: Date,
+    storyLastUpdated: Date,
+    storyCompleted: Date,
+    storyPriorityNumeric: number,
+}
