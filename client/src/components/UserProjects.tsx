@@ -2,37 +2,40 @@ import React, { useState, FC, ReactNode } from 'react';
 import axios from 'axios'
 import UserStoryPreview from './UserStoriesPreview'
 import UserStoryDetail from "./UserStoriesDetail"
-import storyDataInputs from "../InputObjects/storyDataInputs"
-import projectDataInputs from "../InputObjects/projectDataInputs"
+import Stories from "../InputObjects/Stories"
+import Projects from "../InputObjects/Projects"
+import {IProject} from "../Interfaces/IProject"
 import { css } from 'emotion'
-import { IProject } from "../Interfaces/IProject"
 
-const UserProjects  =( {project })=>{
+
+const UserProjects = ({project}:{project: IProject})=>{
 
     const [addStoryModal, setAddStoryModal] = useState(false)
-    const [storyData, setStoryData] = useState(storyDataInputs())
-    const [projectData, setProjectData] = useState(projectDataInputs(project))
+    const [storyData, setStoryData] = useState(Stories("add"))
+    const [projectData, setProjectData] = useState(Projects("update", project))
 
-    const handleChange=(e)=> {
+    const handleChange=(e: any)=> {
         const name = e.target.name;
         const defaultValue = e.target.value;
 
-        setProjectData(prevState=>({
+        setProjectData((prevState: any)=>({
             ...prevState,
             [name]:defaultValue,
             })
         )
-        setStoryData(prevState=>({
+        setStoryData((prevState:any)=>({
             ...prevState,
             [name]:defaultValue,
             })
         )
     }
 
+    console.log(projectData.projectStories)
+
     const addStory = async () => {
         await axios.post(`/api/projects/${projectData.projectID}/addstory`, {...storyData})
         .then(res=> console.log(res.data))
-        .then(project.projectStories.push(storyData))
+        // .then(project.projectStories.push(storyData))
         .catch(err=>console.log(err))
     }
 
@@ -111,13 +114,13 @@ const UserProjects  =( {project })=>{
                 </button>
                 <button 
                     type="submit"
-                    onClick={()=>updateProject(projectData.projectID)}
+                    onClick={()=>updateProject()}
                     className="user-project-button">
                     Update Project
                 </button>        
                 <button 
                     type="submit"
-                    onClick={()=>deleteProject(projectData.projectID)}
+                    onClick={()=>deleteProject()}
                     className="user-project-button button-right">
                     Delete Project
                 </button>

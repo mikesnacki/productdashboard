@@ -1,6 +1,17 @@
 import React from 'react';
 
-const UserStory =( {handleChange, updateStory, deleteStory, addStory, setDetailsDisplayed, storyData, mode} )=>{
+type StoryActions = {
+    handleChange: any,
+    updateStory: any,
+    deleteStory: any,
+    addStory: any,
+    setDetailsDisplayed: any, 
+    storyData: any,
+    mode: string,
+}
+
+
+const UserStory =( handleChange: any, updateStory: any, deleteStory: any, addStory: any, setDetailsDisplayed: any, storyData: any, mode: any, )=>{
 
     return (
         <div className="user-story modal">

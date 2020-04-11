@@ -4,16 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faArrowsAltH, faArrowDown, faCalendar} from '@fortawesome/free-solid-svg-icons'
 import UserStoryDetail from "./UserStoriesDetail"
 import { library } from '@fortawesome/fontawesome-svg-core';
-import storyDataInputs from "../InputObjects/storyDataInputs"
+import Stories from "../InputObjects/Stories"
 
 library.add(faArrowUp, faArrowsAltH, faArrowDown, faCalendar)
 
-const UserStoryPreview =( {projectID, story} )=>{
+const UserStoryPreview =( projectID: any, story: any )=>{
 
-    const [detailsDisplayed, setDetailsDisplayed] = useState(null)
-    const [storyData, setStoryData] = useState(storyDataInputs(story))
+    const [detailsDisplayed, setDetailsDisplayed] = useState("")
+    const [storyData, setStoryData] = useState(Stories("update", story))
 
-    const handleChange=(e)=> {
+    const handleChange=(e :any)=> {
         const name = e.target.name;
         const defaultValue = e.target.value;
         setStoryData((prevState)=>({
@@ -23,16 +23,18 @@ const UserStoryPreview =( {projectID, story} )=>{
         )
     }
 
-    const updateStory = async (id) => {
+    console.log(storyData)
+
+    const updateStory = async (id : any) => {
         id !== undefined && await axios.post(`/api/projects/${projectID}/editstory/${id}`, {...storyData})
         .catch(err=>console.log(err));  
-        (setDetailsDisplayed(null))        
+        (setDetailsDisplayed(""))        
     }
 
-    const deleteStory = async (id) => {
+    const deleteStory = async (id: any) => {
         await axios.post(`/api/projects/${projectID}/deletestory/${id}`, {...storyData})
                     .catch(err=>console.log(err));
-        (setDetailsDisplayed(null))
+        (setDetailsDisplayed(""))
     }
 
     const priorityIcons = {
@@ -48,9 +50,9 @@ const UserStoryPreview =( {projectID, story} )=>{
                     {storyData.storyName.toUpperCase()}
                 </div>
                 <div className="flex-row-center">
-                    <p>
+                    {/* <p>
                         {storyData.storyPriority} {priorityIcons[storyData.storyPriority]}
-                    </p>
+                    </p> */}
                     <span className="fa-icon">
                     <FontAwesomeIcon size="3x" icon={"calendar"}/>
                         <span className="story-est-text" >{storyData.storyEstimate}</span>

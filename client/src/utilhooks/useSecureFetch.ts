@@ -12,7 +12,6 @@ export const useSecureFetch =(url:string)=>{
             setIsLoading(true)
             try {
                 const token = await getTokenSilently();
-                console.log(token)
                 await fetch(url, {
                     headers:{
                         Authorization: `Bearer ${token}`
