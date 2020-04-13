@@ -10,9 +10,9 @@ export interface IStory {
     storyAcceptanceCriteriaAction: string,
     storyAcceptanceCriteriaOutcome: string,
     storyStatus: string,
-    storyDeleted: boolean,
-    storyCreated: Date,
-    storyLastUpdated: Date,
-    storyCompleted: Date,
+    storyDeleted?: boolean,
+    storyCreated?: Date,
+    storyLastUpdated?: Date,
+    storyCompleted?: Date,
     storyPriorityNumeric: number,
 }

@@ -1,17 +1,19 @@
 import React from 'react';
+import {IStory} from "../Interfaces/IStory"
 
-type StoryActions = {
-    handleChange: any,
-    updateStory: any,
-    deleteStory: any,
-    addStory: any,
-    setDetailsDisplayed: any, 
-    storyData: any,
-    mode: string,
+type StoryActions  = {
+    handleChange?: (e: any) => void;
+    updateStory?: any;
+    deleteStory?:any;
+    addStory?:any;
+    setDetailsDisplayed?: any;
+    detailsDisplayed?: any,
+    storyData: any;
+    mode?: string;
+    setAddStoryModal?: any,
 }
 
-
-const UserStory =( handleChange: any, updateStory: any, deleteStory: any, addStory: any, setDetailsDisplayed: any, storyData: any, mode: any, )=>{
+function  UserStory(story: StoryActions){
 
     return (
         <div className="user-story modal">
@@ -21,23 +23,29 @@ const UserStory =( handleChange: any, updateStory: any, deleteStory: any, addSto
                         name="storyName"
                         className="" 
                         placeholder="Story Name" 
-                        onChange={handleChange}
-                        defaultValue={storyData.storyName}>
+                        onChange={story.handleChange}
+                        defaultValue={story.storyData.storyName}>
                     </input>
-                    <button 
-                        type="submit"
-                        onClick={()=>setDetailsDisplayed(null)}
+                    {story.mode === "add" ? <button 
+                        type="button"
+                        onClick={()=>story.setAddStoryModal(false)}
                         className="user-story-button-preview-close button-clear">
                         &times;
-                    </button>
+                    </button> :
+                    <button 
+                        type="button"
+                        onClick={()=>story.setDetailsDisplayed("")}
+                        className="user-story-button-preview-close button-clear">
+                        &times;
+                    </button>}
                 </div>
                 <div className="flex-row-center">
                     <select
                         name="storyPriority"
                         className="align-center user-inputs" 
                         placeholder="Priority" 
-                        onChange={handleChange}
-                        defaultValue={storyData.storyPriority}>
+                        onChange={story.handleChange}
+                        defaultValue={story.storyData.storyPriority}>
                         <option value="" disabled>Priority</option>
                         <option value="Low">Low Priority</option>
                         <option value="Medium">Medium Priority</option>
@@ -47,8 +55,8 @@ const UserStory =( handleChange: any, updateStory: any, deleteStory: any, addSto
                         name="storyEstimate"
                         className="align-center user-inputs" 
                         placeholder="Estimate" 
-                        onChange={handleChange}
-                        defaultValue={storyData.storyEstimate}>
+                        onChange={story.handleChange}
+                        defaultValue={story.storyData.storyEstimate}>
                         <option value="" disabled>Time Estimate</option>
                         <option value="1">1 Week</option>
                         <option value="2">2 Weeks</option>
@@ -63,50 +71,50 @@ const UserStory =( handleChange: any, updateStory: any, deleteStory: any, addSto
                         name="storyUserDescription"
                         className="align-center user-inputs" 
                         placeholder="User Description"
-                        onChange={handleChange} 
-                        defaultValue={storyData.storyUserDescription}>
+                        onChange={story.handleChange} 
+                        defaultValue={story.storyData.storyUserDescription}>
                     </input>
                     <input 
                         name="storyFunctionality"
                         className="align-center user-inputs" 
                         placeholder="Functionality" 
-                        onChange={handleChange}
-                        defaultValue={storyData.storyFunctionality}>
+                        onChange={story.handleChange}
+                        defaultValue={story.storyData.storyFunctionality}>
                     </input>
                     <input 
                         name="storyBenefit"
                         className="align-center user-inputs" 
                         placeholder="Benefit" 
-                        onChange={handleChange}
-                        defaultValue={storyData.storyBenefit}>
+                        onChange={story.handleChange}
+                        defaultValue={story.storyData.storyBenefit}>
                     </input>
                     <input 
                         name="storyAcceptanceCriteriaBegin"
                         className="align-center user-inputs" 
                         placeholder="Acceptance Criteria" 
-                        onChange={handleChange}
-                        defaultValue={storyData.storyAcceptanceCriteriaBegin}>
+                        onChange={story.handleChange}
+                        defaultValue={story.storyData.storyAcceptanceCriteriaBegin}>
                     </input>
                     <input 
                         name="storyAcceptanceCriteriaAction"
                         className="align-center user-inputs" 
                         placeholder="Accpetance Criteria Action"
-                        onChange={handleChange} 
-                        defaultValue={storyData.storyAcceptanceCriteriaAction}>
+                        onChange={story.handleChange} 
+                        defaultValue={story.storyData.storyAcceptanceCriteriaAction}>
                     </input>
                     <input 
                         name="storyAcceptanceCriteriaOutcome"
                         className="align-center user-inputs" 
                         placeholder="Acceptance Criteria Outcome" 
-                        onChange={handleChange}
-                        defaultValue={storyData.storyAcceptanceCriteriaOutcome}>
+                        onChange={story.handleChange}
+                        defaultValue={story.storyData.storyAcceptanceCriteriaOutcome}>
                     </input>
                     <select 
                         name="storyStatus"
                         className="align-center user-inputs" 
                         placeholder="Statuse" 
-                        onChange={handleChange}
-                        defaultValue={storyData.storyStatus}>
+                        onChange={story.handleChange}
+                        defaultValue={story.storyData.storyStatus}>
                         <option value="" disabled>Status</option>
                         <option value="Active">Active</option>
                         <option value="Dead">Dead</option>
@@ -114,17 +122,17 @@ const UserStory =( handleChange: any, updateStory: any, deleteStory: any, addSto
                     </select>
                 </div>
                 <div className="flex-row-no-wrap space-around">
-                    {mode === "edit" ? 
+                    {story.mode === "edit" ? 
                     <>
                     <button 
                         type="button"
-                        onClick={()=>updateStory(storyData.storyID)}
+                        onClick={()=>story.updateStory(story.storyData.storyID)}
                         className="user-story-button button-left">
                         Update Story
                     </button>        
                     <button 
                         type="button"
-                        onClick={()=>deleteStory(storyData.storyID)}
+                        onClick={()=>story.deleteStory(story.storyData.storyID)}
                         className="user-story-button button-right">
                         Delete Story
                     </button>
@@ -132,7 +140,7 @@ const UserStory =( handleChange: any, updateStory: any, deleteStory: any, addSto
                     :                  
                     <button 
                         type="button"
-                        onClick={()=>addStory()}
+                        onClick={()=>story.addStory()}
                         className="user-story-button">
                         Add Story
                     </button>

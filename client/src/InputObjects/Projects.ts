@@ -1,14 +1,14 @@
 
 import { IProject } from "../Interfaces/IProject"
 
-const Projects =(mode: string, project: IProject )=>{
+const Projects =(project?: IProject )=>{
      return {
-        projectID : mode === "add" ? "" : project._id,
-        userName: mode === "add" ? "" : project.userName,
-        projectName: mode === "add" ? "" : project.projectName,
-        projectDescription:mode === "add" ? "" : project.projectDescription,
-        projectDeleted: mode === "add" ? "" : project.isProjectDeleted,
-        projectStories: mode === "add" ? [] : project.projectStories,
+        projectID : !project ? "" : project._id,
+        userName: !project ? "" : project.userName,
+        projectName: !project ? "" : project.projectName,
+        projectDescription: !project ? "" : project.projectDescription,
+        projectDeleted: !project ? "" : project.isProjectDeleted,
+        projectStories: !project ? [] : project.projectStories,
     }
 }
 

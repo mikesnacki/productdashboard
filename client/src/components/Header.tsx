@@ -44,7 +44,7 @@ const Header:FC = ()=> {
                   <ul
                     onClick={() => activateNavDisplay(!navDisplay)}
                     className={`menu-dropdown-${navDisplay}`}>
-                          {links}  
+                      {links}  
                   </ul> }  
               </div>  
             }

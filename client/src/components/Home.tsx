@@ -29,7 +29,7 @@ const Home =()=>{
                     "https://res.cloudinary.com/mikesnacki/image/upload/v1586101725/preview-project-wide_rshps2.png"}
                     alt="preview for sites">
                 </img>
-                <p>If you're interested in what technology this is built on, its a MERN stack app, using Auth0 for authentitication, deployed on Heroku.</p>
+                <p>If you're interested in what technology this is built on, its a MERN stack app (with some faily weak TypeScript tbh), using Auth0 for authentitication, deployed on Heroku.</p>
                 <p>Any questions or comments, feel free to email me at mikesnacki@gmail.com</p>
             </div>
         </div>

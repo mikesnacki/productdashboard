@@ -157,7 +157,7 @@ router.route("/api/projects/:pid/deletestory/:sid").post((req, res)=>{
         story.storyAcceptanceCriteriaOutcome = req.body.storyAcceptanceCriteriaOutcome
         story.storyStatus = "Dead"
         story.storyDeleted = 1
-        storyLastUpdated
+        storyLastUpdated = Date.now()
         project.save()
         .then(project=>{
             res.json(`Property ${project} updated`)

@@ -9,30 +9,42 @@ import UserProjects from "./components/UserProjects"
 import Profile from "./components/Profile"
 import Loading from "./components/Loading"
 import PrivateRoute from "./components/PrivateRoute"
-
 import history from "./utilhooks/history"
 import { useAuth0 } from "./utilhooks/useAuth"
+import {useSecureFetch} from "./utilhooks/useSecureFetch"
+import { Auth0Provider } from "./utilhooks/useAuth";
+import config from "./auth_config.json";
+
+const onRedirectCallback = (appState: any) => {
+  history.push(
+    appState && appState.targetUrl
+      ? appState.targetUrl
+      : window.location.pathname
+  );
+};
+
 
 function App() {
-
-  const { loading } = useAuth0();
-
-  if (loading) {
-    return <Loading/>
-  }
-
   return (
-    <div>
-      <Router history={history}>
-        <Header/>
-        <Switch>
-          <Route path ="/" exact component={Home}/>
-          <PrivateRoute path ="/projects" component={StoriesPage}/>
-          <PrivateRoute path ="/addproject" component={UserProjects}/>
-          <PrivateRoute path ="/profile" component={Profile}/>
-        </Switch>
-      </Router>
-    </div>
+    <Auth0Provider
+    domain={config.domain}
+    client_id={config.clientId}
+    redirect_uri={window.location.origin}
+    audience={config.audience} 
+    onRedirectCallback={()=>onRedirectCallback}
+  >
+      <div>
+        <Router history={history}>
+          <Header/>
+          <Switch>
+            <Route path ="/" exact component={Home}/>
+            <PrivateRoute path ="/projects" component={StoriesPage}/>
+            <PrivateRoute path ="/addproject" component={UserProjects}/>
+            <PrivateRoute path ="/profile" component={Profile}/>
+          </Switch>
+        </Router>
+      </div>
+      </Auth0Provider>
   );
 }
 

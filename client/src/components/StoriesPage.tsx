@@ -1,4 +1,4 @@
-import React, {FC}  from 'react';
+import React  from 'react';
 import { useSecureFetch } from "../utilhooks/useSecureFetch"
 import UserProjects from "./UserProjects"
 import { useAuth0 } from "../utilhooks/useAuth"
@@ -7,30 +7,23 @@ import {IProject} from "../Interfaces/IProject"
 
 const StoriesPage =()=>{
     const { loading, user } = useAuth0();
-    let userInfo: Array<IProject> = [];
-    let res = useSecureFetch(`/api/projects/${user !== undefined && user.email}`);
+    let response = useSecureFetch(`/api/projects/${user !== undefined && user.email}`);
 
-    if (!res.error && !res.loading) {
-        userInfo = res.response;
-    }
-    
-    if (loading) {
+    if (response.loading || loading) {
       return <Loading/>;
-    }
-  
+    } 
+
     return(
         <div>
-            {
-            !res.error && !res.loading && res.response.length >0 &&
-                userInfo.map((project: IProject, key: number)=>
+            {!response.error && !response.loading && response.results.length >0 &&
+            response.results.map((project: IProject, key: number)=>
                     <UserProjects
                         key={key}
                         project={project}/>)
-            }
-            {/* {
-            !res.error && !res.loading && res.response.length ===0 &&
+            } 
+            {!response.error && !response.loading && response.results.length ===0 &&
                 <UserProjects/>
-            } */}
+            }
         </div>
     )
 }

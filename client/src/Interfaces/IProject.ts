@@ -8,3 +8,9 @@ export interface IProject {
     isProjectDeleted: string,
     projectStories: Array <IStory>,
 }
+
+export interface IProjects {
+    results: IProject[] ,
+    loading: boolean,
+    error: boolean
+}
