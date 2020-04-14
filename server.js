@@ -9,6 +9,7 @@ const path = require("path");
 const app = express();
 const routes = require("./server/routes/routes.js");
 const jwtCheck = require("./server/auth/auth")
+var expressStaticGzip = require('express-static-gzip');
 
 mongoose.connect(db,{
             useNewUrlParser: true,
@@ -27,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(
     expressStaticGzip(path.join(__dirname, 'build'), {
     }))
-    app.use(express.static('client/build'));
+    // app.use(express.static('client/build'));
     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
