@@ -7,13 +7,17 @@ import Projects from "../InputObjects/Projects"
 import { IProject } from "../Interfaces/IProject"
 import { IStory } from "../Interfaces/IStory"
 import { css } from 'emotion'
+import { useAuth0 } from "../utilhooks/useAuth"
+import {Redirect} from "react-router-dom"
 
 
 const UserProjects = ({project}:{project?: IProject})=>{
 
     const [addStoryModal, setAddStoryModal] = useState(false);
-    const [storyData, setStoryData] = useState(Stories());
+    const [storyData, setStoryData] = useState<IStory>(Stories());
     const [projectData, setProjectData] = useState(Projects(project));
+
+    const { user } = useAuth0();
 
     const handleChange=(e: any)=> {
         const name = e.target.name;
@@ -21,37 +25,41 @@ const UserProjects = ({project}:{project?: IProject})=>{
 
         setProjectData((prevState: any)=>({
             ...prevState,
+            userName: user.email,
             [name]:defaultValue,
             })
         )
         setStoryData((prevState:any)=>({
             ...prevState,
+            userName: user.email,
             [name]:defaultValue,
             })
         )
     }
 
     const addStory = async () => {
-        await axios.post(`/api/projects/${projectData.projectID}/addstory`, {...storyData})
+        await axios.post(`/api/projects/${projectData._id}/addstory`, {...storyData})
         .then(res=> console.log(res.data))
         .catch(err=>console.log(err))
         project?.projectStories.push(storyData)
+        return <Redirect to="/projects"/>
     }
 
     const addProject = async () => {
         await axios.post(`/api/projects/addproject`, {...projectData})
         .then(res=> console.log(res.data))
         .catch(err=>console.log(err))
+        return <Redirect to="/projects"/>
     }
 
     const updateProject = async () => {
-        await axios.post(`/api/projects/${projectData.projectID}/editproject`, {...projectData})
+        await axios.post(`/api/projects/${projectData._id}/editproject`, {...projectData})
         .then(res=> console.log(res.data))
         .catch(err=>console.log(err))
     }
 
     const deleteProject = async () => {
-        await axios.post(`/api/projects/${projectData.projectID}/deleteproject`, {...projectData})
+        await axios.post(`/api/projects/${projectData._id}/deleteproject`, {...projectData})
         .then(res=> console.log(res.data))
         .catch(err=>console.log(err))
     }
@@ -99,7 +107,7 @@ const UserProjects = ({project}:{project?: IProject})=>{
                     <UserStoryPreview
                         key={key}
                         story={story}
-                        projectID={projectData.projectID}
+                        _id={projectData._id}
                         setAddStoryModal={setAddStoryModal}
                     />    
                 )}

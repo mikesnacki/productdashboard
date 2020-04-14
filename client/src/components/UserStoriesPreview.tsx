@@ -13,7 +13,7 @@ type objectLiteralJSX = {
     [key: string]: JSX.Element
 }
 
-const UserStoryPreview =({ story, projectID, setAddStoryModal} : {story: IStory, projectID: string, setDetailsDisplayed?: any, detailsDisplayed?: any, setAddStoryModal?: any } )=>{
+const UserStoryPreview =({ story, _id } : {story: IStory, _id: string, setDetailsDisplayed?: any, detailsDisplayed?: any, setAddStoryModal?: any } )=>{
 
     const [storyData, setStoryData] = useState(Stories(story))
     const [detailsDisplayed, setDetailsDisplayed] = useState("");
@@ -28,13 +28,13 @@ const UserStoryPreview =({ story, projectID, setAddStoryModal} : {story: IStory,
         )
     }
     const updateStory = async (id : string) => {
-        id !== undefined && await axios.post(`/api/projects/${projectID}/editstory/${id}`, {...storyData})
+        id !== undefined && await axios.post(`/api/projects/${_id}/editstory/${id}`, {...storyData})
         .catch(err=>console.log(err));  
         (setDetailsDisplayed(""))        
     }
 
     const deleteStory = async (id: string) => {
-        await axios.post(`/api/projects/${projectID}/deletestory/${id}`, {...storyData})
+        await axios.post(`/api/projects/${_id}/deletestory/${id}`, {...storyData})
                     .catch(err=>console.log(err));
         (setDetailsDisplayed(""))
     }

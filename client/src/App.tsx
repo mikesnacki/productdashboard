@@ -7,11 +7,8 @@ import Home from "./components/Home"
 import StoriesPage from "./components/StoriesPage"
 import UserProjects from "./components/UserProjects"
 import Profile from "./components/Profile"
-import Loading from "./components/Loading"
 import PrivateRoute from "./components/PrivateRoute"
 import history from "./utilhooks/history"
-import { useAuth0 } from "./utilhooks/useAuth"
-import {useSecureFetch} from "./utilhooks/useSecureFetch"
 import { Auth0Provider } from "./utilhooks/useAuth";
 import config from "./auth_config.json";
 
@@ -23,7 +20,6 @@ const onRedirectCallback = (appState: any) => {
   );
 };
 
-
 function App() {
   return (
     <Auth0Provider
@@ -33,7 +29,6 @@ function App() {
     audience={config.audience} 
     onRedirectCallback={()=>onRedirectCallback}
   >
-      <div>
         <Router history={history}>
           <Header/>
           <Switch>
@@ -43,7 +38,6 @@ function App() {
             <PrivateRoute path ="/profile" component={Profile}/>
           </Switch>
         </Router>
-      </div>
       </Auth0Provider>
   );
 }

@@ -1,8 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const router = express.Router();
-const jwtCheck = require("../auth/auth.js");
-
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -27,7 +25,7 @@ router.route("/api/projects/addproject").post((req, res)=>{
                     userDeleted: false,
                     projectName: req.body.projectName,
                     projectDescription: req.body.projectDescription,
-                    projectCreated,
+                    projectCreated: Date.now(),
                 });
 
     project.save()

@@ -5,7 +5,7 @@ export interface IProject {
     userName: string,
     projectName: string,
     projectDescription: string,
-    isProjectDeleted: string,
+    projectDeleted: boolean,
     projectStories: Array <IStory>,
 }
 

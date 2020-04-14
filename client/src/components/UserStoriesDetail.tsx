@@ -1,19 +1,7 @@
 import React from 'react';
-import {IStory} from "../Interfaces/IStory"
+import {IStoryActions} from "../Interfaces/IStoryActions"
 
-type StoryActions  = {
-    handleChange?: (e: any) => void;
-    updateStory?: any;
-    deleteStory?:any;
-    addStory?:any;
-    setDetailsDisplayed?: any;
-    detailsDisplayed?: any,
-    storyData: any;
-    mode?: string;
-    setAddStoryModal?: any,
-}
-
-function  UserStory(story: StoryActions){
+const UserStory=(story: IStoryActions)=>{
 
     return (
         <div className="user-story modal">
@@ -126,13 +114,13 @@ function  UserStory(story: StoryActions){
                     <>
                     <button 
                         type="button"
-                        onClick={()=>story.updateStory(story.storyData.storyID)}
+                        onClick={()=>story.updateStory(story.storyData._id)}
                         className="user-story-button button-left">
                         Update Story
                     </button>        
                     <button 
                         type="button"
-                        onClick={()=>story.deleteStory(story.storyData.storyID)}
+                        onClick={()=>story.deleteStory(story.storyData._id)}
                         className="user-story-button button-right">
                         Delete Story
                     </button>

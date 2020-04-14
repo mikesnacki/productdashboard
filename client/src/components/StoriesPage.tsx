@@ -12,14 +12,16 @@ const StoriesPage =()=>{
     if (response.loading || loading) {
       return <Loading/>;
     } 
+    console.log(user.email)
 
     return(
         <div>
             {!response.error && !response.loading && response.results.length >0 &&
-            response.results.map((project: IProject, key: number)=>
+            response.results.filter(project=>project.projectDeleted===false).map((project: IProject, key: number)=>
                     <UserProjects
                         key={key}
-                        project={project}/>)
+                        project={project}
+                        />)
             } 
             {!response.error && !response.loading && response.results.length ===0 &&
                 <UserProjects/>

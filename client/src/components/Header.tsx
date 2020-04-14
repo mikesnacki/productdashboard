@@ -1,10 +1,10 @@
-import React, { useState, FC } from 'react'
+import React, { useState } from 'react'
 import useWindowSize from '../utilhooks/useWindowDim'
 import useScrollDirection from '../utilhooks/useScrollDirection'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from "../utilhooks/useAuth"
 
-const Header:FC = ()=> {
+const Header = ()=> {
     const size = useWindowSize()
     const width:number = size.width
     const collapseWidth:number  = 1200
