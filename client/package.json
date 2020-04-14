@@ -38,6 +38,7 @@
     "start": "react-scripts start",
     "server": "cd ../server && nodemon server.js",
     "build": "react-scripts build",
+    "postbuild": "cd build -type f -name '*.css' -o -name '*.js' -exec gzip -k '{}' \\;",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "concurrently \"npm run server\" \" npm run start\"",

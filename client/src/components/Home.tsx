@@ -15,6 +15,7 @@ const Home =()=>{
                 <p>The application itself, at present, focuses heavily on creating and tracking user stories. You can create 'projects' which house stories. After that, you create stories within the project</p>
                 <p>Here's a little preview picture of what a project with stories looks like.</p>
                 <img 
+                    loading="lazy" 
                     className={css`
                     width: 90%;
                     max-width: 1100px;

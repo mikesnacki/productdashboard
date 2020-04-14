@@ -17,5 +17,3 @@ let jwtCheck = jwt({
 });
 
 module.exports = jwtCheck
-
-console.log(domain, audience)
