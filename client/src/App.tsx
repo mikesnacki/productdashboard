@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import { Router, Route, Switch } from "react-router-dom";
 import './App.scss';
-
-import Header from "./components/Header"
-import Home from "./components/Home"
-import StoriesPage from "./components/StoriesPage"
-import UserProjects from "./components/UserProjects"
-import Profile from "./components/Profile"
+import Loading from "./components/Loading"
 import PrivateRoute from "./components/PrivateRoute"
 import history from "./utilhooks/history"
 import { Auth0Provider } from "./utilhooks/useAuth";
 import config from "./auth_config.json";
+
+const Header = React.lazy(()=>import("./components/Header"));
+const Home = React.lazy(()=>import("./components/Home"));
+const StoriesPage = React.lazy(()=>import( "./components/StoriesPage"));
+const UserProjects = React.lazy(()=>import("./components/UserProjects"));
+const Profile = React.lazy(()=>import("./components/Profile"));
 
 const onRedirectCallback = (appState: any) => {
   history.push(
@@ -29,6 +30,7 @@ function App() {
     audience={config.audience} 
     onRedirectCallback={()=>onRedirectCallback}
   >
+      <Suspense fallback={<Loading/>}>
         <Router history={history}>
           <Header/>
           <Switch>
@@ -38,7 +40,8 @@ function App() {
             <PrivateRoute path ="/profile" component={Profile}/>
           </Switch>
         </Router>
-      </Auth0Provider>
+      </Suspense>
+    </Auth0Provider>
   );
 }
 
