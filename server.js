@@ -9,6 +9,7 @@ const path = require("path");
 const app = express();
 const routes = require("./server/routes/routes.js");
 const jwtCheck = require("./server/auth/auth")
+const shrinkRay = require('shrink-ray-current');
 
 mongoose.connect(db,{
             useNewUrlParser: true,
@@ -20,6 +21,7 @@ app.use(cors());
 app.options('*', cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(shrinkRay());
 
 app.use(routes);
 
