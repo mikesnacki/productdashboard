@@ -8,7 +8,7 @@ import { IProject } from "../Interfaces/IProject"
 import { IStory } from "../Interfaces/IStory"
 import { css } from 'emotion'
 import { useAuth0 } from "../utilhooks/useAuth"
-import {Redirect} from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 
 const UserProjects = ({project}:{project?: IProject})=>{
@@ -17,6 +17,7 @@ const UserProjects = ({project}:{project?: IProject})=>{
     const [storyData, setStoryData] = useState<IStory>(Stories());
     const [projectData, setProjectData] = useState(Projects(project));
 
+    const history = useHistory();
     const { user } = useAuth0();
 
     const handleChange=(e: any)=> {
@@ -42,14 +43,13 @@ const UserProjects = ({project}:{project?: IProject})=>{
         .then(res=> console.log(res.data))
         .catch(err=>console.log(err))
         project?.projectStories.push(storyData)
-        return <Redirect to="/projects"/>
     }
 
     const addProject = async () => {
         await axios.post(`/api/projects/addproject`, {...projectData})
         .then(res=> console.log(res.data))
         .catch(err=>console.log(err))
-        return <Redirect to="/projects"/>
+        history.push("/projects")
     }
 
     const updateProject = async () => {
