@@ -41,6 +41,6 @@ export const useSecureFetch =(url:string)=>{
             }
         }
         fetchData()
-    }, [url]);
+    }, [url, getTokenSilently]);
     return response 
 }

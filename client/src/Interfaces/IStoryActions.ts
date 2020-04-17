@@ -5,9 +5,9 @@ export interface IStoryActions  {
     handleChange?: (e: any) => void;
     updateStory?: any;
     deleteStory?:any;
-    addStory?:any;
+    addStory?: any;
     setDetailsDisplayed?: any;
-    detailsDisplayed?: any,
+    detailsDisplayed?: string,
     storyData: IStory;
     mode?: string;
     setAddStoryModal?: any,

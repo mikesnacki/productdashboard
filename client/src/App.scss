@@ -131,13 +131,13 @@ $gray: #9b9b9b;
     flex-wrap: wrap;
     align-items: stretch;
     align-content: center;
+    justify-content: center;
   }
   
   .flex-row-no-wrap{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    
   }
   
   .flex-row-center{
@@ -236,7 +236,7 @@ $gray: #9b9b9b;
 }
 
 .menu-bar-false:hover {
-  transition: 200ms;
+  transition: 300ms;
   background-color:$secondary-color;
   color: white;
   .line1, 
@@ -280,7 +280,7 @@ $gray: #9b9b9b;
   top: 80px;
   right: 0;
   margin: 0;
-  animation: 200ms animatetop;
+  animation: 300ms animatetop;
   
   .nav-links{
     display: block;
@@ -476,7 +476,7 @@ $gray: #9b9b9b;
 .user-story-button:hover{
   border: transparent;
   background-color: $fourth-color;
-  transition: 200ms;
+  transition: 300ms;
 }
 
 .user-story-button-preview{
@@ -498,7 +498,7 @@ $gray: #9b9b9b;
 .user-story-button-preview:hover{
   border: transparent;
   background-color: $fourth-color;
-  transition: 200ms;
+  transition: 300ms;
 }
 
 /*----------------------------- MODAL STYLING -----------------------------*/
@@ -548,4 +548,33 @@ $gray: #9b9b9b;
   margin-right: auto;
   width: 30%;
   max-width: 400px;
+}
+
+.slider {
+  display: flex;
+  -webkit-appearance: none;
+  width: 70%;
+  height: 15px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  opacity: 0.7;
+  justify-content: center;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background:$secondary-color;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: $secondary-color;
+  cursor: pointer;
 }

@@ -9,6 +9,7 @@ import config from "./auth_config.json";
 
 const Header = React.lazy(()=>import("./components/Header"));
 const Home = React.lazy(()=>import("./components/Home"));
+const Draw = React.lazy(()=>import("./components/Draw"));
 const StoriesPage = React.lazy(()=>import( "./components/StoriesPage"));
 const UserProjects = React.lazy(()=>import("./components/UserProjects"));
 const Profile = React.lazy(()=>import("./components/Profile"));
@@ -35,6 +36,7 @@ function App() {
           <Header/>
           <Switch>
             <Route path ="/" exact component={Home}/>
+            <Route path ="/draw" exact component={Draw}/>
             <PrivateRoute path ="/projects" component={StoriesPage}/>
             <PrivateRoute path ="/addproject" component={UserProjects}/>
             <PrivateRoute path ="/profile" component={Profile}/>
