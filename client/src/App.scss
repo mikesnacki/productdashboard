@@ -31,7 +31,7 @@ $gray: #9b9b9b;
 }
   
   /*----------------------------- ELEMENTAL STYLING -----------------------------*/
-  $font-stack: 'Inter', 'IBM Plex Mono', 'monospace';
+  $font-stack: 'Inter';
   
   input, select, option {
     -webkit-box-sizing: border-box;
@@ -294,7 +294,6 @@ $gray: #9b9b9b;
   
 .nav-links:hover {
     transition: 0.2s;
-    font-weight: 600;
     color: #ff9c91;
 }
 
@@ -554,7 +553,7 @@ $gray: #9b9b9b;
   display: flex;
   -webkit-appearance: none;
   width: 70%;
-  height: 15px;
+  height: 2vh;
   border-radius: 5px;  
   background: $tertiary-color;
   opacity: 0.7;
@@ -565,17 +564,25 @@ $gray: #9b9b9b;
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 25px;
-  height: 25px;
+  height: 3vh;
+  width: 3vh;
   border-radius: 50%; 
   background:$secondary-color;
   cursor: pointer;
 }
 
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: $secondary-color;
-  cursor: pointer;
+.max-width-mobile {
+  max-width: 360px;
+}
+
+.dropdown-select {
+  border-radius: 5px;
+  border: transparent;
+  box-shadow: 0 4px 6px 1px hsla(0, 0%,0%, 0.2);
+  text-align: center;
+  padding: 5px 0.5vw;
+  margin: 0.1vh 0.2vw;
+  width: 150px;
+  height: 40px;
+  font-size: 16px;
 }

@@ -3,7 +3,7 @@ import { css } from 'emotion'
 import useWindowSize from "../utilhooks/useWindowDim"
 import useScrollLock from "../utilhooks/useScrollLock"
 
-type Coordinate = {
+type Coordinates = {
     x: number;
     y: number;  
 }
@@ -13,12 +13,13 @@ interface CanvasProps {
     height: number;
     color: string;
     markSize: number;
+    tipStyle: CanvasLineJoin;
 }
 
 const Canvas = (Props: CanvasProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isPainting, setIsPainting] = useState(false);
-    const [mousePosition, setMousePosition] = useState<Coordinate | undefined>(undefined);
+    const [mousePosition, setMousePosition] = useState<Coordinates | undefined>(undefined);
     useScrollLock(isPainting)
 
     const startPaint = useCallback((event: MouseEvent) => {
@@ -82,7 +83,7 @@ const Canvas = (Props: CanvasProps) => {
         };
     }, [exitPaint]);
 
-    const getCoordinates = (event: MouseEvent): Coordinate | undefined => {
+    const getCoordinates = (event: MouseEvent): Coordinates | undefined => {
         if (!canvasRef.current) {
             return;
         }
@@ -91,7 +92,7 @@ const Canvas = (Props: CanvasProps) => {
         return { x: event.pageX - canvas.offsetLeft, y: event.pageY - canvas.offsetTop };
     };
 
-    const drawLine = (originalMousePosition: Coordinate, newMousePosition: Coordinate) => {
+    const drawLine = (originalMousePosition: Coordinates, newMousePosition: Coordinates) => {
         if (!canvasRef.current) {
             return;
         }
@@ -99,7 +100,7 @@ const Canvas = (Props: CanvasProps) => {
         const context = canvas.getContext('2d');
         if (context) {
             context.strokeStyle = Props.color;
-            context.lineJoin = 'round';
+            context.lineJoin = Props.tipStyle;
             context.lineWidth = Props.markSize;
             context.beginPath();
             context.moveTo(originalMousePosition.x, originalMousePosition.y);
@@ -125,7 +126,7 @@ const Canvas = (Props: CanvasProps) => {
 
 Canvas.defaultProps = {
     width: window.innerWidth *.9,
-    height: window.innerHeight * .66,
+    height: window.innerHeight * .75,
 };
 
 export default Canvas;

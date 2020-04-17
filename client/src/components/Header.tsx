@@ -14,7 +14,7 @@ const Header = ()=> {
       
     const links: (JSX.Element | boolean)[] = [
       <Link key={1} className="nav-links" to="/">Home</Link>,
-      <Link key={2} className="nav-links" to="/draw">Draw</Link>,
+      <Link key={2} className="nav-links" to="/sketch">Sketch</Link>,
       isAuthenticated && <Link key={3} className="nav-links " to="/projects">Projects</Link>,
       isAuthenticated && <Link key={4} className="nav-links" to="/addproject">Add a Project</Link>,
       isAuthenticated && <Link key={5} className="nav-links" to="/profile">Profile</Link>,

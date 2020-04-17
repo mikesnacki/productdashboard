@@ -3,9 +3,10 @@ import { css } from 'emotion'
 
 type ButtonProps ={
     color: string;
-    setColor: (color: string) => void,
-    changeSlider:any,
-    markSize: number,
+    setColor: (color: string) => void;
+    changeSlider:(event: any) => void;
+    markSize: number;
+    changeTip: (event: any) => void;
 }
 
 const Buttons = (Props: ButtonProps) =>{
@@ -21,17 +22,22 @@ const Buttons = (Props: ButtonProps) =>{
                                 ]
 
     return (
-        <div>
-            <div className="flex-row">
-            <h2>Select a color</h2>
+        <div                        
+        className={css`
+        width: 90%;
+        margin: auto;
+        max-width: 900px;
+        }
+        `}>
+            <div className="flex-row space-around">
                 {buttons.map((button, key)=>
                     <button
                         key={key}
                         className={css`
                         border-radius: 50%;
                         margin: auto;
-                        height: 40px;
-                        width: 40px;
+                        height: 3vh;
+                        width: 3vh;
                         border: transparent;
                         background-color: ${button};
                         box-shadow: 1px 2px 4px 1px hsla(0, 0%,0%, 0.2);
@@ -44,11 +50,13 @@ const Buttons = (Props: ButtonProps) =>{
                         />
                 )}
             </div>
-            <div className="flex-row">
-            <h2 className="flex-col">Select thickness</h2>
-            <input type="range" min="1" max="20" value={Props.markSize} className="slider center-vertically" onChange={Props.changeSlider}/>
-            </div>
-           
+            <div className="flex-row space-evenly">
+                <input type="range" min="1" max="20" value={Props.markSize} className="slider center-vertically" onChange={Props.changeSlider}/>
+                <select className="dropdown-select" onChange={Props.changeTip}>
+                    <option value="round">Round Tip</option>
+                    <option value="bevel">Bevel Tip</option>
+                </select>
+            </div>     
         </div>
     )
 }
