@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect, useCallback} from 'react'
 import { css } from 'emotion'
 import useWindowSize from "../utilhooks/useWindowDim"
+import useScrollLock from "../utilhooks/useScrollLock"
 
 type Coordinate = {
     x: number;
@@ -15,10 +16,11 @@ interface CanvasProps {
 }
 
 const Canvas = (Props: CanvasProps) => {
-    const windowSize = useWindowSize();
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isPainting, setIsPainting] = useState(false);
     const [mousePosition, setMousePosition] = useState<Coordinate | undefined>(undefined);
+    useScrollLock(isPainting)
+
     const startPaint = useCallback((event: MouseEvent) => {
         const coordinates = getCoordinates(event);
         if (coordinates) {
@@ -123,7 +125,7 @@ const Canvas = (Props: CanvasProps) => {
 
 Canvas.defaultProps = {
     width: window.innerWidth *.9,
-    height: window.innerHeight * .67,
+    height: window.innerHeight * .66,
 };
 
 export default Canvas;

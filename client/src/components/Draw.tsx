@@ -1,11 +1,10 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, { useState } from 'react'
 import Buttons from "./Buttons"
 import Canvas from "./Canvas"
 
-
 const Draw =()=>{
     const [color, setColor]= useState<string>("")
-    const [markSize, setMarkSize] = useState<number>(2)
+    const [markSize, setMarkSize] = useState<number>(10)
 
     const changeSlider = (e:any)=>{
         let value = e.currentTarget.value

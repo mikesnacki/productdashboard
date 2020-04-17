@@ -556,9 +556,10 @@ $gray: #9b9b9b;
   width: 70%;
   height: 15px;
   border-radius: 5px;  
-  background: #d3d3d3;
+  background: $tertiary-color;
   opacity: 0.7;
   justify-content: center;
+  box-shadow: 1px 2px 3px 0 hsla(0, 0%,0%, 0.2);
 }
 
 .slider::-webkit-slider-thumb {
