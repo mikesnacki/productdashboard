@@ -14,7 +14,6 @@ interface CanvasProps {
     color: string;
     markSize: number;
     tipStyle: CanvasLineJoin;
-    event?: MouseEvent | TouchEvent
 }
 
 const Canvas = (Props: CanvasProps) => {
@@ -44,7 +43,7 @@ const Canvas = (Props: CanvasProps) => {
     }, [startPaint]);
 
     const paint = useCallback(
-        (event: MouseEvent ) => {
+        (event: MouseEvent | TouchEvent ) => {
             if (isPainting) {
                 const newMousePosition = getCoordinates(event);
                 if (mousePosition && newMousePosition) {
@@ -62,8 +61,10 @@ const Canvas = (Props: CanvasProps) => {
         }
         const canvas: HTMLCanvasElement = canvasRef.current;
         canvas.addEventListener('mousemove', paint);
+        canvas.addEventListener('touchstart', paint);
         return () => {
             canvas.removeEventListener('mousemove', paint);
+            canvas.removeEventListener('touchstart', paint);
         };
     }, [paint]);
 
@@ -79,9 +80,11 @@ const Canvas = (Props: CanvasProps) => {
         const canvas: HTMLCanvasElement = canvasRef.current;
         canvas.addEventListener('mouseup', exitPaint);
         canvas.addEventListener('mouseleave', exitPaint);
+        canvas.addEventListener('touchend', exitPaint);
         return () => {
             canvas.removeEventListener('mouseup', exitPaint);
             canvas.removeEventListener('mouseleave', exitPaint);
+            canvas.removeEventListener('touchend', exitPaint);
         };
     }, [exitPaint]);
 
