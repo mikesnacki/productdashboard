@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, SyntheticEvent } from 'react'
 import Buttons from "./Buttons"
 import Canvas from "./Canvas"
 
