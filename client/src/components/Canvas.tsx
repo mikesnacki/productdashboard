@@ -1,4 +1,4 @@
-import React, {createRef, useState, useRef, useEffect, useCallback} from 'react'
+import React, {useState, useRef, useEffect, useCallback} from 'react'
 import { css } from 'emotion'
 import useScrollLock from "../utilhooks/useScrollLock"
 import ICanvas from "../Interfaces/ICanvas"
@@ -9,9 +9,9 @@ type Coordinates = {
 }
 
 const Canvas = (Props: ICanvas) => {
-    const canvasRef = createRef<HTMLCanvasElement>();
+    const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isPainting, setIsPainting] = useState(false);
-    const [mousePosition, setMousePosition] = useState<Coordinates>();
+    const [mousePosition, setMousePosition] = useState<Coordinates | undefined>(undefined);
     useScrollLock(isPainting)
 
     const startPaint = useCallback((event: MouseEvent | TouchEvent) => {
@@ -146,7 +146,7 @@ const Canvas = (Props: ICanvas) => {
 
 Canvas.defaultProps = {
     width: window.innerWidth *.9,
-    height: window.innerHeight * .75,
+    height: window.innerHeight * .70,
 };
 
 export default Canvas;
