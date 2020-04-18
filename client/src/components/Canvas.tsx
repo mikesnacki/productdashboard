@@ -1,25 +1,17 @@
-import React, {useState, useRef, useEffect, useCallback} from 'react'
+import React, {createRef, useState, useRef, useEffect, useCallback} from 'react'
 import { css } from 'emotion'
-import useWindowSize from "../utilhooks/useWindowDim"
 import useScrollLock from "../utilhooks/useScrollLock"
+import ICanvas from "../Interfaces/ICanvas"
 
 type Coordinates = {
     x: number;
     y: number;  
 }
 
-interface CanvasProps {
-    width: number;
-    height: number;
-    color: string;
-    markSize: number;
-    tipStyle: CanvasLineJoin;
-}
-
-const Canvas = (Props: CanvasProps) => {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
+const Canvas = (Props: ICanvas) => {
+    const canvasRef = createRef<HTMLCanvasElement>();
     const [isPainting, setIsPainting] = useState(false);
-    const [mousePosition, setMousePosition] = useState<Coordinates | undefined>(undefined);
+    const [mousePosition, setMousePosition] = useState<Coordinates>();
     useScrollLock(isPainting)
 
     const startPaint = useCallback((event: MouseEvent | TouchEvent) => {
@@ -115,14 +107,26 @@ const Canvas = (Props: CanvasProps) => {
         const canvas: HTMLCanvasElement = canvasRef.current;
         const context = canvas.getContext('2d');
         if (context) {
-            context.strokeStyle = Props.color;
-            context.lineJoin = Props.tipStyle;
-            context.lineWidth = Props.markSize;
+            context.strokeStyle = Props.strokeStyle;
+            context.lineJoin = Props.lineJoin;
+            context.lineWidth = Props.lineWidth;
             context.beginPath();
             context.moveTo(originalMousePosition.x, originalMousePosition.y);
             context.lineTo(newMousePosition.x, newMousePosition.y);
             context.closePath();
             context.stroke();
+
+            Props.addStrokes({
+                strokeStyle: context.strokeStyle,
+                lineJoin: context.lineJoin,
+                lineWidth: context.lineWidth,
+                originalX: originalMousePosition.x,
+                originalY: originalMousePosition.y,
+                newX: newMousePosition.x,
+                newY: newMousePosition.y,
+            })
+
+
         }
     };
     return (

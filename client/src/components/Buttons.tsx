@@ -2,11 +2,11 @@ import React from 'react'
 import { css } from 'emotion'
 
 type ButtonProps ={
-    color: string;
-    setColor: (color: string) => void;
+    strokeStyle: string;
+    setStrokeStyle: (strokeStyle: string) => void;
     changeSlider:(event: React.ChangeEvent<HTMLInputElement>) => void;
-    markSize: number;
-    changeTip: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    lineWidth: number;
+    changeLineJoin: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const Buttons = (Props: ButtonProps) =>{
@@ -46,11 +46,11 @@ const Buttons = (Props: ButtonProps) =>{
                             background-color: ${button};
                         }
                         `}
-                        onClick={()=>Props.setColor(button)}
+                        onClick={()=>Props.setStrokeStyle(button)}
                         />
                 )}
-                <input type="range" min="1" max="20" value={Props.markSize} className="slider center-vertically" onChange={Props.changeSlider}/>
-                <select className="dropdown-select" onChange={Props.changeTip}>
+                <input type="range" min="1" max="20" value={Props.lineWidth} className="slider center-vertically" onChange={Props.changeSlider}/>
+                <select className="dropdown-select" onChange={Props.changeLineJoin}>
                     <option value="round">Round Tip</option>
                     <option value="bevel">Bevel Tip</option>
                 </select>

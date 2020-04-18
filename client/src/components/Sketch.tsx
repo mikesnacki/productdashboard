@@ -1,39 +1,47 @@
-import React, { useState, SyntheticEvent } from 'react'
+import React, { useState } from 'react'
 import Buttons from "./Buttons"
 import Canvas from "./Canvas"
+import ICanvas from "../Interfaces/ICanvas"
 
 const Draw =()=>{
-    const [color, setColor]= useState<string>("")
-    const [markSize, setMarkSize] = useState<number>(10)
-    const [tipStyle, setTipStyle] = useState<CanvasLineJoin>("round")
+    const [strokeStyle, setStrokeStyle]= useState<string>("")
+    const [lineWidth, setMarkSize] = useState<number>(10)
+    const [lineJoin, setlineJoin] = useState<CanvasLineJoin>("round")
+    const [canvasArray, setCanvasArray] = useState<ICanvas[]>()
 
     const changeSlider = (e:any)=>{
         let value = e.currentTarget.value
         setMarkSize(value)
     }
 
-    const changeTip =(e: any)=>{
+    const changeLineJoin =(e: any)=>{
         let value = e.currentTarget.value
-        setTipStyle(value)
+        setlineJoin(value)
     }
+
+    const addStrokes =(newStroke: any)=>{
+        setCanvasArray(canvasArray=>[...canvasArray || [], newStroke])
+    }
+
+    console.log(canvasArray)
 
     return (
         <div className="stories-page draw">
             <Buttons 
-                color={color}
-                setColor={setColor}
+                strokeStyle={strokeStyle}
+                setStrokeStyle={setStrokeStyle}
                 changeSlider={changeSlider}
-                markSize={markSize}
-                changeTip={changeTip}
+                lineWidth={lineWidth}
+                changeLineJoin={changeLineJoin}
             />
             <Canvas
-                color={color}
-                markSize={markSize}
-                tipStyle={tipStyle}
+                strokeStyle={strokeStyle}
+                lineWidth={lineWidth}
+                lineJoin={lineJoin}
+                addStrokes={addStrokes}
             />
         </div>
     )
-
 }
 
 export default Draw
