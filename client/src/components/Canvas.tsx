@@ -22,7 +22,7 @@ const Canvas = (Props: CanvasProps) => {
     const [mousePosition, setMousePosition] = useState<Coordinates | undefined>(undefined);
     useScrollLock(isPainting)
 
-    const startPaint = useCallback((event: any) => {
+    const startPaint = useCallback((event: MouseEvent | TouchEvent) => {
 
         const coordinates = getCoordinates(event);
         if (coordinates) {
@@ -36,9 +36,11 @@ const Canvas = (Props: CanvasProps) => {
             return;
         }
         const canvas: HTMLCanvasElement = canvasRef.current;
-        canvas.addEventListener('mousedown', startPaint);
+        canvas.addEventListener('mousedown', startPaint); 
+        canvas.addEventListener('touchstart', startPaint); 
         return () => {
             canvas.removeEventListener('mousedown', startPaint);
+            canvas.removeEventListener('touchstart', startPaint);
         };
     }, [startPaint]);
 
@@ -61,10 +63,10 @@ const Canvas = (Props: CanvasProps) => {
         }
         const canvas: HTMLCanvasElement = canvasRef.current;
         canvas.addEventListener('mousemove', paint);
-        canvas.addEventListener('touchstart', paint);
+        canvas.addEventListener('touchmove', paint);
         return () => {
             canvas.removeEventListener('mousemove', paint);
-            canvas.removeEventListener('touchstart', paint);
+            canvas.removeEventListener('touchmove', paint);
         };
     }, [paint]);
 

@@ -195,7 +195,7 @@ $gray: #9b9b9b;
   display: inline-flex;
   font-weight: bold;
   z-index: 1000;
-  top:0;
+  top: 5px;
   width:100%;
   background-color: white;
   height: 80px;
@@ -210,7 +210,9 @@ $gray: #9b9b9b;
     margin: auto 4vw;
     border: transparent;
     color:white;
-    border-radius: 5px;
+    border-radius: 50%;
+    box-shadow: 1px 4px 6px 2px hsla(0, 0%,0%, 0.2);
+    padding: 11px 0px;
   }
 
   .line1, 
@@ -220,10 +222,14 @@ $gray: #9b9b9b;
     height: 4px;
     background-color: $secondary-color;
     margin: 11px 2vw;
-    border-radius: 90px;
     transition: 0.5s
   }  
-     
+
+  .line2 {
+    width: 22px;
+    margin-right: 40px;
+  }
+
   .menu-bar-true{ 
     .line1 {
         transform: rotate(-45deg) translate(-10px, 10px);
@@ -239,17 +245,6 @@ $gray: #9b9b9b;
   }
 }
 
-.menu-bar-false:hover {
-  transition: 300ms;
-  background-color:$secondary-color;
-  color: white;
-  .line1, 
-  .line2, 
-  .line3 {
-    background-color: white;
-  }    
-}
-
 .menu-button-close {
   margin-left: 80%;
   margin-top: 5%;
@@ -263,6 +258,7 @@ $gray: #9b9b9b;
   background-color: transparent;
   border: transparent;
   color: $tertiary-color;
+  box-shadow: 1px 4px 6px 2px hsla(0, 0%,0%, 0.2);
 }
   .nav-links{
     margin: auto 3vw;
@@ -280,8 +276,8 @@ $gray: #9b9b9b;
   width: 100vw;
   background-color:white;
   text-align: center;
-  z-index: 3;
-  top: 80px;
+  z-index: 1;
+  top: 96px;
   right: 0;
   margin: 0;
   animation: 300ms animatetop;
@@ -334,7 +330,7 @@ $gray: #9b9b9b;
 /*----------------------------- STORIES PAGE STYLING -----------------------------*/
 
 .stories-page {
-  margin: 80px 4vw;
+  margin: 104px 4vw;
 }
 
 /*----------------------------- PROJECT STYLING -----------------------------*/
