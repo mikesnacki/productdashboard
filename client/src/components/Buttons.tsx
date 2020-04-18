@@ -4,9 +4,9 @@ import { css } from 'emotion'
 type ButtonProps ={
     color: string;
     setColor: (color: string) => void;
-    changeSlider:(event: any) => void;
+    changeSlider:(event: React.ChangeEvent<HTMLInputElement>) => void;
     markSize: number;
-    changeTip: (event: any) => void;
+    changeTip: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const Buttons = (Props: ButtonProps) =>{
@@ -29,7 +29,7 @@ const Buttons = (Props: ButtonProps) =>{
         max-width: 900px;
         }
         `}>
-            <div className="flex-row space-around">
+            <div className="flex-row align-space-between sketch">
                 {buttons.map((button, key)=>
                     <button
                         key={key}
@@ -49,8 +49,6 @@ const Buttons = (Props: ButtonProps) =>{
                         onClick={()=>Props.setColor(button)}
                         />
                 )}
-            </div>
-            <div className="flex-row space-evenly">
                 <input type="range" min="1" max="20" value={Props.markSize} className="slider center-vertically" onChange={Props.changeSlider}/>
                 <select className="dropdown-select" onChange={Props.changeTip}>
                     <option value="round">Round Tip</option>

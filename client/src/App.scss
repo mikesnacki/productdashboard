@@ -149,6 +149,10 @@ $gray: #9b9b9b;
   .align-center{
     text-align: center;
   }
+
+  .align-space-between {
+    align-content: space-between;
+  }
   
   .space-between{
     justify-content: space-between;
@@ -552,7 +556,7 @@ $gray: #9b9b9b;
 .slider {
   display: flex;
   -webkit-appearance: none;
-  width: 70%;
+  width: 220px;
   height: 2vh;
   border-radius: 5px;  
   background: $tertiary-color;
@@ -571,10 +575,6 @@ $gray: #9b9b9b;
   cursor: pointer;
 }
 
-.max-width-mobile {
-  max-width: 360px;
-}
-
 .dropdown-select {
   border-radius: 5px;
   border: transparent;
@@ -583,6 +583,10 @@ $gray: #9b9b9b;
   padding: 5px 0.5vw;
   margin: 0.1vh 0.2vw;
   width: 150px;
-  height: 40px;
+  height: 32px;
   font-size: 16px;
+}
+
+.sketch {
+  height: 100px;
 }

@@ -14,6 +14,7 @@ interface CanvasProps {
     color: string;
     markSize: number;
     tipStyle: CanvasLineJoin;
+    event?: MouseEvent | TouchEvent
 }
 
 const Canvas = (Props: CanvasProps) => {
@@ -22,7 +23,8 @@ const Canvas = (Props: CanvasProps) => {
     const [mousePosition, setMousePosition] = useState<Coordinates | undefined>(undefined);
     useScrollLock(isPainting)
 
-    const startPaint = useCallback((event: MouseEvent) => {
+    const startPaint = useCallback((event: any) => {
+
         const coordinates = getCoordinates(event);
         if (coordinates) {
             setMousePosition(coordinates);
@@ -42,7 +44,7 @@ const Canvas = (Props: CanvasProps) => {
     }, [startPaint]);
 
     const paint = useCallback(
-        (event: MouseEvent) => {
+        (event: MouseEvent ) => {
             if (isPainting) {
                 const newMousePosition = getCoordinates(event);
                 if (mousePosition && newMousePosition) {
@@ -83,13 +85,22 @@ const Canvas = (Props: CanvasProps) => {
         };
     }, [exitPaint]);
 
-    const getCoordinates = (event: MouseEvent): Coordinates | undefined => {
+    const getCoordinates = (event: MouseEvent | TouchEvent): Coordinates | undefined => {
         if (!canvasRef.current) {
             return;
         }
 
+        let mouseX = (event as TouchEvent).changedTouches ?
+                    (event as TouchEvent).changedTouches[0].pageX :
+                    (event as MouseEvent).pageX;
+                    
+        let mouseY = (event as TouchEvent).changedTouches ?
+                    (event as TouchEvent).changedTouches[0].pageY :
+                    (event as MouseEvent).pageY;
+
+
         const canvas: HTMLCanvasElement = canvasRef.current;
-        return { x: event.pageX - canvas.offsetLeft, y: event.pageY - canvas.offsetTop };
+        return { x: mouseX - canvas.offsetLeft, y: mouseY - canvas.offsetTop };
     };
 
     const drawLine = (originalMousePosition: Coordinates, newMousePosition: Coordinates) => {
