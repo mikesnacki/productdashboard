@@ -139,8 +139,8 @@ const Canvas = (Props: ICanvas) => {
 };
 
 Canvas.defaultProps = {
-    width: window.innerWidth *.8,
-    height: window.innerHeight * .70,
+    width: window.innerWidth *.75,
+    height: window.innerHeight * .75,
 };
 
 export default Canvas;

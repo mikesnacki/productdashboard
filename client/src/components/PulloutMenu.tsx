@@ -19,7 +19,7 @@ const PullOutMenu = (Props: IMenuProps)=>{
             position: absolute;
             z-index: 10;
             left: 0px;
-            top: 110px;
+            top: 150px;
             padding: 8px 10px;
             transform: rotate(-90deg);
             border: transparent;
@@ -32,7 +32,7 @@ const PullOutMenu = (Props: IMenuProps)=>{
         onClick={Props.setShowMenu}
         >
             <FontAwesomeIcon 
-                size="2x"
+                size="1x"
                 icon={"pencil-alt"}
             />
         </button>
