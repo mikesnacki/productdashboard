@@ -1,17 +1,17 @@
 import React from 'react'
 import { css } from 'emotion'
 import useWindowSize from '../utilhooks/useWindowDim'
-
+ 
 const Home =()=>{
-
+ 
     const size = useWindowSize()
     const width = size.width
     const collapseWidth:number = 900
-
+ 
     return(
         <div>
             <div className="stories-page">
-                <p>Hi. I made this application as a way for me to learn more about the agile metholodogy.</p>
+                <p>Hi. I made this application as a way for me to learn more about the agile methodology.</p>
                 <p>The application itself, at present, focuses heavily on creating and tracking user stories. You can create 'projects' which house stories. After that, you create stories within the project</p>
                 <p>Here's a little preview picture of what a project with stories looks like.</p>
                 <img 
@@ -30,11 +30,13 @@ const Home =()=>{
                     "https://res.cloudinary.com/mikesnacki/image/upload/v1586793175/preview-project-wide_tq7vcw.png"}
                     alt="preview for sites">
                 </img>
-                <p>If you're interested in what technology this is built on, its a MERN stack app (with some fairly weak TypeScript tbh), using Auth0 for authentitication, deployed on Heroku.</p>
+                <p>If you're interested in what technology this is built on, it's a MERN stack app (with some fairly weak TypeScript tbh), using Auth0 for authentication, deployed on Heroku.</p>
                 <p>Any questions or comments, feel free to email me at mikesnacki@gmail.com</p>
             </div>
         </div>
     )
 }
-
+ 
 export default Home
+ 
+

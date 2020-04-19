@@ -23,7 +23,7 @@ const Header = ()=> {
     ]
 
     return(    
-        <div>
+        <>
         {
         (scrollDirection.direction || scrollDirection.distance <= 1) && 
           <header className="header space-between flex-row-no-wrap">
@@ -43,7 +43,6 @@ const Header = ()=> {
                 </div> 
                 {navDisplay && 
                   <ul
-                    onClick={() => activateNavDisplay(!navDisplay)}
                     className={`menu-dropdown-${navDisplay}`}>
                       {links}  
                   </ul> }  
@@ -51,7 +50,7 @@ const Header = ()=> {
             }
           </header>
         }
-      </div>
+      </>
     )
 }
 
