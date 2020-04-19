@@ -263,6 +263,7 @@ $gray: #9b9b9b;
     margin: auto 3vw;
     text-decoration: none;
     background-color: transparent;
+    color:#393e46;
   }
   .nav-links:hover{
     transition: 200ms;
@@ -280,23 +281,11 @@ $gray: #9b9b9b;
   right: 0;
   margin: 0;
   animation: 200ms animatetop;
-  
-  
   .nav-links{
     display: block;
     margin: 8vh auto;
     color:#393e46;
   }
-}
-  
-.nav-links:hover {
-    transition: 0.2s;
-    color: #ff9c91;
-}
-
-.inner-links{
-  margin-top: 50%;
-  margin-bottom: 50%;
 }
 
 .btn-primary {

@@ -109,7 +109,7 @@ const Canvas = (Props: ICanvas) => {
         if (context) {
             context.strokeStyle = Props.strokeStyle;
             context.lineJoin = Props.lineJoin;
-            context.lineWidth = Props.lineWidth;
+            context.lineWidth = Props.lineWidth
             context.beginPath();
             context.moveTo(originalMousePosition.x, originalMousePosition.y);
             context.lineTo(newMousePosition.x, newMousePosition.y);

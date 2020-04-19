@@ -18,8 +18,8 @@ const Header = ()=> {
       isAuthenticated && <Link key={3} className="nav-links " to="/projects">Projects</Link>,
       isAuthenticated && <Link key={4} className="nav-links" to="/addproject">Add a Project</Link>,
       isAuthenticated && <Link key={5} className="nav-links" to="/profile">Profile</Link>,
-      !isAuthenticated && <span key={6} className="nav-links" onClick={() => loginWithRedirect({})}>Login</span>,
-      isAuthenticated && <span key={7} className="nav-links" onClick={() => logout()}>Logout</span>,
+      !isAuthenticated && <a key={6} className="nav-links" onClick={() => loginWithRedirect({})}>Login</a>,
+      isAuthenticated && <a key={7} className="nav-links" onClick={() => logout()}>Logout</a>,
     ]
 
     return(    
@@ -30,7 +30,7 @@ const Header = ()=> {
             <h1 className="header-text">User Stories</h1>
             {
               width >= collapseWidth ? 
-              <ul className="nav-links">{links}</ul>
+              <ul >{links}</ul>
               :
               <div
                 className={`menu-bar-${navDisplay}`}
