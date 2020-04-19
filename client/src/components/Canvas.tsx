@@ -68,9 +68,7 @@ const Canvas = (Props: ICanvas) => {
     }, []);
 
     useEffect(() => {
-        if (!canvasRef.current) {
-            return;
-        }
+        if (!canvasRef.current) { return;}
         const canvas: HTMLCanvasElement = canvasRef.current;
         canvas.addEventListener('mouseup', exitPaint);
         canvas.addEventListener('mouseleave', exitPaint);
@@ -83,9 +81,7 @@ const Canvas = (Props: ICanvas) => {
     }, [exitPaint]);
 
     const getCoordinates = (event: MouseEvent | TouchEvent): Coordinates | undefined => {
-        if (!canvasRef.current) {
-            return;
-        }
+        if (!canvasRef.current) {return;}
 
         let mouseX = (event as TouchEvent).changedTouches ?
                     (event as TouchEvent).changedTouches[0].pageX :
@@ -125,8 +121,6 @@ const Canvas = (Props: ICanvas) => {
                 newX: newMousePosition.x,
                 newY: newMousePosition.y,
             })
-
-
         }
     };
     return (
@@ -145,7 +139,7 @@ const Canvas = (Props: ICanvas) => {
 };
 
 Canvas.defaultProps = {
-    width: window.innerWidth *.9,
+    width: window.innerWidth *.8,
     height: window.innerHeight * .70,
 };
 

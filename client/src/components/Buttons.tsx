@@ -1,15 +1,13 @@
 import React from 'react'
-import { css } from 'emotion'
+import { css, keyframes } from 'emotion'
+import IButton from "../Interfaces/IButton"
 
-type ButtonProps ={
-    strokeStyle: string;
-    setStrokeStyle: (strokeStyle: string) => void;
-    changeSlider:(event: React.ChangeEvent<HTMLInputElement>) => void;
-    lineWidth: number;
-    changeLineJoin: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-}
+const expand = keyframes`
+from {height 0; opacity: 0;}
+to {height: 100px} 
+`
 
-const Buttons = (Props: ButtonProps) =>{
+const Buttons = (Props: IButton) =>{
     const buttons: string[] = [
                                 "black",
                                 "#2b580c",
@@ -27,7 +25,8 @@ const Buttons = (Props: ButtonProps) =>{
         width: 90%;
         margin: auto;
         max-width: 900px;
-        }
+        display: ${Props.showMenu ? "block" : "none" };
+        animation: ${expand} 200ms;
         `}>
             <div className="flex-row align-space-between sketch">
                 {buttons.map((button, key)=>
